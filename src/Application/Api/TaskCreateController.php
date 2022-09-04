@@ -4,11 +4,11 @@ namespace Anglesson\Exemplo\Application\Api;
 
 use Anglesson\Exemplo\Application\Protocols\Http\Controller;
 use Anglesson\Exemplo\Application\Utils\TaskMapper;
-use Anglesson\Exemplo\Domain\Task\Protocols\CreateTaskServiceInterface;
+use Anglesson\Exemplo\Domain\Protocols\CreateTaskServiceInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class TaskCreateController implements Controller
+class TaskCreateController
 {
     private CreateTaskServiceInterface $action;
 
@@ -17,7 +17,7 @@ class TaskCreateController implements Controller
         $this->action = $action;
     }
 
-    public function handle(Request $request, Response $response): Response
+    public function __invoke(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
         $task = TaskMapper::toDomain($data);

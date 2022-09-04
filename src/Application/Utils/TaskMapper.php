@@ -2,7 +2,7 @@
 
 namespace Anglesson\Exemplo\Application\Utils;
 
-use Anglesson\Exemplo\Domain\Task\Entity\Task;
+use Anglesson\Exemplo\Domain\Entity\Task;
 
 class TaskMapper {
   public static function toDomain(array $array) {
