@@ -1,13 +1,15 @@
 <?php
 
-use Anglesson\Exemplo\Domain\UseCases\ConcluirTarefa;
-use Anglesson\Exemplo\Infra\TarefaRepositoryMongoDB;
-use Anglesson\Exemplo\Domain\Task;
-
 require 'vendor/autoload.php';
 
-$concluirTarefa = new ConcluirTarefa(new TarefaRepositoryMongoDB());
-$tarefa = new Task();
-$tarefa->titulo = 'Teste';
+use Anglesson\Exemplo\Domain\Entity\Task;
+use Anglesson\Exemplo\Domain\Services\CreateTaskService;
+use Anglesson\Exemplo\Infrastructure\Repositories\MockRepository;
 
-$concluirTarefa->handle($tarefa);
+$mockRepository = new MockRepository();
+$taskCreateService = new CreateTaskService($mockRepository);
+$task = new Task();
+$task->description = 'Minha tarefa Criada';
+$task->finished = false;
+$taskCriada = $taskCreateService->create($task);
+echo 'Task criada: '. $taskCriada->description;

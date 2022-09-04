@@ -1,6 +1,6 @@
 <?php
 
-namespace Anglesson\Exemplo\Domain;
+namespace Anglesson\Exemplo\Domain\Entity;
 
 class Task
 {
