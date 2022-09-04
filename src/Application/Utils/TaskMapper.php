@@ -2,6 +2,8 @@
 
 namespace Anglesson\Exemplo\Application\Utils;
 
+use Anglesson\Exemplo\Domain\Task\Entity\Task;
+
 class TaskMapper {
   public static function toDomain(array $array) {
     $task = new Task();

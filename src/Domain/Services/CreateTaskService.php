@@ -1,8 +1,10 @@
 <?php
 
-use Anglesson\Exemplo\Domain\CreateTaskServiceInterface;
-use Anglesson\Exemplo\Domain\Task;
-use Anglesson\Exemplo\Domain\TaskRepositoryInterface;
+namespace Anglesson\Exemplo\Domain\Services;
+
+use Anglesson\Exemplo\Domain\Entity\Task;
+use Anglesson\Exemplo\Domain\Protocols\CreateTaskServiceInterface;
+use Anglesson\Exemplo\Domain\Protocols\TaskRepositoryInterface;
 
 class CreateTaskService implements CreateTaskServiceInterface
 {

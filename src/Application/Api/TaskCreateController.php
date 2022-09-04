@@ -1,11 +1,12 @@
 <?php
 
+namespace Anglesson\Exemplo\Application\Api;
+
 use Anglesson\Exemplo\Application\Protocols\Http\Controller;
-use Anglesson\Exemplo\Domain\CreateTaskServiceInterface;
+use Anglesson\Exemplo\Application\Utils\TaskMapper;
+use Anglesson\Exemplo\Domain\Task\Protocols\CreateTaskServiceInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use DTO\TaskDto;
-use Anglesson\Exemplo\Utils\TaskMapper;
 
 class TaskCreateController implements Controller
 {
@@ -20,7 +21,8 @@ class TaskCreateController implements Controller
     {
         $data = $request->getParsedBody();
         $task = TaskMapper::toDomain($data);
-        $taskSaved = $this->action->create();
-        return $response->setBody(json_encode($taskSaved))->getBody();
+        $taskSaved = $this->action->create($task);
+        $response->getBody()->write($taskSaved);
+        return $response;
     }
 }

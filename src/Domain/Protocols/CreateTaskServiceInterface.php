@@ -1,6 +1,8 @@
 <?php
 
-namespace Anglesson\Exemplo\Domain;
+namespace Anglesson\Exemplo\Domain\Protocols;
+
+use Anglesson\Exemplo\Domain\Entity\Task;
 
 interface CreateTaskServiceInterface
 {
