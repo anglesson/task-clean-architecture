@@ -14,10 +14,10 @@ class MockRepository implements TaskRepositoryInterface {
     $this->generatorId = $generatorId;
   }
   
-  public function save(Task $tarefa): Task
+  public function save(Task $task): Task
   {
-    $tarefa->id = $this->generatorId->generateId();
-    $this->tasks[] = $tarefa;
-    return $tarefa;
+    $task->id = $this->generatorId->generateId();
+    $this->tasks[] = $task;
+    return $task;
   }
 }
