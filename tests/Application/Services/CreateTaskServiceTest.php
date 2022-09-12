@@ -8,6 +8,7 @@ use Anglesson\Exemplo\Domain\Services\CreateTaskService;
 use Anglesson\Exemplo\Infrastructure\Repositories\MockRepository;
 use Anglesson\Exemplo\Infrastructure\Utils\RamseyUuid;
 use PHPUnit\Framework\TestCase;
+use Anglesson\Exemplo\Domain\Errors\TaskNotBeCreatedWithStatusFinishedException;
 
 class CreateTaskServiceTest extends TestCase {
 
@@ -34,11 +35,11 @@ class CreateTaskServiceTest extends TestCase {
         $this->assertEquals($task, $taskCriada);
     }
 
-    public function testShouldCreateANotFinishedTask()
+    public function testShouldThrowsExceptionIfTaskWillBeCreatedWithStatusFinishedTrue()
     {
+        $this->expectException(TaskNotBeCreatedWithStatusFinishedException::class);
         $task = $this->makeFakeTask();
         $task->finished = true;
         $taskCreated = $this->makeCreateService()->create($task);
-        $this->assertEquals(false, $taskCreated->finished);
     }
 }
