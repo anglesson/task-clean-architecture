@@ -11,6 +11,9 @@
             "email": "anglesson.araujo@grancursosonline.com.br"
         }
     ],
+    "scripts": {
+        "test": "./vendor/bin/phpunit --testdox"
+    },
     "require": {
         "php": "^8.1",
         "psr/http-message": "^1.0",
