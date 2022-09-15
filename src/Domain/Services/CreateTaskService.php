@@ -18,7 +18,7 @@ class CreateTaskService implements CreateTaskServiceInterface
 
     public function create(Task $task): Task
     {
-        if($task->finished === true) {
+        if ($task->finished === true) {
             throw new TaskNotBeCreatedWithStatusFinishedException();
         }
         return $this->repository->save($task);

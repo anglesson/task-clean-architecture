@@ -10,7 +10,8 @@ use Anglesson\Exemplo\Infrastructure\Utils\RamseyUuid;
 use PHPUnit\Framework\TestCase;
 use Anglesson\Exemplo\Domain\Errors\TaskNotBeCreatedWithStatusFinishedException;
 
-class CreateTaskServiceTest extends TestCase {
+class CreateTaskServiceTest extends TestCase
+{
 
     private function makeFakeTask(): Task
     {
@@ -28,7 +29,8 @@ class CreateTaskServiceTest extends TestCase {
         return new CreateTaskService($mockRepository);
     }
 
-    public function testShouldCreateTask() {
+    public function testShouldCreateTask()
+    {
         $taskCreateService = $this->makeCreateService();
         $task = $this->makeFakeTask();
         $taskCriada = $taskCreateService->create($task);

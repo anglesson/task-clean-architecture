@@ -6,18 +6,20 @@ use Anglesson\Exemplo\Domain\Entity\Task;
 use Anglesson\Exemplo\Domain\Protocols\CreateTaskRepositoryInterface;
 use Anglesson\Exemplo\Infrastructure\Protocols\UuidGeneratorInterface;
 
-class MockRepository implements CreateTaskRepositoryInterface {
-  private array $tasks = [];
-  private UuidGeneratorInterface $generatorId;
+class MockRepository implements CreateTaskRepositoryInterface
+{
+    private arrayprivate $tasks = [];
+    private UuidGeneratorInterfaceprivate $generatorId;
 
-  public function __construct(UuidGeneratorInterface $generatorId) {
-    $this->generatorId = $generatorId;
-  }
+    public function __construct(UuidGeneratorInterface $generatorId)
+    {
+        $this->generatorId = $generatorId;
+    }
 
-  public function save(Task $task): Task
-  {
-    $task->id = $this->generatorId->generateId();
-    $this->tasks[] = $task;
-    return $task;
-  }
+    public function save(Task $task): Task
+    {
+        $task->id = $this->generatorId->generateId();
+        $this->tasks[] = $task;
+        return $task;
+    }
 }
