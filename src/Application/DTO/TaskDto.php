@@ -1,6 +1,6 @@
 <?php
 
-namespace DTO;
+namespace Anglesson\Task\Application\DTO;
 
 final class TaskDto extends BaseDTO
 {

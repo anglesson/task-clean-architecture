@@ -1,8 +1,8 @@
 <?php
 
-namespace Anglesson\Exemplo\Application\Utils;
+namespace Anglesson\Task\Application\Utils;
 
-use Anglesson\Exemplo\Domain\Entity\Task;
+use Anglesson\Task\Domain\Entity\Task;
 
 class TaskMapper
 {

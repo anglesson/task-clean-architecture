@@ -1,10 +1,10 @@
 <?php
 
-namespace Anglesson\Exemplo\Application\Api;
+namespace Anglesson\Task\Application\Api;
 
-use Anglesson\Exemplo\Application\Protocols\Http\Controller;
-use Anglesson\Exemplo\Application\Utils\TaskMapper;
-use Anglesson\Exemplo\Domain\Protocols\CreateTaskServiceInterface;
+use Anglesson\Task\Application\Protocols\Http\Controller;
+use Anglesson\Task\Application\Utils\TaskMapper;
+use Anglesson\Task\Domain\Protocols\CreateTaskServiceInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -17,7 +17,7 @@ class TaskCreateController
         $this->action = $action;
     }
 
-    public function __invoke(Request $request, Response $response): Response
+    public function handle(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
         $task = TaskMapper::toDomain($data);

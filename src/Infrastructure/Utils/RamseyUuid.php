@@ -1,8 +1,8 @@
 <?php
 
-namespace Anglesson\Exemplo\Infrastructure\Utils;
+namespace Anglesson\Task\Infrastructure\Utils;
 
-use Anglesson\Exemplo\Infrastructure\Protocols\UuidGeneratorInterface;
+use Anglesson\Task\Infrastructure\Protocols\UuidGeneratorInterface;
 use Ramsey\Uuid\Uuid;
 
 class RamseyUuid implements UuidGeneratorInterface

@@ -1,15 +1,15 @@
 <?php
 
-namespace Anglesson\Exemplo\Infrastructure\Repositories;
+namespace Anglesson\Task\Infrastructure\Repositories;
 
-use Anglesson\Exemplo\Domain\Entity\Task;
-use Anglesson\Exemplo\Domain\Protocols\CreateTaskRepositoryInterface;
-use Anglesson\Exemplo\Infrastructure\Protocols\UuidGeneratorInterface;
+use Anglesson\Task\Domain\Entity\Task;
+use Anglesson\Task\Domain\Protocols\CreateTaskRepositoryInterface;
+use Anglesson\Task\Infrastructure\Protocols\UuidGeneratorInterface;
 
 class MockRepository implements CreateTaskRepositoryInterface
 {
-    private arrayprivate $tasks = [];
-    private UuidGeneratorInterfaceprivate $generatorId;
+    private array $tasks = [];
+    private UuidGeneratorInterface $generatorId;
 
     public function __construct(UuidGeneratorInterface $generatorId)
     {

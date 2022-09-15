@@ -1,11 +1,11 @@
 <?php
 
-namespace Anglesson\Exemplo\Domain\Services;
+namespace Anglesson\Task\Domain\Services;
 
-use Anglesson\Exemplo\Domain\Entity\Task;
-use Anglesson\Exemplo\Domain\Protocols\CreateTaskServiceInterface;
-use Anglesson\Exemplo\Domain\Protocols\CreateTaskRepositoryInterface;
-use Anglesson\Exemplo\Domain\Errors\TaskNotBeCreatedWithStatusFinishedException;
+use Anglesson\Task\Domain\Entity\Task;
+use Anglesson\Task\Domain\Protocols\CreateTaskServiceInterface;
+use Anglesson\Task\Domain\Protocols\CreateTaskRepositoryInterface;
+use Anglesson\Task\Domain\Exceptions\TaskNotBeCreatedWithStatusFinishedException;
 
 class CreateTaskService implements CreateTaskServiceInterface
 {

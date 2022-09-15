@@ -1,8 +1,8 @@
 {
-    "name": "anglesson/exemplo",
+    "name": "anglesson/task",
     "autoload": {
         "psr-4": {
-            "Anglesson\\Exemplo\\": "src/"
+            "Anglesson\\Task\\": "src/"
         }
     },
     "authors": [
@@ -26,6 +26,7 @@
         "laminas/laminas-diactoros": "^2.17"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "spatie/phpunit-watcher": "^1.23"
     }
 }

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace DTO;
+namespace Anglesson\Task\Application\DTO;
 
 use JsonSerializable;
 

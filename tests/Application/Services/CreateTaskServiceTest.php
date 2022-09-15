@@ -1,14 +1,14 @@
 <?php
 
-namespace Anglesson\Exemplo\tests\Application\Services;
+namespace Anglesson\Task\tests\Application\Services;
 
-use Anglesson\Exemplo\Domain\Entity\Task;
-use Anglesson\Exemplo\Domain\Protocols\CreateTaskServiceInterface;
-use Anglesson\Exemplo\Domain\Services\CreateTaskService;
-use Anglesson\Exemplo\Infrastructure\Repositories\MockRepository;
-use Anglesson\Exemplo\Infrastructure\Utils\RamseyUuid;
+use Anglesson\Task\Domain\Entity\Task;
+use Anglesson\Task\Domain\Protocols\CreateTaskServiceInterface;
+use Anglesson\Task\Domain\Services\CreateTaskService;
+use Anglesson\Task\Infrastructure\Repositories\MockRepository;
+use Anglesson\Task\Infrastructure\Utils\RamseyUuid;
 use PHPUnit\Framework\TestCase;
-use Anglesson\Exemplo\Domain\Errors\TaskNotBeCreatedWithStatusFinishedException;
+use Anglesson\Task\Domain\Exceptions\TaskNotBeCreatedWithStatusFinishedException;
 
 class CreateTaskServiceTest extends TestCase
 {
@@ -16,7 +16,6 @@ class CreateTaskServiceTest extends TestCase
     private function makeFakeTask(): Task
     {
         $task = new Task();
-        $task->id = 'any_id';
         $task->description = 'Any Task';
         $task->finished = false;
         return $task;
