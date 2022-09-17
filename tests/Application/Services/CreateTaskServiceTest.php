@@ -12,7 +12,6 @@ use Anglesson\Task\Domain\Exceptions\TaskNotBeCreatedWithStatusFinishedException
 
 class CreateTaskServiceTest extends TestCase
 {
-
     private function makeFakeTask(): Task
     {
         $task = new Task();

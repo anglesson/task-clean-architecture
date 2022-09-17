@@ -7,8 +7,10 @@ use Anglesson\Task\Application\Utils\TaskMapper;
 use Anglesson\Task\Domain\Protocols\CreateTaskServiceInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamInterface;
 
-class TaskCreateController
+class TaskCreateController implements Controller
 {
     private CreateTaskServiceInterface $action;
 
@@ -22,7 +24,9 @@ class TaskCreateController
         $data = $request->getParsedBody();
         $task = TaskMapper::toDomain($data);
         $taskSaved = $this->action->create($task);
-        $response->getBody()->write($taskSaved);
-        return $response;
+        
+        $res = $response->getBody();
+        $res->write($taskSaved->__toString());
+        return $response->withBody($res);
     }
 }
