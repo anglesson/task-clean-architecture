@@ -6,10 +6,12 @@ use Anglesson\Task\Domain\Entity\Task;
 use Anglesson\Task\Domain\Protocols\CreateTaskRepositoryInterface;
 use Anglesson\Task\Infrastructure\Protocols\UuidGeneratorInterface;
 use Anglesson\Task\Domain\Protocols\FindTaskRepositoryInterface;
+use Anglesson\Task\Domain\Protocols\UpdateTaskRepositoryInterface;
 
 class MockRepository implements
     CreateTaskRepositoryInterface,
-    FindTaskRepositoryInterface
+    FindTaskRepositoryInterface,
+    UpdateTaskRepositoryInterface
 {
     private array $tasks = [];
     private UuidGeneratorInterface $generatorId;
@@ -34,5 +36,12 @@ class MockRepository implements
             }
         }
         return null;
+    }
+
+    public function update(Task $task): Task
+    {
+        $key = array_search($task, $this->tasks);
+        $this->tasks[$key] = $task;
+        return $this->tasks[$key];
     }
 }
