@@ -21,7 +21,7 @@ abstract class BaseDTO implements JsonSerializable
         }
 
         if (!property_exists($this, $property)) {
-            throw new InvalidArgumentException(sprintf(
+            throw new \InvalidArgumentException(sprintf(
                 "The property '%s' doesn't exists in '%s' DTO Class",
                 $property,
                 get_class()
