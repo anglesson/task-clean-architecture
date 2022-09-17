@@ -9,7 +9,7 @@ class TaskMapper
     public static function toDomain(array $array)
     {
         $task = new Task();
-        $task->description = $array['description'] ?? '';
+        $task->__unserialize($array);
         return $task;
     }
 }

@@ -12,4 +12,19 @@ class Task
     {
         $this->finished = false;
     }
+
+    public function __serialize(): array
+    {
+        return [
+            'id'            => $this->id ?? null,
+            'description'   => $this->description,
+            'finished'      => $this->finished
+        ];
+    }
+
+    public function __unserialize(array $data)
+    {
+        $this->description  = $data['description'] ?? '';
+        $this->finished     = $data['finished'] ?? false;
+    }
 }
