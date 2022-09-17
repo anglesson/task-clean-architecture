@@ -21,7 +21,9 @@ class UpdateTaskServiceTest extends TestCase
 
         $task = $createTaskService->create(['description' => 'any_description']);
         $taskUpdated = $updateTaskService->update($task->id, ['description' => 'any_description_updated']);
-
         $this->assertEquals($taskUpdated->description, 'any_description_updated');
+
+        $updateTaskService->update($task->id, ['finished' => true]);
+        $this->assertEquals($task->finished, true);
     }
 }
