@@ -23,10 +23,7 @@ class TaskCreateController implements Controller
     {
         $data = $request->getParsedBody();
         $task = TaskMapper::toDomain($data);
-        $taskSaved = $this->action->create($task);
-        
-        $res = $response->getBody();
-        $res->write($taskSaved->__toString());
-        return $response->withBody($res);
+        $this->action->create($task);
+        return $response->withStatus(201);
     }
 }
