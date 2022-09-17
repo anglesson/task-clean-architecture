@@ -12,7 +12,7 @@
         }
     ],
     "scripts": {
-        "test": "./vendor/bin/phpunit --testdox"
+        "test": "./vendor/bin/phpunit-watcher watch --testdox"
     },
     "require": {
         "php": "^8.1",
