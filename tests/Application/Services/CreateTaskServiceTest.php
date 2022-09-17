@@ -27,19 +27,12 @@ class CreateTaskServiceTest extends TestCase
         return new CreateTaskService($mockRepository);
     }
 
-    public function testShouldCreateTask()
+    public function testShouldBeCreatedATask()
     {
         $taskCreateService = $this->makeCreateService();
-        $task = $this->makeFakeTask();
-        $taskCriada = $taskCreateService->create($task);
-        $this->assertEquals($task, $taskCriada);
-    }
-
-    public function testShouldThrowsExceptionIfTaskWillBeCreatedWithStatusFinishedTrue()
-    {
-        $this->expectException(TaskNotBeCreatedWithStatusFinishedException::class);
-        $task = $this->makeFakeTask();
-        $task->finished = true;
-        $taskCreated = $this->makeCreateService()->create($task);
+        $taskCriada = $taskCreateService->create([
+            'description' => 'any_description'
+        ]);
+        $this->assertEquals('any_description', $taskCriada->description);
     }
 }

@@ -9,12 +9,7 @@ class TaskMapper
     public static function toDomain(array $array)
     {
         $task = new Task();
-        if (!$array) {
-            foreach ($array as $key => $value) {
-                $task->description = $array['description'];
-                $task->finished = $array['finished'];
-            }
-        }
+        $task->description = $array['description'] ?? '';
         return $task;
     }
 }

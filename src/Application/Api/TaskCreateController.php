@@ -22,8 +22,7 @@ class TaskCreateController implements Controller
     public function handle(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
-        $task = TaskMapper::toDomain($data);
-        $this->action->create($task);
+        $this->action->create($data);
         return $response->withStatus(201);
     }
 }

@@ -6,5 +6,5 @@ use Anglesson\Task\Domain\Entity\Task;
 
 interface CreateTaskServiceInterface
 {
-    public function create(Task $task): Task;
+    public function create(array $data): Task;
 }
