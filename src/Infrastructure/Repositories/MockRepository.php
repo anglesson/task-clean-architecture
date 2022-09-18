@@ -7,11 +7,13 @@ use Anglesson\Task\Domain\Protocols\CreateTaskRepositoryInterface;
 use Anglesson\Task\Infrastructure\Protocols\UuidGeneratorInterface;
 use Anglesson\Task\Domain\Protocols\FindTaskRepositoryInterface;
 use Anglesson\Task\Domain\Protocols\UpdateTaskRepositoryInterface;
+use Anglesson\Task\Domain\Protocols\DeleteTaskRepositoryInterface;
 
 class MockRepository implements
     CreateTaskRepositoryInterface,
     FindTaskRepositoryInterface,
-    UpdateTaskRepositoryInterface
+    UpdateTaskRepositoryInterface,
+    DeleteTaskRepositoryInterface
 {
     private array $tasks = [];
     private UuidGeneratorInterface $generatorId;
@@ -43,5 +45,16 @@ class MockRepository implements
         $key = array_search($task, $this->tasks);
         $this->tasks[$key] = $task;
         return $this->tasks[$key];
+    }
+
+    public function delete(Task $task): void
+    {
+        $key = array_search($task, $this->tasks);
+        unset($this->tasks[$key]);
+    }
+
+    public function getAllTasks()
+    {
+        return $this->tasks;
     }
 }
