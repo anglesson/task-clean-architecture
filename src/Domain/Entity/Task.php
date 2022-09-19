@@ -22,9 +22,14 @@ class Task
         ];
     }
 
-    public function __unserialize(array $data)
+    public function __unserialize(array $data): void
     {
         $this->description  = $data['description'] ?? '';
         $this->finished     = $data['finished'] ?? false;
+    }
+
+    public function __toString(): string
+    {
+        return json_encode(get_object_vars($this));
     }
 }
