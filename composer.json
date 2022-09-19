@@ -12,7 +12,8 @@
         }
     ],
     "scripts": {
-        "test": "./vendor/bin/phpunit-watcher watch --testdox"
+        "test": "./vendor/bin/phpunit-watcher watch --testdox",
+        "start": "php -S localhost:8888 -t public"
     },
     "require": {
         "php": "^8.1",
