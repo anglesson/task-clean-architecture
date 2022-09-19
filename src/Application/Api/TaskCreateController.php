@@ -9,17 +9,18 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class TaskCreateController implements Controller
 {
-    private CreateTaskServiceInterface $action;
+    private CreateTaskServiceInterface $service;
 
-    public function __construct(CreateTaskServiceInterface $action)
+    public function __construct(CreateTaskServiceInterface $service)
     {
-        $this->action = $action;
+        $this->service = $service;
     }
 
     public function handle(Request $request, Response $response): Response
     {
-        $data = $request->getParsedBody();
-        $this->action->create($data);
-        return $response->withStatus(201);
+        $params = $request->getParsedBody();
+        $task = $this->service->create($params);
+        $response->getBody()->write($task->__toString());
+        return $response;
     }
 }
