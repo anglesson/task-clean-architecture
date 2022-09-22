@@ -20,7 +20,7 @@ class CreateTaskService implements CreateTaskServiceInterface
     public function create(array $data): Task
     {
         $task = TaskMapper::toDomain($data);
-        if ($task->finished === true) {
+        if ($task->getFinished() === true) {
             throw new TaskNotBeCreatedWithStatusFinishedException();
         }
         return $this->repository->save($task);

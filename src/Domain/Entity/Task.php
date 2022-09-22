@@ -2,34 +2,56 @@
 
 namespace Anglesson\Task\Domain\Entity;
 
+use Anglesson\Task\Domain\Utils\Fillable;
+
 class Task
 {
-    public ?string $id;
-    public string $description;
-    public bool $finished;
+    use Fillable;
+    
+    private $fillable = [
+        'description',
+        'finished'
+    ];
+
+    private ?string $id;
+    private string $description;
+    private bool $finished;
 
     public function __construct()
     {
+        $this->id = null;
         $this->finished = false;
     }
 
-    public function __serialize(): array
+    public function getId(): ?string
     {
-        return [
-            'id'            => $this->id ?? null,
-            'description'   => $this->description,
-            'finished'      => $this->finished
-        ];
+        return $this->id;
     }
 
-    public function __unserialize(array $data): void
+    public function setId(string $id): void
     {
-        $this->description  = $data['description'] ?? '';
-        $this->finished     = $data['finished'] ?? false;
+        if (!isset($this->id) && is_null($this->id)) {
+            $this->id = $id;
+        }
     }
 
-    public function __toString(): string
+    public function getDescription(): string
     {
-        return json_encode(get_object_vars($this));
+        return $this->description;
+    }
+
+    public function setDescription(string $description)
+    {
+        $this->description = $description;
+    }
+
+    public function getFinished(): bool
+    {
+        return $this->finished;
+    }
+
+    public function setFinished(bool $finished)
+    {
+        $this->finished = $finished;
     }
 }

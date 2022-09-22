@@ -20,7 +20,7 @@ class TaskCreateController implements Controller
     {
         $params = $request->getParsedBody();
         $task = $this->service->create($params);
-        $response->getBody()->write($task->__toString());
+        $response->getBody()->write($task->jsonSerialize());
         return $response;
     }
 }

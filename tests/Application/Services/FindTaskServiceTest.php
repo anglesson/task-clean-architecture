@@ -18,7 +18,7 @@ class FindTaskServiceTest extends TestCase
         $findTaskService = new FindTaskService($repository);
 
         $taskCreated = $createTaskService->create(['description' => 'any_description']);
-        $taskFinded = $findTaskService->find($taskCreated->id);
+        $taskFinded = $findTaskService->find($taskCreated->getId());
 
         $this->assertEquals($taskFinded, $taskCreated);
     }

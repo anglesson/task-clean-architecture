@@ -21,7 +21,7 @@ class UpdateTaskService implements UpdateTaskServiceInterface
     public function update($idTask, $params): Task
     {
         $taskFounded = $this->findTaskService->find($idTask);
-        $taskFounded->__unserialize($params);
+        $taskFounded->fill($params);
         return $this->repository->update($taskFounded);
     }
 }

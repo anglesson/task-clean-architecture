@@ -25,7 +25,7 @@ class MockRepository implements
 
     public function save(Task $task): Task
     {
-        $task->id = $this->generatorId->generateId();
+        $task->setId($this->generatorId->generateId());
         $this->tasks[] = $task;
         return $task;
     }
@@ -33,7 +33,7 @@ class MockRepository implements
     public function findOne(string $idTask): ?Task
     {
         foreach ($this->tasks as $task) {
-            if ($task->id === $idTask) {
+            if ($task->getId() === $idTask) {
                 return $task;
             }
         }

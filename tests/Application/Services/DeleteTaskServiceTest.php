@@ -65,9 +65,9 @@ class DeleteTaskServiceTest extends TestCase
         $task3 = $this->createTaskService->create(['description' => 'any_description_3']);
         $this->assertEquals(3, count($this->repository->getAllTasks()));
 
-        $this->deleteService->delete($task1->id);
-        $this->deleteService->delete($task2->id);
-        $this->deleteService->delete($task3->id);
+        $this->deleteService->delete($task1->getId());
+        $this->deleteService->delete($task2->getId());
+        $this->deleteService->delete($task3->getId());
         $this->assertEquals(0, count($this->repository->getAllTasks()));
     }
 }

@@ -33,6 +33,6 @@ class CreateTaskServiceTest extends TestCase
         $taskCriada = $taskCreateService->create([
             'description' => 'any_description'
         ]);
-        $this->assertEquals('any_description', $taskCriada->description);
+        $this->assertEquals('any_description', $taskCriada->getDescription());
     }
 }
