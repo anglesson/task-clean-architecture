@@ -2,7 +2,8 @@
     "name": "anglesson/task",
     "autoload": {
         "psr-4": {
-            "Anglesson\\Task\\": "src/"
+            "Anglesson\\Task\\": "src/",
+            "Test\\": "tests/"
         }
     },
     "authors": [

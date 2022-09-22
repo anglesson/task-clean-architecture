@@ -1,6 +1,6 @@
 <?php
 
-namespace Anglesson\Task\tests\Application\Services;
+namespace Test\Application\Services;
 
 use Anglesson\Task\Domain\Entity\Task;
 use Anglesson\Task\Domain\Protocols\CreateTaskServiceInterface;

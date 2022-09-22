@@ -1,6 +1,6 @@
 <?php
 
-namespace Anglesson\Task\tests\Application\Services;
+namespace Test\Application\Services;
 
 use PHPUnit\Framework\TestCase;
 use Anglesson\Task\Domain\Services\FindTaskService;
