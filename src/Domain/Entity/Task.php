@@ -3,6 +3,7 @@
 namespace Anglesson\Task\Domain\Entity;
 
 use Anglesson\Task\Domain\Utils\Fillable;
+use Anglesson\Task\Domain\Exceptions\DescriptionHasMoreThan50Caracters;
 
 class Task
 {
@@ -12,10 +13,10 @@ class Task
         'description',
         'finished'
     ];
-
     private ?string $id;
     private string $description;
     private bool $finished;
+
 
     public function __construct()
     {
@@ -42,6 +43,9 @@ class Task
 
     public function setDescription(string $description)
     {
+        if (strlen($description) > 50) {
+            throw new DescriptionHasMoreThan50Caracters();
+        }
         $this->description = $description;
     }
 
