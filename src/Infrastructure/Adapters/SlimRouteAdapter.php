@@ -23,7 +23,7 @@ final class SlimRouteAdapter
             return $controllerResponse->withHeader('Content-type', 'application/json');
         } catch (\Exception $e) {
             $response->getBody()->write(\json_encode(['Erro' => $e->getMessage()]));
-            return $response;
+            return $response->withStatus($e->getCode())->withHeader('Content-type', 'application/json');
         }
     }
 }
