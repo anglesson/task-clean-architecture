@@ -2,6 +2,7 @@
 
 namespace Anglesson\Task\Application\Api;
 
+use Anglesson\Task\Application\Exceptions\MissingParamsErrorException;
 use Anglesson\Task\Application\Protocols\Http\Controller;
 use Anglesson\Task\Domain\Protocols\CreateTaskServiceInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -19,6 +20,9 @@ class TaskCreateController implements Controller
     public function handle(Request $request, Response $response): Response
     {
         $params = $request->getParsedBody();
+        if (is_null($params)) {
+            throw new MissingParamsErrorException();
+        }
         $task = $this->service->create($params);
         $response->getBody()->write($task->jsonSerialize());
         return $response;
