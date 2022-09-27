@@ -2,10 +2,10 @@
 
 namespace Anglesson\Task\Infrastructure\Utils;
 
-use Anglesson\Task\Infrastructure\Protocols\UuidGeneratorInterface;
+use Anglesson\Task\Infrastructure\Protocols\UuidGenerator;
 use Ramsey\Uuid\Uuid;
 
-class RamseyUuid implements UuidGeneratorInterface
+class RamseyUuidImpl implements UuidGenerator
 {
     public function generateId(): string
     {

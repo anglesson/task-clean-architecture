@@ -3,17 +3,17 @@
 namespace Test\Application\Services;
 
 use PHPUnit\Framework\TestCase;
-use Anglesson\Task\Domain\Services\FindTaskService;
+use Anglesson\Task\Domain\Services\FindTaskServiceImpl;
 use Anglesson\Task\Infrastructure\Repositories\MockRepository;
-use Anglesson\Task\Infrastructure\Utils\RamseyUuid;
-use Anglesson\Task\Domain\Services\CreateTaskService;
-use Anglesson\Task\Domain\Services\DeleteTaskService;
-use Anglesson\Task\Domain\Protocols\CreateTaskServiceInterface;
-use Anglesson\Task\Domain\Protocols\DeleteTaskServiceInterface;
-use Anglesson\Task\Domain\Protocols\DeleteTaskRepositoryInterface;
-use Anglesson\Task\Domain\Protocols\FindTaskServiceInterface;
-use Anglesson\Task\Domain\Protocols\CreateTaskRepositoryInterface;
-use Anglesson\Task\Domain\Protocols\FindTaskRepositoryInterface;
+use Anglesson\Task\Infrastructure\Utils\RamseyUuidImpl;
+use Anglesson\Task\Domain\Services\CreateTaskServiceImpl;
+use Anglesson\Task\Domain\Services\DeleteTaskServiceImpl;
+use Anglesson\Task\Domain\Protocols\CreateTaskService;
+use Anglesson\Task\Domain\Protocols\DeleteTaskService;
+use Anglesson\Task\Domain\Protocols\DeleteTaskRepository;
+use Anglesson\Task\Domain\Protocols\FindTaskService;
+use Anglesson\Task\Domain\Protocols\CreateTaskRepository;
+use Anglesson\Task\Domain\Protocols\FindTaskRepository;
 use Anglesson\Task\Application\DTO\TaskDTO;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -21,9 +21,9 @@ class DeleteTaskServiceTest extends TestCase
 {
     private $repository;
 
-    private DeleteTaskService $deleteService;
+    private DeleteTaskServiceImpl $deleteService;
 
-    private CreateTaskService $createTaskService;
+    private CreateTaskServiceImpl $createTaskService;
 
     public function setUp(): void
     {
@@ -37,26 +37,26 @@ class DeleteTaskServiceTest extends TestCase
 
     public function mockRepositoryFactory(): MockRepository
     {
-        $ramseyUuid = new RamseyUuid();
+        $ramseyUuid = new RamseyUuidImpl();
         return new MockRepository($ramseyUuid);
     }
 
-    public function findTaskServiceFactory(FindTaskRepositoryInterface $repository)
+    public function findTaskServiceFactory(FindTaskRepository $repository)
     {
-        return new FindTaskService($repository);
+        return new FindTaskServiceImpl($repository);
     }
 
 
-    public function createTaskServiceFactory(CreateTaskRepositoryInterface $repository): CreateTaskServiceInterface
+    public function createTaskServiceFactory(CreateTaskRepository $repository): CreateTaskService
     {
-        return new CreateTaskService($repository);
+        return new CreateTaskServiceImpl($repository);
     }
 
     public function deleteTaskServiceFactory(
-        DeleteTaskRepositoryInterface $repository,
-        FindTaskServiceInterface $findTaskService
-    ): DeleteTaskServiceInterface {
-        return new DeleteTaskService($repository, $findTaskService);
+        DeleteTaskRepository $repository,
+        FindTaskService $findTaskService
+    ): DeleteTaskService {
+        return new DeleteTaskServiceImpl($repository, $findTaskService);
     }
 
     public function testShouldBeDeleteATaskById()

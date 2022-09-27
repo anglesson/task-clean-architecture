@@ -2,7 +2,7 @@
 
 namespace Anglesson\Task\Domain\Protocols;
 
-interface DeleteTaskServiceInterface
+interface DeleteTaskService
 {
     public function delete(string $idTask): void;
 }

@@ -3,10 +3,10 @@
 namespace Test\Application\Services;
 
 use Anglesson\Task\Domain\Entity\Task;
-use Anglesson\Task\Domain\Protocols\CreateTaskServiceInterface;
-use Anglesson\Task\Domain\Services\CreateTaskService;
+use Anglesson\Task\Domain\Protocols\CreateTaskService;
+use Anglesson\Task\Domain\Services\CreateTaskServiceImpl;
 use Anglesson\Task\Infrastructure\Repositories\MockRepository;
-use Anglesson\Task\Infrastructure\Utils\RamseyUuid;
+use Anglesson\Task\Infrastructure\Utils\RamseyUuidImpl;
 use PHPUnit\Framework\TestCase;
 use Anglesson\Task\Domain\Exceptions\TaskNotBeCreatedWithStatusFinishedException;
 use Psr\Http\Message\ServerRequestInterface;
@@ -22,11 +22,11 @@ class CreateTaskServiceTest extends TestCase
         return $task;
     }
 
-    private function makeCreateService(): CreateTaskServiceInterface
+    private function makeCreateService(): CreateTaskService
     {
-        $mockUuid = new RamseyUuid();
+        $mockUuid = new RamseyUuidImpl();
         $mockRepository = new MockRepository($mockUuid);
-        return new CreateTaskService($mockRepository);
+        return new CreateTaskServiceImpl($mockRepository);
     }
 
     public function testShouldBeCreatedATask()

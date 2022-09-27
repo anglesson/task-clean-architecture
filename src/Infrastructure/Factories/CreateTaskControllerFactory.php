@@ -3,18 +3,18 @@
 namespace Anglesson\Task\Infrastructure\Factories;
 
 use Anglesson\Task\Application\Api\TaskCreateController;
-use Anglesson\Task\Infrastructure\Utils\RamseyUuid;
+use Anglesson\Task\Infrastructure\Utils\RamseyUuidImpl;
 use Anglesson\Task\Infrastructure\Repositories\MockRepository;
-use Anglesson\Task\Domain\Services\CreateTaskService;
+use Anglesson\Task\Domain\Services\CreateTaskServiceImpl;
 use Anglesson\Task\Application\Protocols\Http\Controller;
 
 final class CreateTaskControllerFactory
 {
     public static function create(): Controller
     {
-        $ramseyUuid = new RamseyUuid();
+        $ramseyUuid = new RamseyUuidImpl();
         $repository = new MockRepository($ramseyUuid);
-        $createTaskService = new CreateTaskService($repository);
+        $createTaskService = new CreateTaskServiceImpl($repository);
         return new TaskCreateController($createTaskService);
     }
 }

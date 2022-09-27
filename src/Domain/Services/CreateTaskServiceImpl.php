@@ -3,17 +3,16 @@
 namespace Anglesson\Task\Domain\Services;
 
 use Anglesson\Task\Domain\Entity\Task;
-use Anglesson\Task\Domain\Protocols\CreateTaskServiceInterface;
-use Anglesson\Task\Domain\Protocols\CreateTaskRepositoryInterface;
+use Anglesson\Task\Domain\Protocols\CreateTaskService;
+use Anglesson\Task\Domain\Protocols\CreateTaskRepository;
 use Anglesson\Task\Domain\Exceptions\TaskNotBeCreatedWithStatusFinishedException;
-use Anglesson\Task\Application\Utils\TaskMapper;
 use Anglesson\Task\Application\DTO\TaskDTO;
 
-class CreateTaskService implements CreateTaskServiceInterface
+class CreateTaskServiceImpl implements CreateTaskService
 {
-    private CreateTaskRepositoryInterface $repository;
+    private CreateTaskRepository $repository;
 
-    public function __construct(CreateTaskRepositoryInterface $repository)
+    public function __construct(CreateTaskRepository $repository)
     {
         $this->repository = $repository;
     }

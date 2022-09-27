@@ -2,7 +2,7 @@
 
 namespace Anglesson\Task\Infrastructure\Protocols;
 
-interface UuidGeneratorInterface
+interface UuidGenerator
 {
     public function generateId(): string;
 }

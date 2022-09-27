@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use Anglesson\Task\Application\Exceptions\MissingParamsErrorException;
 use Anglesson\Task\Application\Api\TaskCreateController;
-use Anglesson\Task\Domain\Protocols\CreateTaskServiceInterface;
+use Anglesson\Task\Domain\Protocols\CreateTaskService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use Anglesson\Task\Application\DTO\TaskDTO;
@@ -38,7 +38,7 @@ class CreateTaskControllerTest extends TestCase
 
         $taskDTO = TaskDTO::fromRequest($this->request);
 
-        $service = $this->createMock(CreateTaskServiceInterface::class);
+        $service = $this->createMock(CreateTaskService::class);
         $service
             ->expects($this->once())
             ->method('create')
@@ -53,7 +53,7 @@ class CreateTaskControllerTest extends TestCase
     {
         $this->expectException(MissingParamsErrorException::class);
         $this->request->method('getParsedBody')->willReturn(null);
-        $service = $this->createMock(CreateTaskServiceInterface::class);
+        $service = $this->createMock(CreateTaskService::class);
         $controller = new TaskCreateController($service);
         $controller->handle($this->request, $this->response);
     }

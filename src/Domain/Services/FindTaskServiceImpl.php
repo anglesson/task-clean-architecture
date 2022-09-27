@@ -2,16 +2,16 @@
 
 namespace Anglesson\Task\Domain\Services;
 
-use Anglesson\Task\Domain\Protocols\FindTaskServiceInterface;
+use Anglesson\Task\Domain\Protocols\FindTaskService;
 use Anglesson\Task\Domain\Entity\Task;
-use Anglesson\Task\Domain\Protocols\FindTaskRepositoryInterface;
+use Anglesson\Task\Domain\Protocols\FindTaskRepository;
 use Anglesson\Task\Domain\Exceptions\TaskNotFoundException;
 
-class FindTaskService implements FindTaskServiceInterface
+class FindTaskServiceImpl implements FindTaskService
 {
-    private FindTaskRepositoryInterface $findTaskRepository;
+    private FindTaskRepository $findTaskRepository;
 
-    public function __construct(FindTaskRepositoryInterface $findTaskRepository)
+    public function __construct(FindTaskRepository $findTaskRepository)
     {
         $this->findTaskRepository = $findTaskRepository;
     }

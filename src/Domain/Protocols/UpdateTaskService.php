@@ -4,7 +4,7 @@ namespace Anglesson\Task\Domain\Protocols;
 
 use Anglesson\Task\Domain\Entity\Task;
 
-interface CreateTaskRepositoryInterface
+interface UpdateTaskService
 {
-    public function save(Task $task): Task;
+    public function update(string $idTask, array $params): Task;
 }

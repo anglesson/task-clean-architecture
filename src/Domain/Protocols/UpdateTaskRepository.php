@@ -4,7 +4,7 @@ namespace Anglesson\Task\Domain\Protocols;
 
 use Anglesson\Task\Domain\Entity\Task;
 
-interface DeleteTaskRepositoryInterface
+interface UpdateTaskRepository
 {
-    public function delete(Task $task): void;
+    public function update(Task $task): ?Task;
 }

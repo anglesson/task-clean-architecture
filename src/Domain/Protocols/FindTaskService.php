@@ -4,7 +4,7 @@ namespace Anglesson\Task\Domain\Protocols;
 
 use Anglesson\Task\Domain\Entity\Task;
 
-interface FindTaskRepositoryInterface
+interface FindTaskService
 {
-    public function findOne(string $idTask): ?Task;
+    public function find($idTask): Task;
 }

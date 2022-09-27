@@ -4,16 +4,16 @@ namespace Anglesson\Task\Application\Api;
 
 use Anglesson\Task\Application\Exceptions\MissingParamsErrorException;
 use Anglesson\Task\Application\Protocols\Http\Controller;
-use Anglesson\Task\Domain\Protocols\CreateTaskServiceInterface;
+use Anglesson\Task\Domain\Protocols\CreateTaskService;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Anglesson\Task\Application\DTO\TaskDTO;
 
 class TaskCreateController implements Controller
 {
-    private CreateTaskServiceInterface $service;
+    private CreateTaskService $service;
 
-    public function __construct(CreateTaskServiceInterface $service)
+    public function __construct(CreateTaskService $service)
     {
         $this->service = $service;
     }

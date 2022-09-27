@@ -3,22 +3,22 @@
 namespace Anglesson\Task\Infrastructure\Repositories;
 
 use Anglesson\Task\Domain\Entity\Task;
-use Anglesson\Task\Domain\Protocols\CreateTaskRepositoryInterface;
-use Anglesson\Task\Infrastructure\Protocols\UuidGeneratorInterface;
-use Anglesson\Task\Domain\Protocols\FindTaskRepositoryInterface;
-use Anglesson\Task\Domain\Protocols\UpdateTaskRepositoryInterface;
-use Anglesson\Task\Domain\Protocols\DeleteTaskRepositoryInterface;
+use Anglesson\Task\Domain\Protocols\CreateTaskRepository;
+use Anglesson\Task\Infrastructure\Protocols\UuidGenerator;
+use Anglesson\Task\Domain\Protocols\FindTaskRepository;
+use Anglesson\Task\Domain\Protocols\UpdateTaskRepository;
+use Anglesson\Task\Domain\Protocols\DeleteTaskRepository;
 
 class MockRepository implements
-    CreateTaskRepositoryInterface,
-    FindTaskRepositoryInterface,
-    UpdateTaskRepositoryInterface,
-    DeleteTaskRepositoryInterface
+    CreateTaskRepository,
+    FindTaskRepository,
+    UpdateTaskRepository,
+    DeleteTaskRepository
 {
     private array $tasks = [];
-    private UuidGeneratorInterface $generatorId;
+    private UuidGenerator $generatorId;
 
-    public function __construct(UuidGeneratorInterface $generatorId)
+    public function __construct(UuidGenerator $generatorId)
     {
         $this->generatorId = $generatorId;
     }
