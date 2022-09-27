@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Anglesson\Task\Application\DTO\TaskDTO;
 
-class TaskCreateController implements Controller
+class CreateTaskController implements Controller
 {
     private CreateTaskService $service;
 
