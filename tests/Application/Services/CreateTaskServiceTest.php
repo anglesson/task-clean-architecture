@@ -9,6 +9,8 @@ use Anglesson\Task\Infrastructure\Repositories\MockRepository;
 use Anglesson\Task\Infrastructure\Utils\RamseyUuid;
 use PHPUnit\Framework\TestCase;
 use Anglesson\Task\Domain\Exceptions\TaskNotBeCreatedWithStatusFinishedException;
+use Psr\Http\Message\ServerRequestInterface;
+use Anglesson\Task\Application\DTO\TaskDTO;
 
 class CreateTaskServiceTest extends TestCase
 {
@@ -29,10 +31,10 @@ class CreateTaskServiceTest extends TestCase
 
     public function testShouldBeCreatedATask()
     {
-        $taskCreateService = $this->makeCreateService();
-        $taskCriada = $taskCreateService->create([
-            'description' => 'any_description'
-        ]);
+        $requestStub = $this->createMock(ServerRequestInterface::class);
+        $requestStub->method('getParsedBody')->willReturn(['description' => 'any_description']);
+        $taskDTO = TaskDTO::fromRequest($requestStub);
+        $taskCriada = ($this->makeCreateService())->create($taskDTO);
         $this->assertEquals('any_description', $taskCriada->getDescription());
     }
 }

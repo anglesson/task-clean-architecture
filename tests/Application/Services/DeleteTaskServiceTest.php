@@ -14,6 +14,8 @@ use Anglesson\Task\Domain\Protocols\DeleteTaskRepositoryInterface;
 use Anglesson\Task\Domain\Protocols\FindTaskServiceInterface;
 use Anglesson\Task\Domain\Protocols\CreateTaskRepositoryInterface;
 use Anglesson\Task\Domain\Protocols\FindTaskRepositoryInterface;
+use Anglesson\Task\Application\DTO\TaskDTO;
+use Psr\Http\Message\ServerRequestInterface;
 
 class DeleteTaskServiceTest extends TestCase
 {
@@ -59,9 +61,19 @@ class DeleteTaskServiceTest extends TestCase
 
     public function testShouldBeDeleteATaskById()
     {
-        $task1 = $this->createTaskService->create(['description' => 'any_description_1']);
-        $task2 = $this->createTaskService->create(['description' => 'any_description_2']);
-        $task3 = $this->createTaskService->create(['description' => 'any_description_3']);
+        $requestStub = $this->createStub(ServerRequestInterface::class);
+        
+        $requestStub->method('getParsedBody')->willReturn(['description' => 'any_description_1']);
+        $taskDTO = TaskDTO::fromRequest($requestStub);
+        $task1 = $this->createTaskService->create($taskDTO);
+
+        $requestStub->method('getParsedBody')->willReturn(['description' => 'any_description_1']);
+        $taskDTO = TaskDTO::fromRequest($requestStub);
+        $task2 = $this->createTaskService->create($taskDTO);
+
+        $requestStub->method('getParsedBody')->willReturn(['description' => 'any_description_1']);
+        $taskDTO = TaskDTO::fromRequest($requestStub);
+        $task3 = $this->createTaskService->create($taskDTO);
         $this->assertEquals(3, count($this->repository->getAllTasks()));
 
         $this->deleteService->delete($task1->getId());

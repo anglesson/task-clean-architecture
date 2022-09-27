@@ -7,6 +7,7 @@ use Anglesson\Task\Domain\Protocols\CreateTaskServiceInterface;
 use Anglesson\Task\Domain\Protocols\CreateTaskRepositoryInterface;
 use Anglesson\Task\Domain\Exceptions\TaskNotBeCreatedWithStatusFinishedException;
 use Anglesson\Task\Application\Utils\TaskMapper;
+use Anglesson\Task\Application\DTO\TaskDTO;
 
 class CreateTaskService implements CreateTaskServiceInterface
 {
@@ -17,12 +18,15 @@ class CreateTaskService implements CreateTaskServiceInterface
         $this->repository = $repository;
     }
 
-    public function create(array $data): Task
+    public function create(TaskDTO $taskDTO): Task
     {
-        $task = TaskMapper::toDomain($data);
-        if ($task->getFinished() === true) {
+        if ($taskDTO->finished === true) {
             throw new TaskNotBeCreatedWithStatusFinishedException();
         }
+
+        $task = new Task();
+        $task->setDescription($taskDTO->description);
+
         return $this->repository->save($task);
     }
 }

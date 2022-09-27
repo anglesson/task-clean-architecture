@@ -9,6 +9,7 @@ use Anglesson\Task\Application\Api\TaskCreateController;
 use Anglesson\Task\Domain\Protocols\CreateTaskServiceInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
+use Anglesson\Task\Application\DTO\TaskDTO;
 
 class CreateTaskControllerTest extends TestCase
 {
@@ -30,15 +31,18 @@ class CreateTaskControllerTest extends TestCase
     public function testShouldCallServiceWithCorrectValues()
     {
         $data = ['description' => 'My description'];
+        
         $this->request
             ->method('getParsedBody')
             ->willReturn($data);
+
+        $taskDTO = TaskDTO::fromRequest($this->request);
 
         $service = $this->createMock(CreateTaskServiceInterface::class);
         $service
             ->expects($this->once())
             ->method('create')
-            ->with($data);
+            ->with($taskDTO);
 
         $controller = new TaskCreateController($service);
 

@@ -7,6 +7,7 @@ use Anglesson\Task\Application\Protocols\Http\Controller;
 use Anglesson\Task\Domain\Protocols\CreateTaskServiceInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Anglesson\Task\Application\DTO\TaskDTO;
 
 class TaskCreateController implements Controller
 {
@@ -19,11 +20,11 @@ class TaskCreateController implements Controller
 
     public function handle(Request $request, Response $response): Response
     {
-        $params = $request->getParsedBody();
-        if (is_null($params)) {
+        if (!$request->getParsedBody()) {
             throw new MissingParamsErrorException();
         }
-        $task = $this->service->create($params);
+        $dataDTO = TaskDTO::fromRequest($request);
+        $task = $this->service->create($dataDTO);
         $response->getBody()->write($task->jsonSerialize());
         return $response;
     }

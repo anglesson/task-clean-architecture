@@ -8,6 +8,8 @@ use Anglesson\Task\Domain\Services\FindTaskService;
 use Anglesson\Task\Infrastructure\Repositories\MockRepository;
 use Anglesson\Task\Infrastructure\Utils\RamseyUuid;
 use Anglesson\Task\Domain\Services\CreateTaskService;
+use Psr\Http\Message\ServerRequestInterface;
+use Anglesson\Task\Application\DTO\TaskDTO;
 
 class UpdateTaskServiceTest extends TestCase
 {
@@ -19,7 +21,11 @@ class UpdateTaskServiceTest extends TestCase
         $findTaskService = new FindTaskService($repository);
         $updateTaskService = new UpdateTaskService($findTaskService, $repository);
 
-        $task = $createTaskService->create(['description' => 'any_description']);
+        $requestStub = $this->createStub(ServerRequestInterface::class);
+        $requestStub->method('getParsedBody')->willReturn(['description' => 'any_description']);
+        $taskDTO = TaskDTO::fromRequest($requestStub);
+
+        $task = $createTaskService->create($taskDTO);
         $taskUpdated = $updateTaskService->update($task->getId(), ['description' => 'any_description_updated']);
         $this->assertEquals($taskUpdated->getDescription(), 'any_description_updated');
 
