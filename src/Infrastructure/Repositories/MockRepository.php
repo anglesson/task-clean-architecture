@@ -1,13 +1,13 @@
 <?php
 
-namespace Anglesson\Task\Infrastructure\Repositories;
+namespace App\ToDo\Infrastructure\Repositories;
 
-use Anglesson\Task\Domain\Entity\Task;
-use Anglesson\Task\Domain\Protocols\CreateTaskRepository;
-use Anglesson\Task\Infrastructure\Protocols\UuidGenerator;
-use Anglesson\Task\Domain\Protocols\FindTaskRepository;
-use Anglesson\Task\Domain\Protocols\UpdateTaskRepository;
-use Anglesson\Task\Domain\Protocols\DeleteTaskRepository;
+use App\ToDo\Domain\Entity\Task;
+use App\ToDo\Domain\Protocols\CreateTaskRepository;
+use App\ToDo\Infrastructure\Protocols\UuidGenerator;
+use App\ToDo\Domain\Protocols\FindTaskRepository;
+use App\ToDo\Domain\Protocols\UpdateTaskRepository;
+use App\ToDo\Domain\Protocols\DeleteTaskRepository;
 
 class MockRepository implements
     CreateTaskRepository,

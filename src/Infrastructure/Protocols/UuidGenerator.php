@@ -1,6 +1,6 @@
 <?php
 
-namespace Anglesson\Task\Infrastructure\Protocols;
+namespace App\ToDo\Infrastructure\Protocols;
 
 interface UuidGenerator
 {

@@ -3,8 +3,8 @@
 namespace Test\Domain\Entity;
 
 use PHPUnit\Framework\TestCase;
-use Anglesson\Task\Domain\Entity\Task;
-use Anglesson\Task\Domain\Exceptions\DescriptionHasMoreThan50Caracters;
+use App\ToDo\Domain\Entity\Task;
+use App\ToDo\Domain\Exceptions\DescriptionHasMoreThan50Caracters;
 
 class TaskTest extends TestCase
 {

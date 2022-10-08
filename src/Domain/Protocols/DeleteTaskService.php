@@ -1,6 +1,6 @@
 <?php
 
-namespace Anglesson\Task\Domain\Protocols;
+namespace App\ToDo\Domain\Protocols;
 
 interface DeleteTaskService
 {

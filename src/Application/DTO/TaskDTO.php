@@ -1,6 +1,6 @@
 <?php
 
-namespace Anglesson\Task\Application\DTO;
+namespace App\ToDo\Application\DTO;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 

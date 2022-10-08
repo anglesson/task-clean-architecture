@@ -3,13 +3,13 @@
 namespace Test\Application\Api;
 
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ServerRequestInterface;
-use Anglesson\Task\Application\Exceptions\MissingParamsErrorException;
-use Anglesson\Task\Application\Api\CreateTaskController;
-use Anglesson\Task\Domain\Protocols\CreateTaskService;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use Anglesson\Task\Application\DTO\TaskDTO;
+use Psr\Http\Message\ResponseInterface;
+use App\ToDo\Application\DTO\TaskDTO;
+use Psr\Http\Message\ServerRequestInterface;
+use App\ToDo\Domain\Protocols\CreateTaskService;
+use App\ToDo\Application\Api\CreateTaskController;
+use App\ToDo\Application\Exceptions\MissingParamsErrorException;
 
 class CreateTaskControllerTest extends TestCase
 {

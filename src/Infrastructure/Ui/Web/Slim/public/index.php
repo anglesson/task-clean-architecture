@@ -3,8 +3,8 @@
 require __DIR__ . '../../../../../../../vendor/autoload.php';
 
 use Slim\Factory\AppFactory;
-use Anglesson\Task\Infrastructure\Adapters\SlimRouteAdapter;
-use Anglesson\Task\Infrastructure\Factories\CreateTaskControllerFactory;
+use App\ToDo\Infrastructure\Adapters\SlimRouteAdapter;
+use App\ToDo\Infrastructure\Factories\CreateTaskControllerFactory;
 
 $app = AppFactory::create();
 

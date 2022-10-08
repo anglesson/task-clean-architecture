@@ -12,7 +12,6 @@
          failOnRisky="true"
          failOnWarning="true"
          verbose="true"
-         testdox="true"
          colors="true">
     <testsuites>
         <testsuite name="default">

@@ -3,13 +3,13 @@
 namespace Test\Application\Services;
 
 use PHPUnit\Framework\TestCase;
-use Anglesson\Task\Domain\Services\UpdateTaskServiceImpl;
-use Anglesson\Task\Domain\Services\FindTaskServiceImpl;
-use Anglesson\Task\Infrastructure\Repositories\MockRepository;
-use Anglesson\Task\Infrastructure\Utils\RamseyUuidImpl;
-use Anglesson\Task\Domain\Services\CreateTaskServiceImpl;
+use App\ToDo\Application\DTO\TaskDTO;
 use Psr\Http\Message\ServerRequestInterface;
-use Anglesson\Task\Application\DTO\TaskDTO;
+use App\ToDo\Domain\Services\FindTaskServiceImpl;
+use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
+use App\ToDo\Domain\Services\CreateTaskServiceImpl;
+use App\ToDo\Domain\Services\UpdateTaskServiceImpl;
+use App\ToDo\Infrastructure\Repositories\MockRepository;
 
 class UpdateTaskServiceTest extends TestCase
 {

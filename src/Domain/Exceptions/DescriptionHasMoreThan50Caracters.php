@@ -1,6 +1,6 @@
 <?php
 
-namespace Anglesson\Task\Domain\Exceptions;
+namespace App\ToDo\Domain\Exceptions;
 
 use Throwable;
 use \DomainException;

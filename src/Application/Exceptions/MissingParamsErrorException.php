@@ -1,6 +1,6 @@
 <?php
 
-namespace Anglesson\Task\Application\Exceptions;
+namespace App\ToDo\Application\Exceptions;
 
 use Throwable;
 use Symfony\Component\Console\Exception\MissingInputException;

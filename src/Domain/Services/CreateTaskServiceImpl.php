@@ -1,12 +1,12 @@
 <?php
 
-namespace Anglesson\Task\Domain\Services;
+namespace App\ToDo\Domain\Services;
 
-use Anglesson\Task\Domain\Entity\Task;
-use Anglesson\Task\Domain\Protocols\CreateTaskService;
-use Anglesson\Task\Domain\Protocols\CreateTaskRepository;
-use Anglesson\Task\Domain\Exceptions\TaskNotBeCreatedWithStatusFinishedException;
-use Anglesson\Task\Application\DTO\TaskDTO;
+use App\ToDo\Domain\Entity\Task;
+use App\ToDo\Domain\Protocols\CreateTaskService;
+use App\ToDo\Domain\Protocols\CreateTaskRepository;
+use App\ToDo\Domain\Exceptions\TaskNotBeCreatedWithStatusFinishedException;
+use App\ToDo\Application\DTO\TaskDTO;
 
 class CreateTaskServiceImpl implements CreateTaskService
 {

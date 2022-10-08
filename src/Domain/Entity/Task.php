@@ -1,9 +1,9 @@
 <?php
 
-namespace Anglesson\Task\Domain\Entity;
+namespace App\ToDo\Domain\Entity;
 
-use Anglesson\Task\Domain\Utils\Fillable;
-use Anglesson\Task\Domain\Exceptions\DescriptionHasMoreThan50Caracters;
+use App\ToDo\Domain\Utils\Fillable;
+use App\ToDo\Domain\Exceptions\DescriptionHasMoreThan50Caracters;
 
 class Task
 {

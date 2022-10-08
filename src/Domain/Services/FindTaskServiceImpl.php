@@ -1,11 +1,11 @@
 <?php
 
-namespace Anglesson\Task\Domain\Services;
+namespace App\ToDo\Domain\Services;
 
-use Anglesson\Task\Domain\Protocols\FindTaskService;
-use Anglesson\Task\Domain\Entity\Task;
-use Anglesson\Task\Domain\Protocols\FindTaskRepository;
-use Anglesson\Task\Domain\Exceptions\TaskNotFoundException;
+use App\ToDo\Domain\Protocols\FindTaskService;
+use App\ToDo\Domain\Entity\Task;
+use App\ToDo\Domain\Protocols\FindTaskRepository;
+use App\ToDo\Domain\Exceptions\TaskNotFoundException;
 
 class FindTaskServiceImpl implements FindTaskService
 {

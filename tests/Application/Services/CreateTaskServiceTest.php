@@ -2,15 +2,15 @@
 
 namespace Test\Application\Services;
 
-use Anglesson\Task\Domain\Entity\Task;
-use Anglesson\Task\Domain\Protocols\CreateTaskService;
-use Anglesson\Task\Domain\Services\CreateTaskServiceImpl;
-use Anglesson\Task\Infrastructure\Repositories\MockRepository;
-use Anglesson\Task\Infrastructure\Utils\RamseyUuidImpl;
 use PHPUnit\Framework\TestCase;
-use Anglesson\Task\Domain\Exceptions\TaskNotBeCreatedWithStatusFinishedException;
+use App\ToDo\Domain\Entity\Task;
+use App\ToDo\Application\DTO\TaskDTO;
 use Psr\Http\Message\ServerRequestInterface;
-use Anglesson\Task\Application\DTO\TaskDTO;
+use App\ToDo\Domain\Protocols\CreateTaskService;
+use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
+use App\ToDo\Domain\Services\CreateTaskServiceImpl;
+use App\ToDo\Infrastructure\Repositories\MockRepository;
+use App\ToDo\Domain\Exceptions\TaskNotBeCreatedWithStatusFinishedException;
 
 class CreateTaskServiceTest extends TestCase
 {

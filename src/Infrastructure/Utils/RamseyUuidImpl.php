@@ -1,9 +1,9 @@
 <?php
 
-namespace Anglesson\Task\Infrastructure\Utils;
+namespace App\ToDo\Infrastructure\Utils;
 
-use Anglesson\Task\Infrastructure\Protocols\UuidGenerator;
 use Ramsey\Uuid\Uuid;
+use App\ToDo\Infrastructure\Protocols\UuidGenerator;
 
 class RamseyUuidImpl implements UuidGenerator
 {

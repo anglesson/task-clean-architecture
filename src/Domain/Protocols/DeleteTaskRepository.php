@@ -1,8 +1,8 @@
 <?php
 
-namespace Anglesson\Task\Domain\Protocols;
+namespace App\ToDo\Domain\Protocols;
 
-use Anglesson\Task\Domain\Entity\Task;
+use App\ToDo\Domain\Entity\Task;
 
 interface DeleteTaskRepository
 {

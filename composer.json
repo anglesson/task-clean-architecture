@@ -1,8 +1,8 @@
 {
-    "name": "anglesson/task",
+    "name": "app/todo",
     "autoload": {
         "psr-4": {
-            "Anglesson\\Task\\": "src/",
+            "App\\ToDo\\": "src/",
             "Test\\": "tests/"
         }
     },
@@ -13,7 +13,8 @@
         }
     ],
     "scripts": {
-        "test": "./vendor/bin/phpunit-watcher watch --testdox"
+        "test:watch": "./vendor/bin/phpunit-watcher watch --testdox",
+        "test": "./vendor/bin/phpunit"
     },
     "require": {
         "php": "^8.1",
@@ -24,7 +25,9 @@
         "nyholm/psr7": "^1.5",
         "nyholm/psr7-server": "^1.0",
         "guzzlehttp/psr7": "2",
-        "laminas/laminas-diactoros": "^2.17"
+        "laminas/laminas-diactoros": "^2.17",
+        "doctrine/orm": "^2.13",
+        "symfony/cache": "^6.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",

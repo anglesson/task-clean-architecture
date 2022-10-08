@@ -3,19 +3,19 @@
 namespace Test\Application\Services;
 
 use PHPUnit\Framework\TestCase;
-use Anglesson\Task\Domain\Services\FindTaskServiceImpl;
-use Anglesson\Task\Infrastructure\Repositories\MockRepository;
-use Anglesson\Task\Infrastructure\Utils\RamseyUuidImpl;
-use Anglesson\Task\Domain\Services\CreateTaskServiceImpl;
-use Anglesson\Task\Domain\Services\DeleteTaskServiceImpl;
-use Anglesson\Task\Domain\Protocols\CreateTaskService;
-use Anglesson\Task\Domain\Protocols\DeleteTaskService;
-use Anglesson\Task\Domain\Protocols\DeleteTaskRepository;
-use Anglesson\Task\Domain\Protocols\FindTaskService;
-use Anglesson\Task\Domain\Protocols\CreateTaskRepository;
-use Anglesson\Task\Domain\Protocols\FindTaskRepository;
-use Anglesson\Task\Application\DTO\TaskDTO;
+use App\ToDo\Application\DTO\TaskDTO;
 use Psr\Http\Message\ServerRequestInterface;
+use App\ToDo\Domain\Protocols\FindTaskService;
+use App\ToDo\Domain\Protocols\CreateTaskService;
+use App\ToDo\Domain\Protocols\DeleteTaskService;
+use App\ToDo\Domain\Protocols\FindTaskRepository;
+use App\ToDo\Domain\Services\FindTaskServiceImpl;
+use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
+use App\ToDo\Domain\Protocols\CreateTaskRepository;
+use App\ToDo\Domain\Protocols\DeleteTaskRepository;
+use App\ToDo\Domain\Services\CreateTaskServiceImpl;
+use App\ToDo\Domain\Services\DeleteTaskServiceImpl;
+use App\ToDo\Infrastructure\Repositories\MockRepository;
 
 class DeleteTaskServiceTest extends TestCase
 {

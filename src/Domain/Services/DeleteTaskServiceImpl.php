@@ -1,10 +1,10 @@
 <?php
 
-namespace Anglesson\Task\Domain\Services;
+namespace App\ToDo\Domain\Services;
 
-use Anglesson\Task\Domain\Protocols\DeleteTaskService;
-use Anglesson\Task\Domain\Protocols\DeleteTaskRepository;
-use Anglesson\Task\Domain\Protocols\FindTaskService;
+use App\ToDo\Domain\Protocols\DeleteTaskService;
+use App\ToDo\Domain\Protocols\DeleteTaskRepository;
+use App\ToDo\Domain\Protocols\FindTaskService;
 
 class DeleteTaskServiceImpl implements DeleteTaskService
 {

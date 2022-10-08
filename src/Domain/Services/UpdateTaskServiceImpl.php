@@ -1,11 +1,11 @@
 <?php
 
-namespace Anglesson\Task\Domain\Services;
+namespace App\ToDo\Domain\Services;
 
-use Anglesson\Task\Domain\Protocols\UpdateTaskService;
-use Anglesson\Task\Domain\Entity\Task;
-use Anglesson\Task\Domain\Protocols\FindTaskService;
-use Anglesson\Task\Domain\Protocols\UpdateTaskRepository;
+use App\ToDo\Domain\Protocols\UpdateTaskService;
+use App\ToDo\Domain\Entity\Task;
+use App\ToDo\Domain\Protocols\FindTaskService;
+use App\ToDo\Domain\Protocols\UpdateTaskRepository;
 
 class UpdateTaskServiceImpl implements UpdateTaskService
 {

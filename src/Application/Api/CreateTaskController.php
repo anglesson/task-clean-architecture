@@ -1,13 +1,13 @@
 <?php
 
-namespace Anglesson\Task\Application\Api;
+namespace App\ToDo\Application\Api;
 
-use Anglesson\Task\Application\Exceptions\MissingParamsErrorException;
-use Anglesson\Task\Application\Protocols\Http\Controller;
-use Anglesson\Task\Domain\Protocols\CreateTaskService;
-use Psr\Http\Message\ServerRequestInterface as Request;
+use App\ToDo\Application\DTO\TaskDTO;
+use App\ToDo\Domain\Protocols\CreateTaskService;
+use App\ToDo\Application\Protocols\Http\Controller;
 use Psr\Http\Message\ResponseInterface as Response;
-use Anglesson\Task\Application\DTO\TaskDTO;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use App\ToDo\Application\Exceptions\MissingParamsErrorException;
 
 class CreateTaskController implements Controller
 {

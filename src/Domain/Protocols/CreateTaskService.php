@@ -1,9 +1,9 @@
 <?php
 
-namespace Anglesson\Task\Domain\Protocols;
+namespace App\ToDo\Domain\Protocols;
 
-use Anglesson\Task\Domain\Entity\Task;
-use Anglesson\Task\Application\DTO\TaskDTO;
+use App\ToDo\Domain\Entity\Task;
+use App\ToDo\Application\DTO\TaskDTO;
 
 interface CreateTaskService
 {
