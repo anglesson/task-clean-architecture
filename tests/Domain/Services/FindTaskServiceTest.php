@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Application\Services;
+namespace Test\Domain\Services;
 
 use PHPUnit\Framework\TestCase;
 use App\ToDo\Application\DTO\TaskDTO;
