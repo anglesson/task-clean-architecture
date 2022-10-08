@@ -3,10 +3,12 @@
 namespace App\ToDo\Domain\Services;
 
 use App\ToDo\Domain\Entity\Task;
+use App\ToDo\Domain\Exceptions\InvalidParamError;
 use App\ToDo\Domain\Protocols\CreateTaskService;
 use App\ToDo\Domain\Protocols\CreateTaskRepository;
 use App\ToDo\Domain\Exceptions\TaskNotBeCreatedWithStatusFinishedException;
 use App\ToDo\Application\DTO\TaskDTO;
+use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\Protocols\UuidGenerator;
 
 class CreateTaskServiceImpl implements CreateTaskService
@@ -23,6 +25,10 @@ class CreateTaskServiceImpl implements CreateTaskService
     {
         if ($taskDTO->finished === true) {
             throw new TaskNotBeCreatedWithStatusFinishedException();
+        }
+
+        if (!$taskDTO->description) {
+            throw new MissingParamsError('description');
         }
 
         $task = new Task();

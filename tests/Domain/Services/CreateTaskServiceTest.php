@@ -5,6 +5,7 @@ namespace Test\Domain\Services;
 use PHPUnit\Framework\TestCase;
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Application\DTO\TaskDTO;
+use App\ToDo\Domain\Exceptions\MissingParamsError;
 use Psr\Http\Message\ServerRequestInterface;
 use App\ToDo\Domain\Protocols\CreateTaskService;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
@@ -35,5 +36,15 @@ class CreateTaskServiceTest extends TestCase
         $taskDTO = TaskDTO::fromRequest($requestStub);
         $taskCriada = ($this->makeCreateService())->create($taskDTO);
         $this->assertEquals('any_description', $taskCriada->getDescription());
+    }
+
+    public function testShouldBeThrowsIfMissingParams()
+    {
+        $requestStub = $this->createMock(ServerRequestInterface::class);
+        $requestStub->method('getParsedBody')->willReturn(['any_field' => 'any_description']);
+        $taskDTO = TaskDTO::fromRequest($requestStub);
+        
+        $this->expectException(MissingParamsError::class);
+        ($this->makeCreateService())->create($taskDTO);
     }
 }

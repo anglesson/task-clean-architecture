@@ -9,7 +9,7 @@ use App\ToDo\Application\DTO\TaskDTO;
 use Psr\Http\Message\ServerRequestInterface;
 use App\ToDo\Domain\Protocols\CreateTaskService;
 use App\ToDo\Application\Api\CreateTaskController;
-use App\ToDo\Application\Exceptions\MissingParamsErrorException;
+use App\ToDo\Domain\Exceptions\MissingParamsError;
 
 class CreateTaskControllerTest extends TestCase
 {
@@ -51,7 +51,7 @@ class CreateTaskControllerTest extends TestCase
 
     public function testShouldBeThrowsMissingParamsErrorIfParamsNotFound()
     {
-        $this->expectException(MissingParamsErrorException::class);
+        $this->expectException(MissingParamsError::class);
         $this->request->method('getParsedBody')->willReturn(null);
         $service = $this->createMock(CreateTaskService::class);
         $controller = new CreateTaskController($service);

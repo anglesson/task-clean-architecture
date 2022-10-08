@@ -4,6 +4,7 @@ namespace App\ToDo\Domain\Entity;
 
 use App\ToDo\Domain\Utils\Fillable;
 use App\ToDo\Domain\Exceptions\DescriptionHasMoreThan50Caracters;
+use App\ToDo\Domain\Exceptions\InvalidParamError;
 
 class Task
 {
@@ -43,9 +44,14 @@ class Task
 
     public function setDescription(string $description)
     {
+        if (!$description) {
+            throw new InvalidParamError('description');
+        }
+
         if (strlen($description) > 50) {
             throw new DescriptionHasMoreThan50Caracters();
         }
+
         $this->description = $description;
     }
 

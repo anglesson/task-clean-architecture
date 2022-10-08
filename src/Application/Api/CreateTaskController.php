@@ -7,7 +7,7 @@ use App\ToDo\Domain\Protocols\CreateTaskService;
 use App\ToDo\Application\Protocols\Http\Controller;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use App\ToDo\Application\Exceptions\MissingParamsErrorException;
+use App\ToDo\Domain\Exceptions\MissingParamsError;
 
 class CreateTaskController implements Controller
 {
@@ -21,7 +21,7 @@ class CreateTaskController implements Controller
     public function handle(Request $request, Response $response): Response
     {
         if (!$request->getParsedBody()) {
-            throw new MissingParamsErrorException();
+            throw new MissingParamsError();
         }
         $dataDTO = TaskDTO::fromRequest($request);
         $task = $this->service->create($dataDTO);
