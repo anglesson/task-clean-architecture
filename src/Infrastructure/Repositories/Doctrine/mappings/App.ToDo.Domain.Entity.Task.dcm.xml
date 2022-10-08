@@ -2,9 +2,9 @@
       xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Task">
-      <field name="id" type="string" />
-      <field name="description" length="140" type="string" />
+  <entity name="App\ToDo\Domain\Entity\Task">
+      <id name="id" type="string" />
+      <field name="description" length="140" type="string" nullable="true"/>
       <field name="finished" type="boolean" />
   </entity>
 </doctrine-mapping>

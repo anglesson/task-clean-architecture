@@ -15,7 +15,7 @@ use App\ToDo\Domain\Protocols\CreateTaskRepository;
 use App\ToDo\Domain\Protocols\DeleteTaskRepository;
 use App\ToDo\Domain\Services\CreateTaskServiceImpl;
 use App\ToDo\Domain\Services\DeleteTaskServiceImpl;
-use App\ToDo\Infrastructure\Repositories\MockRepository;
+use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
 
 class DeleteTaskServiceTest extends TestCase
 {

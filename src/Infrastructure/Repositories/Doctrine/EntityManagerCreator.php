@@ -10,7 +10,7 @@ class EntityManagerCreator
 {
     public function createEntityManager(): EntityManagerInterface
     {
-        $config = ORMSetup::createXMLMetadataConfiguration(array(__DIR__."/config/xml"));
+        $config = ORMSetup::createXMLMetadataConfiguration(array(__DIR__."/mappings"));
 
         $conn = array(
             'driver' => 'pdo_sqlite',

@@ -9,7 +9,7 @@ use App\ToDo\Domain\Services\FindTaskServiceImpl;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 use App\ToDo\Domain\Services\CreateTaskServiceImpl;
 use App\ToDo\Domain\Services\UpdateTaskServiceImpl;
-use App\ToDo\Infrastructure\Repositories\MockRepository;
+use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
 
 class UpdateTaskServiceTest extends TestCase
 {

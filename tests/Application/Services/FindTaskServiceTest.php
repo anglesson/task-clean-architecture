@@ -9,7 +9,7 @@ use App\ToDo\Domain\Services\FindTaskServiceImpl;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 use App\ToDo\Domain\Services\CreateTaskServiceImpl;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
-use App\ToDo\Infrastructure\Repositories\MockRepository;
+use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
 
 class FindTaskServiceTest extends TestCase
 {
