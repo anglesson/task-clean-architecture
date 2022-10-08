@@ -5,7 +5,6 @@ namespace App\ToDo\Infrastructure\Repositories\Doctrine;
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\CreateTaskRepository;
 use App\ToDo\Infrastructure\Protocols\UuidGenerator;
-use Doctrine\ORM\EntityManager;
 
 class DoctrineRepository implements CreateTaskRepository
 {
