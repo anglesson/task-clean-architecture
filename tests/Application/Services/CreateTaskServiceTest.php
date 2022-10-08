@@ -9,8 +9,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use App\ToDo\Domain\Protocols\CreateTaskService;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 use App\ToDo\Domain\Services\CreateTaskServiceImpl;
-use App\ToDo\Infrastructure\Repositories\MockRepository;
-use App\ToDo\Domain\Exceptions\TaskNotBeCreatedWithStatusFinishedException;
+use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
 
 class CreateTaskServiceTest extends TestCase
 {

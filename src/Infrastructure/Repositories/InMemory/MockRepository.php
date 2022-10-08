@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Infrastructure\Repositories;
+namespace App\ToDo\Infrastructure\Repositories\InMemory;
 
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\CreateTaskRepository;

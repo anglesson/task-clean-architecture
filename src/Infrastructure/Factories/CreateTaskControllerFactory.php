@@ -4,7 +4,7 @@ namespace App\ToDo\Infrastructure\Factories;
 
 use App\ToDo\Application\Api\CreateTaskController;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
-use App\ToDo\Infrastructure\Repositories\MockRepository;
+use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
 use App\ToDo\Domain\Services\CreateTaskServiceImpl;
 use App\ToDo\Application\Protocols\Http\Controller;
 
