@@ -2,4 +2,4 @@
 vendor/
 .phpunit.cache
 .vscode
-src/Infrastructure/db.sqlite
+db.sqlite

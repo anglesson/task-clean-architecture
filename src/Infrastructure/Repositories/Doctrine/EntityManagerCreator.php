@@ -14,7 +14,7 @@ class EntityManagerCreator
 
         $conn = array(
             'driver' => 'pdo_sqlite',
-            'path' => __DIR__ . '../../../db.sqlite',
+            'path' => __DIR__ . '../../../../../db.sqlite',
         );
 
         return EntityManager::create($conn, $config);
