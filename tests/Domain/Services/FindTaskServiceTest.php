@@ -15,8 +15,8 @@ class FindTaskServiceTest extends TestCase
 {
     public function testShouldBeFindedATaskById()
     {
-        $repository = new MockRepository(new RamseyUuidImpl());
-        $createTaskService = new CreateTaskServiceImpl($repository);
+        $repository = new MockRepository();
+        $createTaskService = new CreateTaskServiceImpl($repository, new RamseyUuidImpl());
         $findTaskService = new FindTaskServiceImpl($repository);
 
         $requestStub = $this->createStub(ServerRequestInterface::class);
@@ -33,7 +33,7 @@ class FindTaskServiceTest extends TestCase
     public function testShouldBeReturnExceptionIfTaskNotFounded()
     {
         $this->expectException(TaskNotFoundException::class);
-        $repository = new MockRepository(new RamseyUuidImpl());
+        $repository = new MockRepository();
         $findTaskService = new FindTaskServiceImpl($repository);
 
         $findTaskService->find('any_id');

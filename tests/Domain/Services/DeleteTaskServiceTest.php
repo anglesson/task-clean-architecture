@@ -13,6 +13,7 @@ use App\ToDo\Domain\Services\FindTaskServiceImpl;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 use App\ToDo\Domain\Protocols\CreateTaskRepository;
 use App\ToDo\Domain\Protocols\DeleteTaskRepository;
+use App\ToDo\Domain\Protocols\UuidGenerator;
 use App\ToDo\Domain\Services\CreateTaskServiceImpl;
 use App\ToDo\Domain\Services\DeleteTaskServiceImpl;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
@@ -28,7 +29,7 @@ class DeleteTaskServiceTest extends TestCase
     public function setUp(): void
     {
         $this->repository = $this->mockRepositoryFactory();
-        $this->createTaskService = $this->createTaskServiceFactory($this->repository);
+        $this->createTaskService = $this->createTaskServiceFactory($this->repository, new RamseyUuidImpl);
         $this->deleteService = $this->deleteTaskServiceFactory(
             $this->repository,
             $this->findTaskServiceFactory($this->repository)
@@ -37,8 +38,7 @@ class DeleteTaskServiceTest extends TestCase
 
     public function mockRepositoryFactory(): MockRepository
     {
-        $ramseyUuid = new RamseyUuidImpl();
-        return new MockRepository($ramseyUuid);
+        return new MockRepository();
     }
 
     public function findTaskServiceFactory(FindTaskRepository $repository)
@@ -47,9 +47,11 @@ class DeleteTaskServiceTest extends TestCase
     }
 
 
-    public function createTaskServiceFactory(CreateTaskRepository $repository): CreateTaskService
-    {
-        return new CreateTaskServiceImpl($repository);
+    public function createTaskServiceFactory(
+        CreateTaskRepository $repository,
+        UuidGenerator $uuidGenerator
+    ): CreateTaskService {
+        return new CreateTaskServiceImpl($repository, $uuidGenerator);
     }
 
     public function deleteTaskServiceFactory(

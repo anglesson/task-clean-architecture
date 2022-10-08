@@ -24,8 +24,8 @@ class CreateTaskServiceTest extends TestCase
     private function makeCreateService(): CreateTaskService
     {
         $mockUuid = new RamseyUuidImpl();
-        $mockRepository = new MockRepository($mockUuid);
-        return new CreateTaskServiceImpl($mockRepository);
+        $mockRepository = new MockRepository();
+        return new CreateTaskServiceImpl($mockRepository, $mockUuid);
     }
 
     public function testShouldBeCreatedATask()

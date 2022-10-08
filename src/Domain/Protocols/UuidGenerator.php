@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Infrastructure\Protocols;
+namespace App\ToDo\Domain\Protocols;
 
 interface UuidGenerator
 {

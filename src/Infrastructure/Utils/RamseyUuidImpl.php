@@ -2,8 +2,8 @@
 
 namespace App\ToDo\Infrastructure\Utils;
 
+use App\ToDo\Domain\Protocols\UuidGenerator;
 use Ramsey\Uuid\Uuid;
-use App\ToDo\Infrastructure\Protocols\UuidGenerator;
 
 class RamseyUuidImpl implements UuidGenerator
 {

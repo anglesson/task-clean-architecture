@@ -3,11 +3,10 @@
 namespace App\ToDo\Infrastructure\Repositories\InMemory;
 
 use App\ToDo\Domain\Entity\Task;
-use App\ToDo\Domain\Protocols\CreateTaskRepository;
-use App\ToDo\Infrastructure\Protocols\UuidGenerator;
 use App\ToDo\Domain\Protocols\FindTaskRepository;
-use App\ToDo\Domain\Protocols\UpdateTaskRepository;
+use App\ToDo\Domain\Protocols\CreateTaskRepository;
 use App\ToDo\Domain\Protocols\DeleteTaskRepository;
+use App\ToDo\Domain\Protocols\UpdateTaskRepository;
 
 class MockRepository implements
     CreateTaskRepository,
@@ -16,16 +15,9 @@ class MockRepository implements
     DeleteTaskRepository
 {
     private array $tasks = [];
-    private UuidGenerator $generatorId;
-
-    public function __construct(UuidGenerator $generatorId)
-    {
-        $this->generatorId = $generatorId;
-    }
 
     public function save(Task $task): Task
     {
-        $task->setId($this->generatorId->generateId());
         $this->tasks[] = $task;
         return $task;
     }

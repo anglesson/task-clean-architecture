@@ -16,8 +16,8 @@ class UpdateTaskServiceTest extends TestCase
     public function testShouldBeUpdateATask()
     {
         $ramseyUuid = new RamseyUuidImpl();
-        $repository = new MockRepository($ramseyUuid);
-        $createTaskService = new CreateTaskServiceImpl($repository);
+        $repository = new MockRepository();
+        $createTaskService = new CreateTaskServiceImpl($repository, $ramseyUuid);
         $findTaskService = new FindTaskServiceImpl($repository);
         $updateTaskService = new UpdateTaskServiceImpl($findTaskService, $repository);
 
