@@ -34,6 +34,6 @@ class ListAllTasksServiceTest extends TestCase
         $service = new ListAllTasksServiceImpl($repository);
         $tasks = $service->list();
         $this->assertIsArray($tasks);
-        $this->assertCount(4, $tasks);
+        $this->assertCount(3, $tasks);
     }
 }
