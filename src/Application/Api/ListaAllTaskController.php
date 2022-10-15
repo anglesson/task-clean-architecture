@@ -11,6 +11,6 @@ class ListaAllTaskController implements Controller
 
     public function handle(Request $request, Response $response): Response
     {
-        // TODO: Implement handle() method.
+        return $response;
     }
 }
