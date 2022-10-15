@@ -3,14 +3,11 @@
 namespace Test\Application\Api;
 
 use App\ToDo\Application\Api\DeleteTaskController;
-use App\ToDo\Application\Api\UpdateTaskController;
 use App\ToDo\Domain\Protocols\DeleteTaskService;
-use App\ToDo\Domain\Protocols\UpdateTaskService;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\StreamInterface  as Stream;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use App\ToDo\Domain\Exceptions\MissingParamsError;
 
 class DeleteTaskControllerTest extends TestCase
 {
@@ -34,7 +31,6 @@ class DeleteTaskControllerTest extends TestCase
 
         $this->request
             ->method('getAttribute')
-            ->with('id')
             ->willReturn($id);
 
         $service = $this->createMock(DeleteTaskService::class);
@@ -43,8 +39,8 @@ class DeleteTaskControllerTest extends TestCase
             ->method('delete')
             ->with($id);
 
-        $controller = new DeleteTaskController($service);
-        $controller->handle($this->request, $this->response);
+        (new DeleteTaskController($service))
+            ->handle($this->request, $this->response);
     }
 
     public function testShouldReturn204IfTaskWasDeleteWithSuccess()
@@ -56,6 +52,11 @@ class DeleteTaskControllerTest extends TestCase
             ->method('getAttribute')
             ->with('id')
             ->willReturn($id);
+
+        $this->response
+            ->method('withStatus')
+            ->with($statusCodeExpected)
+            ->willReturnSelf();
 
         $this->response
             ->method('getStatusCode')
