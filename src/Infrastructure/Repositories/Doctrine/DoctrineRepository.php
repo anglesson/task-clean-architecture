@@ -50,6 +50,7 @@ class DoctrineRepository implements
 
     public function list(): array
     {
-        // TODO: Implement list() method.
+        $entityManager = (new EntityManagerCreator())->createEntityManager();
+        return $entityManager->getRepository(Task::class)->findAll();
     }
 }
