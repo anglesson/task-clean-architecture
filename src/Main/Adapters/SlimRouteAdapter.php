@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Infrastructure\Adapters;
+namespace App\ToDo\Main\Adapters;
 
 use Error;
 use App\ToDo\Application\Protocols\Http\Controller;

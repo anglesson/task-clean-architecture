@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Infrastructure\Factories;
+namespace App\ToDo\Main\Factories;
 
 use App\ToDo\Application\Api\CreateTaskController;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;

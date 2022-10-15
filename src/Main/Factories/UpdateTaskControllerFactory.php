@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Infrastructure\Factories;
+namespace App\ToDo\Main\Factories;
 
 use App\ToDo\Application\Api\UpdateTaskController;
 use App\ToDo\Domain\Services\FindTaskServiceImpl;
