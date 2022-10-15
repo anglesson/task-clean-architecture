@@ -6,13 +6,15 @@ use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\CreateTaskRepository;
 use App\ToDo\Domain\Protocols\DeleteTaskRepository;
 use App\ToDo\Domain\Protocols\FindTaskRepository;
+use App\ToDo\Domain\Protocols\ListAllTasksRepository;
 use App\ToDo\Domain\Protocols\UpdateTaskRepository;
 
 class DoctrineRepository implements
     CreateTaskRepository,
     FindTaskRepository,
     UpdateTaskRepository,
-    DeleteTaskRepository
+    DeleteTaskRepository,
+    ListAllTasksRepository
 {
     public function save(Task $task): Task
     {
@@ -44,5 +46,10 @@ class DoctrineRepository implements
         $taskOld = $entityManager->find(Task::class, $task->getId());
         $entityManager->remove($taskOld);
         $entityManager->flush();
+    }
+
+    public function list(): array
+    {
+        // TODO: Implement list() method.
     }
 }
