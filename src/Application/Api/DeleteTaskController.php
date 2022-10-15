@@ -20,7 +20,6 @@ class DeleteTaskController implements Controller
     {
         $idTask = $request->getAttribute('id');
         $this->deleteTaskService->delete($idTask);
-        $response->withStatus(204);
-        return $response;
+        return $response->withStatus(204);
     }
 }

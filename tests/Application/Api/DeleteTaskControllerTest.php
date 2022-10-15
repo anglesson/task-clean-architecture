@@ -33,6 +33,10 @@ class DeleteTaskControllerTest extends TestCase
             ->method('getAttribute')
             ->willReturn($id);
 
+        $this->response
+            ->method('withStatus')
+            ->willReturnSelf();
+
         $service = $this->createMock(DeleteTaskService::class);
         $service
             ->expects($this->once())
