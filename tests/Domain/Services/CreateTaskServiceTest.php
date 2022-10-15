@@ -14,14 +14,6 @@ use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
 
 class CreateTaskServiceTest extends TestCase
 {
-    private function makeFakeTask(): Task
-    {
-        $task = new Task();
-        $task->description = 'Any Task';
-        $task->finished = false;
-        return $task;
-    }
-
     private function makeCreateService(): CreateTaskService
     {
         $mockUuid = new RamseyUuidImpl();
@@ -43,7 +35,7 @@ class CreateTaskServiceTest extends TestCase
         $requestStub = $this->createMock(ServerRequestInterface::class);
         $requestStub->method('getParsedBody')->willReturn(['any_field' => 'any_description']);
         $taskDTO = TaskDTO::fromRequest($requestStub);
-        
+
         $this->expectException(MissingParamsError::class);
         ($this->makeCreateService())->create($taskDTO);
     }
