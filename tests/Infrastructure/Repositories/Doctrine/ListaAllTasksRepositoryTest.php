@@ -13,4 +13,11 @@ class ListaAllTasksRepositoryTest extends TestCase
         $repository = new DoctrineRepository();
         $this->assertInstanceOf(ListAllTasksRepository::class, $repository);
     }
+
+    public function testShouldReturnAnArrayIfExistsTasks()
+    {
+        $repository = new DoctrineRepository();
+        $tasks = $repository->list();
+        $this->assertIsArray($tasks);
+    }
 }
