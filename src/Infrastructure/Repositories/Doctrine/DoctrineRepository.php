@@ -4,14 +4,15 @@ namespace App\ToDo\Infrastructure\Repositories\Doctrine;
 
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\CreateTaskRepository;
+use App\ToDo\Domain\Protocols\DeleteTaskRepository;
 use App\ToDo\Domain\Protocols\FindTaskRepository;
 use App\ToDo\Domain\Protocols\UpdateTaskRepository;
-use Doctrine\ORM\Exception\ORMException;
 
 class DoctrineRepository implements
     CreateTaskRepository,
     FindTaskRepository,
-    UpdateTaskRepository
+    UpdateTaskRepository,
+    DeleteTaskRepository
 {
     public function save(Task $task): Task
     {
@@ -35,5 +36,13 @@ class DoctrineRepository implements
         $entityManager->persist($taskOld);
         $entityManager->flush();
         return $task;
+    }
+
+    public function delete(Task $task): void
+    {
+        $entityManager = (new EntityManagerCreator())->createEntityManager();
+        $taskOld = $entityManager->find(Task::class, $task->getId());
+        $entityManager->remove($taskOld);
+        $entityManager->flush();
     }
 }
