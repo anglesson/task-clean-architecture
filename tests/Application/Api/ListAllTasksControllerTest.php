@@ -48,4 +48,18 @@ class ListAllTasksControllerTest extends TestCase
         $service->list()->shouldBeCalled();
         (new ListaAllTaskController($service->reveal()))->handle($this->request, $this->response);
     }
+
+    public function testShouldReturn200IfSuccess()
+    {
+        $localReponse = $this->createMock(Response::class);
+        $localReponse->method('getBody')->willReturn($this->stream);
+        $localReponse
+            ->expects($this->once())
+            ->method('getStatusCode')
+            ->willReturn(200);
+        $controller = new ListaAllTaskController($this->createStub(ListAllTasksService::class));
+
+        $response = $controller->handle($this->request, $localReponse);
+        $this->assertSame(200, $response->getStatusCode());
+    }
 }
