@@ -13,7 +13,8 @@
         }
     ],
     "scripts": {
-        "test:watch": "./vendor/bin/phpunit-watcher watch --testdox",
+        "test:watch": "./vendor/bin/phpunit-watcher watch",
+        "test:watch --verbose": "./vendor/bin/phpunit-watcher watch --testdox",
         "test": "./vendor/bin/phpunit"
     },
     "require": {
