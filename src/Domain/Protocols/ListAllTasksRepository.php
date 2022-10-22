@@ -2,7 +2,10 @@
 
 namespace App\ToDo\Domain\Protocols;
 
+use App\ToDo\Domain\Entity\Task;
+
 interface ListAllTasksRepository
 {
-    public function list(): array;
+    /** @return Task[] */
+    public function list();
 }

@@ -15,6 +15,10 @@ class ListAllTasksServiceImpl implements ListAllTasksService
 
     public function list(): array
     {
-        return $this->repository->list();
+        $allTasks = $this->repository->list();
+        foreach ($allTasks as $task) {
+            $todos[] = $task->toArray();
+        }
+        return $todos;
     }
 }

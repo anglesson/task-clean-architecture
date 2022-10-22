@@ -8,6 +8,10 @@ use App\ToDo\Domain\Protocols\DeleteTaskRepository;
 use App\ToDo\Domain\Protocols\FindTaskRepository;
 use App\ToDo\Domain\Protocols\ListAllTasksRepository;
 use App\ToDo\Domain\Protocols\UpdateTaskRepository;
+use RuntimeException;
+use ErrorException;
+use InvalidArgumentException;
+use Doctrine\ORM\Exception\ORMException;
 
 class DoctrineRepository implements
     CreateTaskRepository,
@@ -48,7 +52,14 @@ class DoctrineRepository implements
         $entityManager->flush();
     }
 
-    public function list(): array
+    /**
+     * @return Task []
+     * @throws RuntimeException
+     * @throws ErrorException
+     * @throws InvalidArgumentException
+     * @throws ORMException
+     */
+    public function list()
     {
         $entityManager = (new EntityManagerCreator())->createEntityManager();
         return $entityManager->getRepository(Task::class)->findAll();
