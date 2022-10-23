@@ -26,9 +26,9 @@ class ListAllTasksServiceTest extends TestCase
         $repository = $this->createStub(ListAllTasksRepository::class);
 
         $repository->method('list')->willReturn([
-            $this->createMock(Task::class)->toArray(),
-            $this->createMock(Task::class)->toArray(),
-            $this->createMock(Task::class)->toArray(),
+            $this->createMock(Task::class),
+            $this->createMock(Task::class),
+            $this->createMock(Task::class),
         ]);
 
         $service = new ListAllTasksServiceImpl($repository);
