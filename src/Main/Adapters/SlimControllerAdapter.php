@@ -2,12 +2,11 @@
 
 namespace App\ToDo\Main\Adapters;
 
-use Error;
 use App\ToDo\Application\Protocols\Http\Controller;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-final class SlimRouteAdapter
+final class SlimControllerAdapter
 {
     protected Controller $controller;
 
