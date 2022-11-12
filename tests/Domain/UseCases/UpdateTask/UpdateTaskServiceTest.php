@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Domain\UseCases;
+namespace Test\Domain\UseCases\UpdateTask;
 
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
