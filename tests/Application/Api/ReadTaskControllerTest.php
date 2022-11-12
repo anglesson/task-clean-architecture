@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use App\ToDo\Domain\Protocols\CreateTaskService;
+use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
 use App\ToDo\Application\Api\CreateTaskController;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 
@@ -52,7 +52,7 @@ class ReadTaskControllerTest extends TestCase
     {
         $this->expectException(MissingParamsError::class);
         $this->request->method('getParsedBody')->willReturn(null);
-        $service = $this->createMock(CreateTaskService::class);
+        $service = $this->createMock(ICreateTaskUseCase::class);
         $controller = new CreateTaskController($service);
         $controller->handle($this->request, $this->response);
     }

@@ -5,11 +5,10 @@ namespace App\ToDo\Domain\UseCases\CreateTask;
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\Protocols\CreateTaskRepository;
-use App\ToDo\Domain\Protocols\CreateTaskService;
 use App\ToDo\Domain\Protocols\UuidGenerator;
 use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 
-class CreateTaskServiceImpl implements CreateTaskService
+class CreateTaskUseCase implements ICreateTaskUseCase
 {
     private CreateTaskRepository $repository;
     protected UuidGenerator $uuidGenerator;

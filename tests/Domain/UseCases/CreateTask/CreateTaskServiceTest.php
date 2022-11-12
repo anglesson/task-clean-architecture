@@ -3,8 +3,8 @@
 namespace Test\Domain\UseCases\CreateTask;
 
 use App\ToDo\Domain\Exceptions\MissingParamsError;
-use App\ToDo\Domain\Protocols\CreateTaskService;
-use App\ToDo\Domain\UseCases\CreateTask\CreateTaskServiceImpl;
+use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
+use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
@@ -12,11 +12,11 @@ use PHPUnit\Framework\TestCase;
 
 class CreateTaskServiceTest extends TestCase
 {
-    private function makeCreateService(): CreateTaskService
+    private function makeCreateService(): ICreateTaskUseCase
     {
         $mockUuid = new RamseyUuidImpl();
         $mockRepository = new MockRepository();
-        return new CreateTaskServiceImpl($mockRepository, $mockUuid);
+        return new CreateTaskUseCase($mockRepository, $mockUuid);
     }
 
     public function testShouldBeCreatedATask()

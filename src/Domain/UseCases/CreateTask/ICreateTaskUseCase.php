@@ -1,11 +1,11 @@
 <?php
 
-namespace App\ToDo\Domain\Protocols;
+namespace App\ToDo\Domain\UseCases\CreateTask;
 
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 
-interface CreateTaskService
+interface ICreateTaskUseCase
 {
     public function create(InputCreateTask $inputCreateTask): Task;
 }

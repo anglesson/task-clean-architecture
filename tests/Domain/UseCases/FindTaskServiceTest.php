@@ -3,7 +3,7 @@
 namespace Test\Domain\UseCases;
 
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
-use App\ToDo\Domain\UseCases\CreateTask\CreateTaskServiceImpl;
+use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 use App\ToDo\Domain\UseCases\FindTaskServiceImpl;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
@@ -15,7 +15,7 @@ class FindTaskServiceTest extends TestCase
     public function testShouldBeFindedATaskById()
     {
         $repository = new MockRepository();
-        $createTaskService = new CreateTaskServiceImpl($repository, new RamseyUuidImpl());
+        $createTaskService = new CreateTaskUseCase($repository, new RamseyUuidImpl());
         $findTaskService = new FindTaskServiceImpl($repository);
 
         $data = ['description' => 'any_description'];

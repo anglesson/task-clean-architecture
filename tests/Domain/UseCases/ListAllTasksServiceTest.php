@@ -4,7 +4,7 @@ namespace Test\Domain\UseCases;
 
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\ListAllTasksRepository;
-use App\ToDo\Domain\UseCases\CreateTask\CreateTaskServiceImpl;
+use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Domain\UseCases\FindTaskServiceImpl;
 use App\ToDo\Domain\UseCases\ListAllTasksServiceImpl;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
@@ -16,7 +16,7 @@ class ListAllTasksServiceTest extends TestCase
     public function makeService(): array
     {
         $repository = new MockRepository();
-        $createTaskService = new CreateTaskServiceImpl($repository, new RamseyUuidImpl());
+        $createTaskService = new CreateTaskUseCase($repository, new RamseyUuidImpl());
         $findTaskService = new FindTaskServiceImpl($repository);
         return array($createTaskService, $findTaskService);
     }

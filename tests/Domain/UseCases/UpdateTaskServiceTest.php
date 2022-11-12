@@ -2,7 +2,7 @@
 
 namespace Test\Domain\UseCases;
 
-use App\ToDo\Domain\UseCases\CreateTask\CreateTaskServiceImpl;
+use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 use App\ToDo\Domain\UseCases\FindTaskServiceImpl;
 use App\ToDo\Domain\UseCases\UpdateTaskServiceImpl;
@@ -16,7 +16,7 @@ class UpdateTaskServiceTest extends TestCase
     {
         $ramseyUuid = new RamseyUuidImpl();
         $repository = new MockRepository();
-        $createTaskService = new CreateTaskServiceImpl($repository, $ramseyUuid);
+        $createTaskService = new CreateTaskUseCase($repository, $ramseyUuid);
         $findTaskService = new FindTaskServiceImpl($repository);
         $updateTaskService = new UpdateTaskServiceImpl($findTaskService, $repository);
 

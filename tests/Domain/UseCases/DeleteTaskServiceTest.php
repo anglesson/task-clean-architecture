@@ -3,13 +3,13 @@
 namespace Test\Domain\UseCases;
 
 use App\ToDo\Domain\Protocols\CreateTaskRepository;
-use App\ToDo\Domain\Protocols\CreateTaskService;
 use App\ToDo\Domain\Protocols\DeleteTaskRepository;
 use App\ToDo\Domain\Protocols\DeleteTaskService;
 use App\ToDo\Domain\Protocols\FindTaskRepository;
 use App\ToDo\Domain\Protocols\FindTaskService;
 use App\ToDo\Domain\Protocols\UuidGenerator;
-use App\ToDo\Domain\UseCases\CreateTask\CreateTaskServiceImpl;
+use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
+use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 use App\ToDo\Domain\UseCases\DeleteTaskServiceImpl;
 use App\ToDo\Domain\UseCases\FindTaskServiceImpl;
@@ -23,7 +23,7 @@ class DeleteTaskServiceTest extends TestCase
 
     private DeleteTaskServiceImpl $deleteService;
 
-    private CreateTaskServiceImpl $createTaskService;
+    private CreateTaskUseCase $createTaskService;
 
     public function setUp(): void
     {
@@ -49,8 +49,8 @@ class DeleteTaskServiceTest extends TestCase
     public function createTaskServiceFactory(
         CreateTaskRepository $repository,
         UuidGenerator $uuidGenerator
-    ): CreateTaskService {
-        return new CreateTaskServiceImpl($repository, $uuidGenerator);
+    ): ICreateTaskUseCase {
+        return new CreateTaskUseCase($repository, $uuidGenerator);
     }
 
     public function deleteTaskServiceFactory(
