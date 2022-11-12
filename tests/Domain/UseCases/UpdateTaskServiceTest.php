@@ -1,11 +1,11 @@
 <?php
 
-namespace Test\Domain\Services;
+namespace Test\Domain\UseCases;
 
-use App\ToDo\Domain\Services\CreateTask\CreateTaskServiceImpl;
-use App\ToDo\Domain\Services\CreateTask\InputCreateTask;
-use App\ToDo\Domain\Services\FindTaskServiceImpl;
-use App\ToDo\Domain\Services\UpdateTaskServiceImpl;
+use App\ToDo\Domain\UseCases\CreateTask\CreateTaskServiceImpl;
+use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
+use App\ToDo\Domain\UseCases\FindTaskServiceImpl;
+use App\ToDo\Domain\UseCases\UpdateTaskServiceImpl;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 use PHPUnit\Framework\TestCase;

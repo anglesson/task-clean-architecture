@@ -3,7 +3,7 @@
 namespace App\ToDo\Domain\Protocols;
 
 use App\ToDo\Domain\Entity\Task;
-use App\ToDo\Domain\Services\CreateTask\InputCreateTask;
+use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 
 interface CreateTaskService
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Domain\Services\CreateTask;
+namespace App\ToDo\Domain\UseCases\CreateTask;
 
 use App\ToDo\Application\DTO\DataTransferObject;
 

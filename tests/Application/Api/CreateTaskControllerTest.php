@@ -5,7 +5,7 @@ namespace Test\Application\Api;
 use App\ToDo\Application\Api\CreateTaskController;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\Protocols\CreateTaskService;
-use App\ToDo\Domain\Services\CreateTask\InputCreateTask;
+use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

@@ -1,9 +1,9 @@
 <?php
 
-namespace Test\Domain\Services\CreateTask;
+namespace Test\Domain\UseCases\CreateTask;
 
 use App\ToDo\Application\DTO\DataTransferObject;
-use App\ToDo\Domain\Services\CreateTask\InputCreateTask;
+use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 use PHPUnit\Framework\TestCase;
 
 class InputCreateTaskTest extends TestCase

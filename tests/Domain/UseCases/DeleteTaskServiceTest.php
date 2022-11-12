@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Domain\Services;
+namespace Test\Domain\UseCases;
 
 use App\ToDo\Domain\Protocols\CreateTaskRepository;
 use App\ToDo\Domain\Protocols\CreateTaskService;
@@ -9,10 +9,10 @@ use App\ToDo\Domain\Protocols\DeleteTaskService;
 use App\ToDo\Domain\Protocols\FindTaskRepository;
 use App\ToDo\Domain\Protocols\FindTaskService;
 use App\ToDo\Domain\Protocols\UuidGenerator;
-use App\ToDo\Domain\Services\CreateTask\CreateTaskServiceImpl;
-use App\ToDo\Domain\Services\CreateTask\InputCreateTask;
-use App\ToDo\Domain\Services\DeleteTaskServiceImpl;
-use App\ToDo\Domain\Services\FindTaskServiceImpl;
+use App\ToDo\Domain\UseCases\CreateTask\CreateTaskServiceImpl;
+use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
+use App\ToDo\Domain\UseCases\DeleteTaskServiceImpl;
+use App\ToDo\Domain\UseCases\FindTaskServiceImpl;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 use PHPUnit\Framework\TestCase;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Domain\Services;
+namespace App\ToDo\Domain\UseCases;
 
 use App\ToDo\Domain\Protocols\UpdateTaskService;
 use App\ToDo\Domain\Entity\Task;

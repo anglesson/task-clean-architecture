@@ -1,15 +1,15 @@
 <?php
 
-namespace Test\Domain\Services;
+namespace Test\Domain\UseCases;
 
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\ListAllTasksRepository;
-use App\ToDo\Domain\Services\ListAllTasksServiceImpl;
-use PHPUnit\Framework\TestCase;
-use App\ToDo\Domain\Services\FindTaskServiceImpl;
-use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
-use App\ToDo\Domain\Services\CreateTaskServiceImpl;
+use App\ToDo\Domain\UseCases\CreateTask\CreateTaskServiceImpl;
+use App\ToDo\Domain\UseCases\FindTaskServiceImpl;
+use App\ToDo\Domain\UseCases\ListAllTasksServiceImpl;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
+use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
+use PHPUnit\Framework\TestCase;
 
 class ListAllTasksServiceTest extends TestCase
 {

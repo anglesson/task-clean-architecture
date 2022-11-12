@@ -1,11 +1,11 @@
 <?php
 
-namespace Test\Domain\Services;
+namespace Test\Domain\UseCases\CreateTask;
 
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\Protocols\CreateTaskService;
-use App\ToDo\Domain\Services\CreateTask\CreateTaskServiceImpl;
-use App\ToDo\Domain\Services\CreateTask\InputCreateTask;
+use App\ToDo\Domain\UseCases\CreateTask\CreateTaskServiceImpl;
+use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 use PHPUnit\Framework\TestCase;
