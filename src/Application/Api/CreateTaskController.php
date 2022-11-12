@@ -26,7 +26,7 @@ class CreateTaskController implements Controller
         }
         $inputCreateTask = new InputCreateTask($data);
         $outputCreateTask = $this->service->create($inputCreateTask);
-        $response->getBody()->write($outputCreateTask);
+        $response->getBody()->write($outputCreateTask->toJson());
         return $response;
     }
 }
