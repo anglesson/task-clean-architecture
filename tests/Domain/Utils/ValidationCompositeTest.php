@@ -2,7 +2,7 @@
 
 namespace Domain\Utils;
 
-use App\ToDo\Domain\Protocols\Validator;
+use App\ToDo\Domain\Protocols\AbstractValidator;
 use App\ToDo\Domain\Utils\ValidationComposite;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -13,8 +13,8 @@ class ValidationCompositeTest extends TestCase
 
     public function setUp(): void
     {
-        $validationMock1 = $this->createMock(Validator::class);
-        $validationMock2 = $this->createMock(Validator::class);
+        $validationMock1 = $this->createMock(AbstractValidator::class);
+        $validationMock2 = $this->createMock(AbstractValidator::class);
         $validations= [$validationMock1, $validationMock2];
         $validationComposite = new ValidationComposite($validations);
         $this->sut = [$validationComposite, $validations];
@@ -28,7 +28,7 @@ class ValidationCompositeTest extends TestCase
     public function test_should_implements_validator()
     {
         [$sut] = $this->sut;
-        $this->assertInstanceOf(Validator::class, $sut);
+        $this->assertInstanceOf(AbstractValidator::class, $sut);
     }
 
     public function test_should_return_error_if_any_validation_fails()

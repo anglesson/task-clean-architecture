@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\ToDo\Domain\Utils;
 
-use App\ToDo\Domain\Protocols\Validator;
+use App\ToDo\Domain\Protocols\AbstractValidator;
 use Error;
 
-class ValidationComposite implements Validator
+class ValidationComposite extends AbstractValidator
 {
-    /** @var Validator[] $validations */
+    /** @var AbstractValidator[] $validations */
     public function __construct(private readonly array $validations)
     {
     }
