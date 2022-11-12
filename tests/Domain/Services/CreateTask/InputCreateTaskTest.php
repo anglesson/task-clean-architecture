@@ -25,4 +25,10 @@ class InputCreateTaskTest extends TestCase
         $inputCreateTask = new InputCreateTask();
         $this->assertTrue(key_exists('description', $inputCreateTask->toArray()));
     }
+
+    public function testShouldSetAnyValueToDescription()
+    {
+        $inputCreateTask = new InputCreateTask(['description' => 'any_description']);
+        $this->assertEquals('any_description', $inputCreateTask->description);
+    }
 }
