@@ -2,21 +2,20 @@
 
 namespace Test\Domain\Services;
 
-use PHPUnit\Framework\TestCase;
-use App\ToDo\Application\DTO\TaskDTO;
-use Psr\Http\Message\ServerRequestInterface;
-use App\ToDo\Domain\Protocols\FindTaskService;
+use App\ToDo\Domain\Protocols\CreateTaskRepository;
 use App\ToDo\Domain\Protocols\CreateTaskService;
+use App\ToDo\Domain\Protocols\DeleteTaskRepository;
 use App\ToDo\Domain\Protocols\DeleteTaskService;
 use App\ToDo\Domain\Protocols\FindTaskRepository;
-use App\ToDo\Domain\Services\FindTaskServiceImpl;
-use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
-use App\ToDo\Domain\Protocols\CreateTaskRepository;
-use App\ToDo\Domain\Protocols\DeleteTaskRepository;
+use App\ToDo\Domain\Protocols\FindTaskService;
 use App\ToDo\Domain\Protocols\UuidGenerator;
-use App\ToDo\Domain\Services\CreateTaskServiceImpl;
+use App\ToDo\Domain\Services\CreateTask\CreateTaskServiceImpl;
+use App\ToDo\Domain\Services\CreateTask\InputCreateTask;
 use App\ToDo\Domain\Services\DeleteTaskServiceImpl;
+use App\ToDo\Domain\Services\FindTaskServiceImpl;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
+use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
+use PHPUnit\Framework\TestCase;
 
 class DeleteTaskServiceTest extends TestCase
 {
@@ -63,19 +62,13 @@ class DeleteTaskServiceTest extends TestCase
 
     public function testShouldBeDeleteATaskById()
     {
-        $requestStub = $this->createStub(ServerRequestInterface::class);
-        
-        $requestStub->method('getParsedBody')->willReturn(['description' => 'any_description_1']);
-        $taskDTO = TaskDTO::fromRequest($requestStub);
-        $task1 = $this->createTaskService->create($taskDTO);
+        $data = ['description' => 'any_description'];
+        $inputCreateTask = new InputCreateTask($data);
 
-        $requestStub->method('getParsedBody')->willReturn(['description' => 'any_description_1']);
-        $taskDTO = TaskDTO::fromRequest($requestStub);
-        $task2 = $this->createTaskService->create($taskDTO);
+        $task1 = $this->createTaskService->create($inputCreateTask);
+        $task2 = $this->createTaskService->create($inputCreateTask);
+        $task3 = $this->createTaskService->create($inputCreateTask);
 
-        $requestStub->method('getParsedBody')->willReturn(['description' => 'any_description_1']);
-        $taskDTO = TaskDTO::fromRequest($requestStub);
-        $task3 = $this->createTaskService->create($taskDTO);
         $this->assertEquals(3, count($this->repository->getAllTasks()));
 
         $this->deleteService->delete($task1->getId());

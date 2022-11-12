@@ -2,12 +2,12 @@
 
 namespace App\ToDo\Application\Api;
 
-use App\ToDo\Application\DTO\TaskDTO;
-use App\ToDo\Domain\Protocols\CreateTaskService;
 use App\ToDo\Application\Protocols\Http\Controller;
+use App\ToDo\Domain\Exceptions\MissingParamsError;
+use App\ToDo\Domain\Protocols\CreateTaskService;
+use App\ToDo\Domain\Services\CreateTask\InputCreateTask;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use App\ToDo\Domain\Exceptions\MissingParamsError;
 
 class CreateTaskController implements Controller
 {
@@ -20,11 +20,12 @@ class CreateTaskController implements Controller
 
     public function handle(Request $request, Response $response): Response
     {
-        if (!$request->getParsedBody()) {
+        $data = $request->getParsedBody();
+        if (!$data) {
             throw new MissingParamsError();
         }
-        $dataDTO = TaskDTO::fromRequest($request);
-        $task = $this->service->create($dataDTO);
+        $inputCreateTask = new InputCreateTask($data);
+        $task = $this->service->create($inputCreateTask);
         $response->getBody()->write($task->jsonSerialize());
         return $response;
     }

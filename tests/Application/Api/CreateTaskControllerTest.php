@@ -2,14 +2,14 @@
 
 namespace Test\Application\Api;
 
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\StreamInterface;
-use Psr\Http\Message\ResponseInterface;
-use App\ToDo\Application\DTO\TaskDTO;
-use Psr\Http\Message\ServerRequestInterface;
-use App\ToDo\Domain\Protocols\CreateTaskService;
 use App\ToDo\Application\Api\CreateTaskController;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
+use App\ToDo\Domain\Protocols\CreateTaskService;
+use App\ToDo\Domain\Services\CreateTask\InputCreateTask;
+use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamInterface;
 
 class CreateTaskControllerTest extends TestCase
 {
@@ -31,21 +31,14 @@ class CreateTaskControllerTest extends TestCase
     public function testShouldCallServiceWithCorrectValues()
     {
         $data = ['description' => 'My description'];
-        
-        $this->request
-            ->method('getParsedBody')
-            ->willReturn($data);
 
-        $taskDTO = TaskDTO::fromRequest($this->request);
+        $this->request->method('getParsedBody')->willReturn($data);
 
+        $inputCreateTask = new InputCreateTask($data);
         $service = $this->createMock(CreateTaskService::class);
-        $service
-            ->expects($this->once())
-            ->method('create')
-            ->with($taskDTO);
+        $service->expects($this->once())->method('create')->with($inputCreateTask);
 
         $controller = new CreateTaskController($service);
-
         $controller->handle($this->request, $this->response);
     }
 

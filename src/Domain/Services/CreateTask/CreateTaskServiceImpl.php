@@ -1,15 +1,13 @@
 <?php
 
-namespace App\ToDo\Domain\Services;
+namespace App\ToDo\Domain\Services\CreateTask;
 
 use App\ToDo\Domain\Entity\Task;
-use App\ToDo\Domain\Exceptions\InvalidParamError;
-use App\ToDo\Domain\Protocols\CreateTaskService;
-use App\ToDo\Domain\Protocols\CreateTaskRepository;
-use App\ToDo\Domain\Exceptions\TaskNotBeCreatedWithStatusFinishedException;
-use App\ToDo\Application\DTO\TaskDTO;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
+use App\ToDo\Domain\Protocols\CreateTaskRepository;
+use App\ToDo\Domain\Protocols\CreateTaskService;
 use App\ToDo\Domain\Protocols\UuidGenerator;
+use App\ToDo\Domain\Services\CreateTask\InputCreateTask;
 
 class CreateTaskServiceImpl implements CreateTaskService
 {
@@ -21,19 +19,15 @@ class CreateTaskServiceImpl implements CreateTaskService
         $this->uuidGenerator = $uuidGenerator;
     }
 
-    public function create(TaskDTO $taskDTO): Task
+    public function create(InputCreateTask $inputCreateTask): Task
     {
-        if ($taskDTO->finished === true) {
-            throw new TaskNotBeCreatedWithStatusFinishedException();
-        }
-
-        if (!$taskDTO->description) {
+        if (!$inputCreateTask->description) {
             throw new MissingParamsError('description');
         }
 
         $task = new Task();
         $task->setId($this->uuidGenerator->generateId());
-        $task->setDescription($taskDTO->description);
+        $task->setDescription($inputCreateTask->description);
 
         return $this->repository->save($task);
     }

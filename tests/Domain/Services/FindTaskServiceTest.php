@@ -2,14 +2,13 @@
 
 namespace Test\Domain\Services;
 
-use PHPUnit\Framework\TestCase;
-use App\ToDo\Application\DTO\TaskDTO;
-use Psr\Http\Message\ServerRequestInterface;
-use App\ToDo\Domain\Services\FindTaskServiceImpl;
-use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
-use App\ToDo\Domain\Services\CreateTaskServiceImpl;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
+use App\ToDo\Domain\Services\CreateTask\CreateTaskServiceImpl;
+use App\ToDo\Domain\Services\CreateTask\InputCreateTask;
+use App\ToDo\Domain\Services\FindTaskServiceImpl;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
+use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
+use PHPUnit\Framework\TestCase;
 
 class FindTaskServiceTest extends TestCase
 {
@@ -19,12 +18,10 @@ class FindTaskServiceTest extends TestCase
         $createTaskService = new CreateTaskServiceImpl($repository, new RamseyUuidImpl());
         $findTaskService = new FindTaskServiceImpl($repository);
 
-        $requestStub = $this->createStub(ServerRequestInterface::class);
-        
-        $requestStub->method('getParsedBody')->willReturn(['description' => 'any_description_1']);
-        $taskDTO = TaskDTO::fromRequest($requestStub);
+        $data = ['description' => 'any_description'];
+        $inputCreateTask = new InputCreateTask($data);
 
-        $taskCreated = $createTaskService->create($taskDTO);
+        $taskCreated = $createTaskService->create($inputCreateTask);
         $taskFinded = $findTaskService->find($taskCreated->getId());
 
         $this->assertEquals($taskFinded, $taskCreated);

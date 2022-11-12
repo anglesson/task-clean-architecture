@@ -3,9 +3,9 @@
 namespace App\ToDo\Domain\Protocols;
 
 use App\ToDo\Domain\Entity\Task;
-use App\ToDo\Application\DTO\TaskDTO;
+use App\ToDo\Domain\Services\CreateTask\InputCreateTask;
 
 interface CreateTaskService
 {
-    public function create(TaskDTO $taskDTO): Task;
+    public function create(InputCreateTask $inputCreateTask): Task;
 }
