@@ -2,14 +2,14 @@
 
 namespace App\ToDo\Domain\Entity;
 
-use App\ToDo\Domain\Utils\Fillable;
 use App\ToDo\Domain\Exceptions\DescriptionHasMoreThan50Caracters;
 use App\ToDo\Domain\Exceptions\InvalidParamError;
+use App\ToDo\Domain\Utils\Fillable;
 
 class Task
 {
     use Fillable;
-    
+
     private $fillable = [
         'description',
         'finished'
@@ -17,7 +17,6 @@ class Task
     private ?string $id;
     private string $description;
     private bool $finished;
-
 
     public function __construct()
     {
