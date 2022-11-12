@@ -19,7 +19,7 @@ class FindTaskServiceTest extends TestCase
         $findTaskService = new FindTaskServiceImpl($repository);
 
         $data = ['description' => 'any_description'];
-        $inputCreateTask = new InputCreateTask($data);
+        $inputCreateTask = InputCreateTask::create($data);
 
         $outputCreateTask = $createTaskService->create($inputCreateTask);
         $taskFinded = $findTaskService->find($outputCreateTask->id);

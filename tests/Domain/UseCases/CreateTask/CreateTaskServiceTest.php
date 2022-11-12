@@ -21,14 +21,14 @@ class CreateTaskServiceTest extends TestCase
 
     public function testShouldBeCreatedATask()
     {
-        $inputCreateTask = new InputCreateTask(['description' => 'any_description']);
+        $inputCreateTask = InputCreateTask::create(['description' => 'any_description']);
         $outputCreateTask = ($this->makeCreateService())->create($inputCreateTask);
         $this->assertEquals('any_description', $outputCreateTask->description);
     }
 
     public function testShouldBeThrowsIfMissingParams()
     {
-        $inputCreateTask = new InputCreateTask([]);
+        $inputCreateTask = InputCreateTask::create([]);
         $this->expectException(MissingParamsError::class);
         ($this->makeCreateService())->create($inputCreateTask);
     }

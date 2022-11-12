@@ -10,25 +10,25 @@ class InputCreateTaskTest extends TestCase
 {
     public function testShouldBeInstaceOfDataTransferObject()
     {
-        $inputCreateTask = new InputCreateTask();
+        $inputCreateTask = InputCreateTask::create([]);
         $this->assertInstanceOf(DataTransferObject::class, $inputCreateTask);
     }
 
     public function testShouldHaveAtributes()
     {
-        $inputCreateTask = new InputCreateTask();
+        $inputCreateTask = InputCreateTask::create([]);
         $this->assertTrue(property_exists($inputCreateTask, 'description'));
     }
 
     public function testShoulBeReturnAnArrayWithExpectedKeys()
     {
-        $inputCreateTask = new InputCreateTask();
+        $inputCreateTask = InputCreateTask::create([]);
         $this->assertTrue(key_exists('description', $inputCreateTask->toArray()));
     }
 
     public function testShouldSetAnyValueToDescription()
     {
-        $inputCreateTask = new InputCreateTask(['description' => 'any_description']);
+        $inputCreateTask = InputCreateTask::create(['description' => 'any_description']);
         $this->assertEquals('any_description', $inputCreateTask->description);
     }
 }

@@ -63,7 +63,7 @@ class DeleteTaskServiceTest extends TestCase
     public function testShouldBeDeleteATaskById()
     {
         $data = ['description' => 'any_description'];
-        $inputCreateTask = new InputCreateTask($data);
+        $inputCreateTask = InputCreateTask::create($data);
 
         $outputCreateTask1 = $this->createTaskService->create($inputCreateTask);
         $outputCreateTask2 = $this->createTaskService->create($inputCreateTask);

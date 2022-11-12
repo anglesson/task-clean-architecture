@@ -33,7 +33,7 @@ class CreateTaskControllerTest extends TestCase
 
         $this->request->method('getParsedBody')->willReturn($data);
 
-        $inputCreateTask = new InputCreateTask($data);
+        $inputCreateTask = InputCreateTask::create($data);
         $service = $this->createMock(ICreateTaskUseCase::class);
         $service->expects($this->once())->method('create')->with($inputCreateTask);
 

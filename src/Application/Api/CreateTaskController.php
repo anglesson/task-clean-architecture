@@ -24,7 +24,7 @@ class CreateTaskController implements Controller
         if (!$data) {
             throw new MissingParamsError();
         }
-        $inputCreateTask = new InputCreateTask($data);
+        $inputCreateTask = InputCreateTask::create($data);
         $outputCreateTask = $this->service->create($inputCreateTask);
         $response->getBody()->write($outputCreateTask->toJson());
         return $response;

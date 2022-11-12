@@ -21,7 +21,7 @@ class UpdateTaskServiceTest extends TestCase
         $updateTaskService = new UpdateTaskServiceImpl($findTaskService, $repository);
 
         $data = ['description' => 'any_description'];
-        $inputCreateTask = new InputCreateTask($data);
+        $inputCreateTask = InputCreateTask::create($data);
         $outputCreateTask = $createTaskService->create($inputCreateTask);
 
         $taskUpdated = $updateTaskService->update($outputCreateTask->id, ['description' => 'any_description_updated']);
