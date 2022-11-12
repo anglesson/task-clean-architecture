@@ -22,12 +22,12 @@ class UpdateTaskServiceTest extends TestCase
 
         $data = ['description' => 'any_description'];
         $inputCreateTask = new InputCreateTask($data);
-        $task = $createTaskService->create($inputCreateTask);
+        $outputCreateTask = $createTaskService->create($inputCreateTask);
 
-        $taskUpdated = $updateTaskService->update($task->getId(), ['description' => 'any_description_updated']);
+        $taskUpdated = $updateTaskService->update($outputCreateTask->id, ['description' => 'any_description_updated']);
         $this->assertEquals($taskUpdated->getDescription(), 'any_description_updated');
 
-        $updateTaskService->update($task->getId(), ['finished' => true]);
-        $this->assertEquals($task->getFinished(), true);
+        $taskUpdated = $updateTaskService->update($outputCreateTask->id, ['finished' => true]);
+        $this->assertTrue($taskUpdated->getFinished());
     }
 }

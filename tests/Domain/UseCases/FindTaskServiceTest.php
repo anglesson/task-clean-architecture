@@ -21,10 +21,10 @@ class FindTaskServiceTest extends TestCase
         $data = ['description' => 'any_description'];
         $inputCreateTask = new InputCreateTask($data);
 
-        $taskCreated = $createTaskService->create($inputCreateTask);
-        $taskFinded = $findTaskService->find($taskCreated->getId());
+        $outputCreateTask = $createTaskService->create($inputCreateTask);
+        $taskFinded = $findTaskService->find($outputCreateTask->id);
 
-        $this->assertEquals($taskFinded, $taskCreated);
+        $this->assertEquals($taskFinded->getId(), $outputCreateTask->id);
     }
 
     public function testShouldBeReturnExceptionIfTaskNotFounded()

@@ -25,8 +25,8 @@ class CreateTaskController implements Controller
             throw new MissingParamsError();
         }
         $inputCreateTask = new InputCreateTask($data);
-        $task = $this->service->create($inputCreateTask);
-        $response->getBody()->write($task->jsonSerialize());
+        $outputCreateTask = $this->service->create($inputCreateTask);
+        $response->getBody()->write($outputCreateTask);
         return $response;
     }
 }

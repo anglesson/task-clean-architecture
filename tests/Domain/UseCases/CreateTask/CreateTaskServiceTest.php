@@ -22,8 +22,8 @@ class CreateTaskServiceTest extends TestCase
     public function testShouldBeCreatedATask()
     {
         $inputCreateTask = new InputCreateTask(['description' => 'any_description']);
-        $taskCriada = ($this->makeCreateService())->create($inputCreateTask);
-        $this->assertEquals('any_description', $taskCriada->getDescription());
+        $outputCreateTask = ($this->makeCreateService())->create($inputCreateTask);
+        $this->assertEquals('any_description', $outputCreateTask->description);
     }
 
     public function testShouldBeThrowsIfMissingParams()

@@ -16,7 +16,6 @@ class CreateTaskControllerTest extends TestCase
     protected ServerRequestInterface $request;
     protected ResponseInterface $response;
 
-
     protected function setUp(): void
     {
         $streamStub = $this->createStub(StreamInterface::class);

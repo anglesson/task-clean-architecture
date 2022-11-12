@@ -18,7 +18,7 @@ class CreateTaskUseCase implements ICreateTaskUseCase
         $this->uuidGenerator = $uuidGenerator;
     }
 
-    public function create(InputCreateTask $inputCreateTask): Task
+    public function create(InputCreateTask $inputCreateTask): OutputCreateTask
     {
         if (!$inputCreateTask->description) {
             throw new MissingParamsError('description');
@@ -28,6 +28,7 @@ class CreateTaskUseCase implements ICreateTaskUseCase
         $task->setId($this->uuidGenerator->generateId());
         $task->setDescription($inputCreateTask->description);
 
-        return $this->repository->save($task);
+        $createdTask = $this->repository->save($task);
+        return OutputCreateTask::create($createdTask);
     }
 }

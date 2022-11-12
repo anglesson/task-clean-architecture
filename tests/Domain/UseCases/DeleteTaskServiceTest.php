@@ -65,15 +65,15 @@ class DeleteTaskServiceTest extends TestCase
         $data = ['description' => 'any_description'];
         $inputCreateTask = new InputCreateTask($data);
 
-        $task1 = $this->createTaskService->create($inputCreateTask);
-        $task2 = $this->createTaskService->create($inputCreateTask);
-        $task3 = $this->createTaskService->create($inputCreateTask);
+        $outputCreateTask1 = $this->createTaskService->create($inputCreateTask);
+        $outputCreateTask2 = $this->createTaskService->create($inputCreateTask);
+        $outputCreateTask3 = $this->createTaskService->create($inputCreateTask);
 
         $this->assertEquals(3, count($this->repository->getAllTasks()));
 
-        $this->deleteService->delete($task1->getId());
-        $this->deleteService->delete($task2->getId());
-        $this->deleteService->delete($task3->getId());
+        $this->deleteService->delete($outputCreateTask1->id);
+        $this->deleteService->delete($outputCreateTask2->id);
+        $this->deleteService->delete($outputCreateTask3->id);
         $this->assertEquals(0, count($this->repository->getAllTasks()));
     }
 }
