@@ -21,4 +21,9 @@ abstract class DataTransferObject
     {
         return get_object_vars($this);
     }
+
+    public function toJson(): string
+    {
+        return json_encode(get_object_vars($this));
+    }
 }
