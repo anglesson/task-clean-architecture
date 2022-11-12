@@ -15,7 +15,7 @@ class ValidationCompositeTest extends TestCase
     {
         $validationMock1 = $this->createMock(AbstractValidator::class);
         $validationMock2 = $this->createMock(AbstractValidator::class);
-        $validations= [$validationMock1, $validationMock2];
+        $validations = [$validationMock1, $validationMock2];
         $validationComposite = new ValidationComposite($validations);
         $this->sut = [$validationComposite, $validations];
     }
@@ -25,13 +25,13 @@ class ValidationCompositeTest extends TestCase
         $this->sut = [];
     }
 
-    public function test_should_implements_validator()
+    public function testShouldImplementsValidator()
     {
         [$sut] = $this->sut;
         $this->assertInstanceOf(AbstractValidator::class, $sut);
     }
 
-    public function test_should_return_error_if_any_validation_fails()
+    public function testShouldReturnErrorIfAnyValidationFails()
     {
         /** @var  MockObject[] $validations */
         [$sut, $validations] = $this->sut;
@@ -40,7 +40,7 @@ class ValidationCompositeTest extends TestCase
         $this->assertInstanceOf(\Error::class, $error);
     }
 
-    public function test_should_return_the_first_error_if_more_than_one_validation_fails()
+    public function testShouldReturnTheFirstErrorIfMoreThanOneValidationFails()
     {
         /** @var  MockObject[] $validations */
         [$sut, $validations] = $this->sut;
