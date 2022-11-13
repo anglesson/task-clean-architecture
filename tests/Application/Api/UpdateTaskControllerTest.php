@@ -9,6 +9,7 @@ use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
+use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;
 
 class UpdateTaskControllerTest extends TestCase
 {
@@ -29,26 +30,29 @@ class UpdateTaskControllerTest extends TestCase
 
     public function testShouldCallServiceWithCorrectValues()
     {
-        $id = 'any_id';
-        $data = [
+        $data = InputUpdateTask::create([
+            'id'          => 'any_id',
             'description' => 'My description',
-            'finished' => false
-        ];
+            'finished'    => false
+        ]);
 
         $this->request
             ->method('getParsedBody')
-            ->willReturn($data);
+            ->willReturn([
+                'description' => 'My description',
+                'finished'    => false
+            ]);
 
         $this->request
             ->method('getAttribute')
             ->with('id')
-            ->willReturn($id);
+            ->willReturn($data->id);
 
         $service = $this->createMock(UpdateTaskService::class);
         $service
             ->expects($this->once())
             ->method('update')
-            ->with($id, $data);
+            ->with($data);
 
         $controller = new UpdateTaskController($service);
         $controller->handle($this->request, $this->response);

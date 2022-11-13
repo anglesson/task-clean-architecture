@@ -5,7 +5,8 @@ namespace Test\Domain\UseCases\UpdateTask;
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 use App\ToDo\Domain\UseCases\FindTaskServiceImpl;
-use App\ToDo\Domain\UseCases\UpdateTaskServiceImpl;
+use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;
+use App\ToDo\Domain\UseCases\UpdateTask\UpdateTaskServiceImpl;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 use PHPUnit\Framework\TestCase;
@@ -24,10 +25,15 @@ class UpdateTaskServiceTest extends TestCase
         $inputCreateTask = InputCreateTask::create($data);
         $outputCreateTask = $createTaskService->create($inputCreateTask);
 
-        $taskUpdated = $updateTaskService->update($outputCreateTask->id, ['description' => 'any_description_updated']);
-        $this->assertEquals($taskUpdated->getDescription(), 'any_description_updated');
+        $inputUpdateTask = InputUpdateTask::create([
+            'id'=> $outputCreateTask->id,
+            'description' => 'any_description_updated',
+            'finished' => true
+        ]);
+        $outputUpdateTask = $updateTaskService->update($inputUpdateTask);
+        $this->assertEquals($outputUpdateTask->description, 'any_description_updated');
 
-        $taskUpdated = $updateTaskService->update($outputCreateTask->id, ['finished' => true]);
-        $this->assertTrue($taskUpdated->getFinished());
+        // $taskUpdated = $updateTaskService->update($outputCreateTask->id, ['finished' => true]);
+        $this->assertTrue($outputUpdateTask->finished);
     }
 }

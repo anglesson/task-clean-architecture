@@ -5,6 +5,7 @@ namespace App\ToDo\Application\Api;
 use App\ToDo\Application\Protocols\Http\Controller;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\Protocols\UpdateTaskService;
+use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -22,8 +23,10 @@ class UpdateTaskController implements Controller
         if (!$request->getParsedBody()) {
             throw new MissingParamsError();
         }
-        $task = $this->service->update($request->getAttribute('id'), $request->getParsedBody());
-        $response->getBody()->write($task->jsonSerialize());
+        $inputUpdateTask = InputUpdateTask::create($request->getParsedBody());
+        $inputUpdateTask->id = $request->getAttribute('id');
+        $outputUpdateTask = $this->service->update($inputUpdateTask);
+        $response->getBody()->write($outputUpdateTask->toJson());
         return $response;
     }
 }

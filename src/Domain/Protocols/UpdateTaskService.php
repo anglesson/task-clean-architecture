@@ -2,9 +2,10 @@
 
 namespace App\ToDo\Domain\Protocols;
 
-use App\ToDo\Domain\Entity\Task;
+use App\ToDo\Domain\UseCases\UpdateTask\OutputUpdateTask;
+use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;
 
 interface UpdateTaskService
 {
-    public function update(string $idTask, array $params): Task;
+    public function update(InputUpdateTask $inputUpdateTask): OutputUpdateTask;
 }
