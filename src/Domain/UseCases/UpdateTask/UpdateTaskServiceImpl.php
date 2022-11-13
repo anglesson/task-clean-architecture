@@ -4,10 +4,10 @@ namespace App\ToDo\Domain\UseCases\UpdateTask;
 
 use App\ToDo\Domain\Protocols\FindTaskService;
 use App\ToDo\Domain\Protocols\UpdateTaskRepository;
-use App\ToDo\Domain\Protocols\UpdateTaskService;
+use App\ToDo\Domain\UseCases\UpdateTask\IUpdateTaskUseCase;
 use App\ToDo\Domain\UseCases\UpdateTask\OutputUpdateTask;
 
-class UpdateTaskServiceImpl implements UpdateTaskService
+class UpdateTaskServiceImpl implements IUpdateTaskUseCase
 {
     protected FindTaskService $findTaskService;
     protected UpdateTaskRepository $repository;
