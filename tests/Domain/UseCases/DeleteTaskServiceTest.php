@@ -11,7 +11,7 @@ use App\ToDo\Domain\Protocols\UuidGenerator;
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
-use App\ToDo\Domain\UseCases\DeleteTaskServiceImpl;
+use App\ToDo\Domain\UseCases\DeleteTask\DeleteTaskServiceImpl;
 use App\ToDo\Domain\UseCases\FindTaskServiceImpl;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;

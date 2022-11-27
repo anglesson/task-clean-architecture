@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Domain\UseCases;
+namespace App\ToDo\Domain\UseCases\DeleteTask;
 
 use App\ToDo\Domain\Protocols\DeleteTaskRepository;
 use App\ToDo\Domain\Protocols\DeleteTaskService;
