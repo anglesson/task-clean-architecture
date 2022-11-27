@@ -12,6 +12,7 @@ class CreateTaskUseCase implements ICreateTaskUseCase
 {
     private CreateTaskRepository $repository;
     protected UuidGenerator $uuidGenerator;
+
     public function __construct(CreateTaskRepository $repository, UuidGenerator $uuidGenerator)
     {
         $this->repository = $repository;
