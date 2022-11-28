@@ -2,24 +2,23 @@
 
 namespace App\ToDo\Domain\UseCases\DeleteTask;
 
-use App\ToDo\Domain\Protocols\DeleteTaskRepository;
+use App\ToDo\Domain\Exceptions\TaskNotFoundException;
 use App\ToDo\Domain\Protocols\DeleteTaskService;
-use App\ToDo\Domain\Protocols\FindTaskService;
+use App\ToDo\Domain\Protocols\ITaskRepository;
 
 class DeleteTaskServiceImpl implements DeleteTaskService
 {
-    private DeleteTaskRepository $repository;
-    private FindTaskService $findTaskService;
-
-    public function __construct(DeleteTaskRepository $repository, FindTaskService $findTaskService)
-    {
-        $this->repository = $repository;
-        $this->findTaskService = $findTaskService;
+    public function __construct(
+        private ITaskRepository $repository
+    ) {
     }
 
     public function delete(string $idTask): void
     {
-        $task = $this->findTaskService->find($idTask);
-        $this->repository->delete($task);
+        $task = $this->repository->findOne($idTask);
+        if (!$task) {
+            throw new TaskNotFoundException();
+        }
+        $this->repository->delete($task->getId());
     }
 }

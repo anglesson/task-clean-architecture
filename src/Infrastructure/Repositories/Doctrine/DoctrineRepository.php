@@ -4,8 +4,8 @@ namespace App\ToDo\Infrastructure\Repositories\Doctrine;
 
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\CreateTaskRepository;
-use App\ToDo\Domain\Protocols\DeleteTaskRepository;
 use App\ToDo\Domain\Protocols\FindTaskRepository;
+use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Domain\Protocols\ListAllTasksRepository;
 use App\ToDo\Domain\Protocols\UpdateTaskRepository;
 use RuntimeException;
@@ -17,8 +17,8 @@ class DoctrineRepository implements
     CreateTaskRepository,
     FindTaskRepository,
     UpdateTaskRepository,
-    DeleteTaskRepository,
-    ListAllTasksRepository
+    ListAllTasksRepository,
+    ITaskRepository
 {
     public function save(Task $task): Task
     {
@@ -44,10 +44,10 @@ class DoctrineRepository implements
         return $task;
     }
 
-    public function delete(Task $task): void
+    public function delete(string $idTask): void
     {
         $entityManager = (new EntityManagerCreator())->createEntityManager();
-        $taskOld = $entityManager->find(Task::class, $task->getId());
+        $taskOld = $entityManager->find(Task::class, $idTask);
         $entityManager->remove($taskOld);
         $entityManager->flush();
     }

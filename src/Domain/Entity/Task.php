@@ -29,11 +29,12 @@ class Task
         return $this->id;
     }
 
-    public function setId(string $id): void
+    public function setId(string $id): self
     {
         if (!isset($this->id) && is_null($this->id)) {
             $this->id = $id;
         }
+        return $this;
     }
 
     public function getDescription(): string

@@ -2,78 +2,47 @@
 
 namespace Test\Domain\UseCases;
 
-use App\ToDo\Domain\Protocols\CreateTaskRepository;
-use App\ToDo\Domain\Protocols\DeleteTaskRepository;
+use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\DeleteTaskService;
-use App\ToDo\Domain\Protocols\FindTaskRepository;
-use App\ToDo\Domain\Protocols\FindTaskService;
-use App\ToDo\Domain\Protocols\UuidGenerator;
-use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
-use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
-use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
+use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Domain\UseCases\DeleteTask\DeleteTaskServiceImpl;
-use App\ToDo\Domain\UseCases\FindTaskServiceImpl;
-use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
-use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
+use PHPUnit\Framework\MockObject\MockBuilder;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use SebastianBergmann\Type\VoidType;
+use stdClass;
 
 class DeleteTaskServiceTest extends TestCase
 {
     private $repository;
 
-    private DeleteTaskServiceImpl $deleteService;
-
-    private CreateTaskUseCase $createTaskService;
+    private array $sut;
 
     public function setUp(): void
     {
-        $this->repository = $this->mockRepositoryFactory();
-        $this->createTaskService = $this->createTaskServiceFactory($this->repository, new RamseyUuidImpl);
-        $this->deleteService = $this->deleteTaskServiceFactory(
-            $this->repository,
-            $this->findTaskServiceFactory($this->repository)
-        );
-    }
+        $repositoryMock = $this->createMock(ITaskRepository::class);
+        $deleteService = new DeleteTaskServiceImpl($repositoryMock);
 
-    public function mockRepositoryFactory(): MockRepository
-    {
-        return new MockRepository();
-    }
-
-    public function findTaskServiceFactory(FindTaskRepository $repository)
-    {
-        return new FindTaskServiceImpl($repository);
-    }
-
-
-    public function createTaskServiceFactory(
-        CreateTaskRepository $repository,
-        UuidGenerator $uuidGenerator
-    ): ICreateTaskUseCase {
-        return new CreateTaskUseCase($repository, $uuidGenerator);
-    }
-
-    public function deleteTaskServiceFactory(
-        DeleteTaskRepository $repository,
-        FindTaskService $findTaskService
-    ): DeleteTaskService {
-        return new DeleteTaskServiceImpl($repository, $findTaskService);
+        $this->sut = [
+            $deleteService,
+            $repositoryMock
+        ];
     }
 
     public function testShouldBeDeleteATaskById()
     {
-        $data = ['description' => 'any_description'];
-        $inputCreateTask = InputCreateTask::create($data);
-
-        $outputCreateTask1 = $this->createTaskService->create($inputCreateTask);
-        $outputCreateTask2 = $this->createTaskService->create($inputCreateTask);
-        $outputCreateTask3 = $this->createTaskService->create($inputCreateTask);
-
-        $this->assertEquals(3, count($this->repository->getAllTasks()));
-
-        $this->deleteService->delete($outputCreateTask1->id);
-        $this->deleteService->delete($outputCreateTask2->id);
-        $this->deleteService->delete($outputCreateTask3->id);
-        $this->assertEquals(0, count($this->repository->getAllTasks()));
+        /**
+         * @var DeleteTaskService $sut
+         * @var MockObject $repository
+         */
+        [$sut, $repository] = $this->sut;
+        $repository
+            ->method('findOne')
+            ->willReturn((new Task())->setId('any_id'));
+        $repository
+            ->expects($this->once())
+            ->method('delete')
+            ->with('any_id');
+        $sut->delete('any_id');
     }
 }
