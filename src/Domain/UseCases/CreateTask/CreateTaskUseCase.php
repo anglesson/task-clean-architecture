@@ -3,13 +3,9 @@
 namespace App\ToDo\Domain\UseCases\CreateTask;
 
 use App\ToDo\Domain\Entity\Task;
-use App\ToDo\Domain\Exceptions\MissingParamsError;
-use App\ToDo\Domain\Protocols\CreateTaskRepository;
 use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
-use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
-use Exception;
 
 class CreateTaskUseCase implements ICreateTaskUseCase
 {

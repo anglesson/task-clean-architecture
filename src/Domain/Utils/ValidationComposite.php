@@ -10,9 +10,14 @@ use Error;
 class ValidationComposite implements IValidation
 {
     /** @var IValidation[] $validations */
-    public function __construct(
-        private readonly array $validations
-    ) {
+    private readonly array $validations;
+
+    /**
+     * @param IValidation[] $validations
+    */
+    public function __construct(array $validations)
+    {
+        $this->validations = $validations;
     }
 
     public function validate(mixed $input = null): ?Error
