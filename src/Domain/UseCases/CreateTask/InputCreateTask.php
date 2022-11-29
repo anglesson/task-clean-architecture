@@ -8,7 +8,7 @@ class InputCreateTask extends DataTransferObject
 {
     public ?string $description;
 
-    public static function create(array $array)
+    public static function create(array $array): InputCreateTask
     {
         return new self($array);
     }
