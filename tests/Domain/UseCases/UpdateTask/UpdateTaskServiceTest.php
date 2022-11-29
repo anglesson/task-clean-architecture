@@ -7,6 +7,7 @@ use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 use App\ToDo\Domain\UseCases\FindTaskServiceImpl;
 use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;
 use App\ToDo\Domain\UseCases\UpdateTask\UpdateTaskServiceImpl;
+use App\ToDo\Domain\Utils\ValidationComposite;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 use PHPUnit\Framework\TestCase;
@@ -17,7 +18,8 @@ class UpdateTaskServiceTest extends TestCase
     {
         $ramseyUuid = new RamseyUuidImpl();
         $repository = new MockRepository();
-        $createTaskService = new CreateTaskUseCase($repository, $ramseyUuid);
+        $validation = new ValidationComposite([]);
+        $createTaskService = new CreateTaskUseCase($repository, $ramseyUuid, $validation);
         $findTaskService = new FindTaskServiceImpl($repository);
         $updateTaskService = new UpdateTaskServiceImpl($findTaskService, $repository);
 
@@ -32,8 +34,6 @@ class UpdateTaskServiceTest extends TestCase
         ]);
         $outputUpdateTask = $updateTaskService->update($inputUpdateTask);
         $this->assertEquals($outputUpdateTask->description, 'any_description_updated');
-
-        // $taskUpdated = $updateTaskService->update($outputCreateTask->id, ['finished' => true]);
         $this->assertTrue($outputUpdateTask->finished);
     }
 }

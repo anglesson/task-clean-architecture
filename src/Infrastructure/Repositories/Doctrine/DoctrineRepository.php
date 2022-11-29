@@ -14,7 +14,6 @@ use InvalidArgumentException;
 use Doctrine\ORM\Exception\ORMException;
 
 class DoctrineRepository implements
-    CreateTaskRepository,
     FindTaskRepository,
     UpdateTaskRepository,
     ListAllTasksRepository,

@@ -3,6 +3,7 @@
 namespace Domain\Utils;
 
 use App\ToDo\Domain\Protocols\AbstractValidator;
+use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
 use App\ToDo\Domain\Utils\ValidationComposite;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -28,7 +29,7 @@ class ValidationCompositeTest extends TestCase
     public function testShouldImplementsValidator()
     {
         [$sut] = $this->sut;
-        $this->assertInstanceOf(AbstractValidator::class, $sut);
+        $this->assertInstanceOf(IValidation::class, $sut);
     }
 
     public function testShouldReturnErrorIfAnyValidationFails()

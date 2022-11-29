@@ -6,7 +6,7 @@ use ReflectionMethod;
 
 trait Fillable
 {
-    public function fill(array $data): void
+    public function fill(array $data): self
     {
         if (property_exists($this, 'fillable')) {
             foreach ($this->fillable as $field) {
@@ -16,6 +16,7 @@ trait Fillable
                 }
             }
         }
+        return $this;
     }
 
     public function jsonSerialize(): string

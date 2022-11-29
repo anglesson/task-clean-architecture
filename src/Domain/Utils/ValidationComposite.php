@@ -4,20 +4,21 @@ declare(strict_types=1);
 
 namespace App\ToDo\Domain\Utils;
 
-use App\ToDo\Domain\Protocols\AbstractValidator;
+use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
 use Error;
 
-class ValidationComposite extends AbstractValidator
+class ValidationComposite implements IValidation
 {
-    /** @var AbstractValidator[] $validations */
-    public function __construct(private readonly array $validations)
-    {
+    /** @var IValidation[] $validations */
+    public function __construct(
+        private readonly array $validations
+    ) {
     }
 
-    public function validate(): ?Error
+    public function validate(mixed $input = null): ?Error
     {
         foreach ($this->validations as $validation) {
-            $error = $validation->validate();
+            $error = $validation->validate($input);
             if ($error) {
                 return $error;
             }

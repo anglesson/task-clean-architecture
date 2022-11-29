@@ -9,7 +9,6 @@ use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Domain\Protocols\UpdateTaskRepository;
 
 class MockRepository implements
-    CreateTaskRepository,
     FindTaskRepository,
     UpdateTaskRepository,
     ITaskRepository
