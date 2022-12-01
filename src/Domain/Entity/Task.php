@@ -10,7 +10,7 @@ class Task
 {
     use Fillable;
 
-    private $fillable = [
+    private array $fillable = [
         'description',
         'finished'
     ];
@@ -42,7 +42,7 @@ class Task
         return $this->description;
     }
 
-    public function setDescription(string $description)
+    public function setDescription(string $description): Task
     {
         if (!$description) {
             throw new InvalidParamError('description');
@@ -53,6 +53,7 @@ class Task
         }
 
         $this->description = $description;
+        return $this;
     }
 
     public function getFinished(): bool
@@ -60,8 +61,9 @@ class Task
         return $this->finished;
     }
 
-    public function setFinished(bool $finished)
+    public function setFinished(bool $finished): Task
     {
         $this->finished = $finished;
+        return $this;
     }
 }

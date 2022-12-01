@@ -25,7 +25,7 @@ class ValidationComposite implements IValidation
         foreach ($this->validations as $validation) {
             $error = $validation->validate($input);
             if ($error) {
-                return $error;
+                throw $error;
             }
         }
         return null;

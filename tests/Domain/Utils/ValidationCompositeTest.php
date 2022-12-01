@@ -36,18 +36,18 @@ class ValidationCompositeTest extends TestCase
     {
         /** @var  MockObject[] $validations */
         [$sut, $validations] = $this->sut;
+        $this->expectError();
         $validations[0]->method('validate')->willReturn(new \Error('Validation fails'));
-        $error = $sut->validate();
-        $this->assertInstanceOf(\Error::class, $error);
+        $sut->validate();
     }
 
     public function testShouldReturnTheFirstErrorIfMoreThanOneValidationFails()
     {
         /** @var  MockObject[] $validations */
         [$sut, $validations] = $this->sut;
+        $this->expectException(\CompileError::class);
         $validations[0]->method('validate')->willReturn(new \CompileError('Validation fails'));
         $validations[1]->method('validate')->willReturn(new \Error('Validation fails'));
-        $error = $sut->validate();
-        $this->assertInstanceOf(\CompileError::class, $error);
+        $sut->validate();
     }
 }

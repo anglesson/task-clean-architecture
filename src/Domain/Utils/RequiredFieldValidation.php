@@ -1,8 +1,9 @@
 <?php
 
-namespace App\ToDo\Domain\UseCases\CreateTask\Validators;
+namespace App\ToDo\Domain\Utils;
 
 use App\ToDo\Domain\Exceptions\MissingParamsError;
+use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
 use Error;
 
 class RequiredFieldValidation implements IValidation
