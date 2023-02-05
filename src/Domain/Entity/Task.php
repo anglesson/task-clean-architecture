@@ -61,9 +61,15 @@ class Task
         return $this->finished;
     }
 
-    public function setFinished(bool $finished): Task
+    public function done(): Task
     {
-        $this->finished = $finished;
+        $this->finished = true;
+        return $this;
+    }
+
+    public function undone(): Task
+    {
+        $this->finished = false;
         return $this;
     }
 }
