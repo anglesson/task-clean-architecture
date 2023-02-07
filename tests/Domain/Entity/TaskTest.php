@@ -27,4 +27,18 @@ class TaskTest extends TestCase
             'description'=> 'My Description has more than fift hundred caracters'
         ]);
     }
+
+    public function testShouldBeDoneTask()
+    {
+        $task = new Task();
+        $task->done();
+        self::assertTrue($task->getFinished());
+    }
+
+    public function testShouldUndoneTask()
+    {
+        $task = new Task();
+        $task->undone();
+        self::assertTrue(!$task->getFinished());
+    }
 }
