@@ -22,7 +22,7 @@ class UpdateTaskServiceImpl implements IUpdateTaskUseCase
     {
         $taskFounded = $this->findTaskService->find($input->id);
         $taskFounded->setDescription($input->description);
-        $taskFounded->setFinished($input->finished);
+        $taskFounded->done();
         $taskUpdated = $this->repository->update($taskFounded);
         return OutputUpdateTask::create($taskUpdated);
     }
