@@ -1,12 +1,12 @@
 <?php
 
-namespace Infrastructure\Repositories\Doctrine;
+namespace Test\Infrastructure\Repositories\Doctrine;
 
 use App\ToDo\Domain\Protocols\ListAllTasksRepository;
 use App\ToDo\Infrastructure\Repositories\Doctrine\DoctrineRepository;
 use PHPUnit\Framework\TestCase;
 
-class ListaAllTasksRepositoryTest extends TestCase
+class ListAllTasksRepositoryTest extends TestCase
 {
     public function testShouldImplementsAListAllTasksRepository()
     {
