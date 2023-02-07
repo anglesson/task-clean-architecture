@@ -13,18 +13,19 @@ use Psr\Http\Message\StreamInterface;
 
 class CreateTaskControllerTest extends TestCase
 {
-    protected ServerRequestInterface $request;
-    protected ResponseInterface $response;
+    /** @var ServerRequestInterface&\PHPUnit\Framework\MockObject\MockObject $request */
+    private $request;
+
+    /** @var ResponseInterface&\PHPUnit\Framework\MockObject\MockObject $response */
+    private $response;
 
     protected function setUp(): void
     {
-        $streamStub = $this->createStub(StreamInterface::class);
-        $requestStub = $this->createStub(ServerRequestInterface::class);
-        $responseStub = $this->createStub(ResponseInterface::class);
-        $responseStub->method('getBody')->willReturn($streamStub);
+        $this->request = $this->createStub(ServerRequestInterface::class);
+        $this->response = $this->createStub(ResponseInterface::class);
 
-        $this->request = $requestStub;
-        $this->response = $responseStub;
+        $streamStub = $this->createStub(StreamInterface::class);
+        $this->response->method('getBody')->willReturn($streamStub);
     }
 
     public function testShouldCallServiceWithCorrectValues()

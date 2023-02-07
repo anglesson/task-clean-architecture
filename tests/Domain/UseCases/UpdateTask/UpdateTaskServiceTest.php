@@ -4,7 +4,7 @@ namespace Test\Domain\UseCases\UpdateTask;
 
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
-use App\ToDo\Domain\UseCases\FindTaskServiceImpl;
+use App\ToDo\Domain\UseCases\FindTask\FindTaskServiceImpl;
 use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;
 use App\ToDo\Domain\UseCases\UpdateTask\UpdateTaskServiceImpl;
 use App\ToDo\Domain\Utils\ValidationComposite;
