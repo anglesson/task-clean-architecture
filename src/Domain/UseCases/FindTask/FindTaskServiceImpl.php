@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Domain\UseCases;
+namespace App\ToDo\Domain\UseCases\FindTask;
 
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;

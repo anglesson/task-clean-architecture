@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Domain\UseCases;
+namespace App\ToDo\Domain\UseCases\ListAllTasks;
 
 use App\ToDo\Domain\Protocols\ListAllTasksRepository;
 use App\ToDo\Domain\Protocols\ListAllTasksService;
