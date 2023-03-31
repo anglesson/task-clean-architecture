@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Main\Adapters;
+namespace App\ToDo\Main\Adapters\Slim;
 
 use App\ToDo\Application\Protocols\Http\Controller;
 use Psr\Http\Message\ResponseInterface as Response;
