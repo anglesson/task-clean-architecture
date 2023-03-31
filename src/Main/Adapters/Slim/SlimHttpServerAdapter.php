@@ -3,11 +3,11 @@ namespace App\ToDo\Main\Adapters\Slim;
 
 use App\ToDo\Application\Protocols\Http\Controller;
 use App\ToDo\Infrastructure\Api\HttpServer;
+use Slim\App;
 use Slim\Factory\AppFactory;
 
 class SlimHttpServerAdapter implements HttpServer {
-
-    private $app;
+    private App $app;
 
     public function __construct()
     {
