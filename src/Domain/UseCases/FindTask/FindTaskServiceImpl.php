@@ -4,21 +4,21 @@ namespace App\ToDo\Domain\UseCases\FindTask;
 
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
-use App\ToDo\Domain\Protocols\FindTaskRepository;
 use App\ToDo\Domain\Protocols\FindTaskService;
+use App\ToDo\Domain\Protocols\ITaskRepository;
 
 class FindTaskServiceImpl implements FindTaskService
 {
-    private FindTaskRepository $findTaskRepository;
+    private ITaskRepository $repository;
 
-    public function __construct(FindTaskRepository $findTaskRepository)
+    public function __construct(ITaskRepository $findTaskRepository)
     {
-        $this->findTaskRepository = $findTaskRepository;
+        $this->repository = $findTaskRepository;
     }
 
     public function find($idTask): Task
     {
-        $task = $this->findTaskRepository->findOne($idTask);
+        $task = $this->repository->findOne($idTask);
 
         if (!$task) {
             throw new TaskNotFoundException();

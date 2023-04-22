@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class EntityManagerCreator
 {
-    public function createEntityManager(): EntityManagerInterface
+    public static function createEntityManager(): EntityManagerInterface
     {
         $config = ORMSetup::createXMLMetadataConfiguration(array(__DIR__."/mappings"));
 

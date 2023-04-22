@@ -7,5 +7,5 @@ use App\ToDo\Domain\Entity\Task;
 interface ListAllTasksRepository
 {
     /** @return Task[] */
-    public function list();
+    public function list(): array;
 }

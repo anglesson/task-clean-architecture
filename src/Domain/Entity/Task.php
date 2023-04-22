@@ -10,6 +10,7 @@ class Task
 {
     use Fillable;
 
+    // TODO: Remove this attribute, it should stay on repository
     private array $fillable = [
         'description',
         'finished'

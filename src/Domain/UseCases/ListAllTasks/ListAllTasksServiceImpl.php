@@ -2,15 +2,16 @@
 
 namespace App\ToDo\Domain\UseCases\ListAllTasks;
 
-use App\ToDo\Domain\Protocols\ListAllTasksRepository;
+use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Domain\Protocols\ListAllTasksService;
 
 class ListAllTasksServiceImpl implements ListAllTasksService
 {
+    private ITaskRepository $repository;
 
-    public function __construct(
-        private readonly ListAllTasksRepository $repository
-    ) {
+    public function __construct(ITaskRepository $repository)
+    {
+        $this->repository = $repository;
     }
 
     public function list(): array
@@ -19,6 +20,6 @@ class ListAllTasksServiceImpl implements ListAllTasksService
         foreach ($allTasks as $task) {
             $todos[] = $task->toArray();
         }
-        return $todos;
+        return $todos ?? [];
     }
 }
