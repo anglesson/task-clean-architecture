@@ -2,15 +2,15 @@
 
 namespace Test\Application\Api;
 
+use App\ToDo\Application\Api\CreateTaskController;
 use App\ToDo\Application\Api\ReadTaskController;
-use App\ToDo\Domain\Protocols\FindTaskService;
+use App\ToDo\Domain\Exceptions\MissingParamsError;
+use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
+use App\ToDo\Domain\UseCases\FindTask\FindTaskService;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
-use App\ToDo\Application\Api\CreateTaskController;
-use App\ToDo\Domain\Exceptions\MissingParamsError;
+use Psr\Http\Message\StreamInterface;
 
 class ReadTaskControllerTest extends TestCase
 {

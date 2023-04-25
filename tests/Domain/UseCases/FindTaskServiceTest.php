@@ -2,10 +2,10 @@
 
 namespace Test\Domain\UseCases;
 
+use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCase;
+use App\ToDo\Application\UseCases\CreateTask\InputCreateTask;
+use App\ToDo\Application\UseCases\FindTask\FindTaskServiceImpl;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
-use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
-use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
-use App\ToDo\Domain\UseCases\FindTask\FindTaskServiceImpl;
 use App\ToDo\Domain\Utils\ValidationComposite;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;

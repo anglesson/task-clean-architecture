@@ -1,9 +1,9 @@
 <?php
 
-namespace App\ToDo\Domain\UseCases\ListAllTasks;
+namespace App\ToDo\Application\UseCases\ListAllTasks;
 
 use App\ToDo\Domain\Protocols\ITaskRepository;
-use App\ToDo\Domain\Protocols\ListAllTasksService;
+use App\ToDo\Domain\UseCases\ListAllTasks\ListAllTasksService;
 
 class ListAllTasksServiceImpl implements ListAllTasksService
 {

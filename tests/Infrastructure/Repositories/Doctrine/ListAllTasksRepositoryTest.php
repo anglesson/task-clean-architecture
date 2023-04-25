@@ -2,7 +2,7 @@
 
 namespace Test\Infrastructure\Repositories\Doctrine;
 
-use App\ToDo\Domain\Protocols\ListAllTasksRepository;
+use App\ToDo\Domain\UseCases\ListAllTasks\ListAllTasksRepository;
 use App\ToDo\Infrastructure\Repositories\Doctrine\TaskDoctrineRepository;
 use PHPUnit\Framework\TestCase;
 

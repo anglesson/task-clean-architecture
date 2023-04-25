@@ -3,8 +3,8 @@
 namespace App\ToDo\Application\Api;
 
 use App\ToDo\Application\Protocols\Http\Controller;
+use App\ToDo\Application\UseCases\UpdateTask\InputUpdateTask;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
-use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;
 use App\ToDo\Domain\UseCases\UpdateTask\IUpdateTaskUseCase;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

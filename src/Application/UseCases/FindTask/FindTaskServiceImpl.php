@@ -1,11 +1,11 @@
 <?php
 
-namespace App\ToDo\Domain\UseCases\FindTask;
+namespace App\ToDo\Application\UseCases\FindTask;
 
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
-use App\ToDo\Domain\Protocols\FindTaskService;
 use App\ToDo\Domain\Protocols\ITaskRepository;
+use App\ToDo\Domain\UseCases\FindTask\FindTaskService;
 
 class FindTaskServiceImpl implements FindTaskService
 {

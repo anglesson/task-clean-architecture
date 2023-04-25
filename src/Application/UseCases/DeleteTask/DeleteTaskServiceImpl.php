@@ -1,10 +1,10 @@
 <?php
 
-namespace App\ToDo\Domain\UseCases\DeleteTask;
+namespace App\ToDo\Application\UseCases\DeleteTask;
 
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
-use App\ToDo\Domain\Protocols\DeleteTaskService;
 use App\ToDo\Domain\Protocols\ITaskRepository;
+use App\ToDo\Domain\UseCases\DeleteTask\DeleteTaskService;
 
 class DeleteTaskServiceImpl implements DeleteTaskService
 {

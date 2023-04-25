@@ -1,10 +1,11 @@
 <?php
 
-namespace App\ToDo\Domain\UseCases\CreateTask;
+namespace App\ToDo\Application\UseCases\CreateTask;
 
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
+use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
 
 class CreateTaskUseCase implements ICreateTaskUseCase

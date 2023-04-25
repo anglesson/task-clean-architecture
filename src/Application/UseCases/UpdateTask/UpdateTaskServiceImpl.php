@@ -1,12 +1,10 @@
 <?php
 
-namespace App\ToDo\Domain\UseCases\UpdateTask;
+namespace App\ToDo\Application\UseCases\UpdateTask;
 
-use App\ToDo\Domain\Protocols\FindTaskService;
 use App\ToDo\Domain\Protocols\ITaskRepository;
-use App\ToDo\Domain\Protocols\UpdateTaskRepository;
+use App\ToDo\Domain\UseCases\FindTask\FindTaskService;
 use App\ToDo\Domain\UseCases\UpdateTask\IUpdateTaskUseCase;
-use App\ToDo\Domain\UseCases\UpdateTask\OutputUpdateTask;
 
 class UpdateTaskServiceImpl implements IUpdateTaskUseCase
 {

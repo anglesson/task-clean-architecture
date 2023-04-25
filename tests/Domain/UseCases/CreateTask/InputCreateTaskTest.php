@@ -3,7 +3,7 @@
 namespace Test\Domain\UseCases\CreateTask;
 
 use App\ToDo\Application\DTO\DataTransferObject;
-use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
+use App\ToDo\Application\UseCases\CreateTask\InputCreateTask;
 use PHPUnit\Framework\TestCase;
 
 class InputCreateTaskTest extends TestCase

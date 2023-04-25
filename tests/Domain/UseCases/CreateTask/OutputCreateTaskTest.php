@@ -2,8 +2,8 @@
 namespace Test\Domain\UseCases\CreateTask;
 
 use App\ToDo\Application\DTO\DataTransferObject;
+use App\ToDo\Application\UseCases\CreateTask\OutputCreateTask;
 use App\ToDo\Domain\Entity\Task;
-use App\ToDo\Domain\UseCases\CreateTask\OutputCreateTask;
 use PHPUnit\Framework\TestCase;
 
 class OutputCreateTaskTest extends TestCase

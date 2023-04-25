@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Domain\UseCases\UpdateTask;
+namespace App\ToDo\Application\UseCases\UpdateTask;
 
 use App\ToDo\Application\DTO\DataTransferObject;
 use App\ToDo\Domain\Entity\Task;

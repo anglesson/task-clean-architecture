@@ -1,7 +1,8 @@
 <?php
 
-namespace App\ToDo\Domain\UseCases\CreateTask\Validators;
+namespace App\ToDo\Application\UseCases\CreateTask\Validators;
 
+use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
 use App\ToDo\Domain\Utils\RequiredFieldValidation;
 use App\ToDo\Domain\Utils\ValidationComposite;
 

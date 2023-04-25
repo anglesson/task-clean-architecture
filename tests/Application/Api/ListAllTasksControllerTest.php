@@ -4,7 +4,7 @@ namespace Application\Api;
 
 use App\ToDo\Application\Api\ListAllTaskController;
 use App\ToDo\Application\Protocols\Http\Controller;
-use App\ToDo\Domain\Protocols\ListAllTasksService;
+use App\ToDo\Domain\UseCases\ListAllTasks\ListAllTasksService;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Http\Message\ResponseInterface as Response;

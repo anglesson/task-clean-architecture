@@ -3,13 +3,13 @@
 namespace Test\Application\Api;
 
 use App\ToDo\Application\Api\UpdateTaskController;
+use App\ToDo\Application\UseCases\UpdateTask\InputUpdateTask;
+use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\UseCases\UpdateTask\IUpdateTaskUseCase;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use App\ToDo\Domain\Exceptions\MissingParamsError;
-use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;
+use Psr\Http\Message\StreamInterface;
 
 class UpdateTaskControllerTest extends TestCase
 {

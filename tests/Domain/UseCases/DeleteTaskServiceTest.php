@@ -2,11 +2,11 @@
 
 namespace Test\Domain\UseCases;
 
+use App\ToDo\Application\UseCases\DeleteTask\DeleteTaskServiceImpl;
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
-use App\ToDo\Domain\Protocols\DeleteTaskService;
 use App\ToDo\Domain\Protocols\ITaskRepository;
-use App\ToDo\Domain\UseCases\DeleteTask\DeleteTaskServiceImpl;
+use App\ToDo\Domain\UseCases\DeleteTask\DeleteTaskService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

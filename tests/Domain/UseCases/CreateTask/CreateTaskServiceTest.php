@@ -2,16 +2,12 @@
 
 namespace Test\Domain\UseCases\CreateTask;
 
+use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCase;
+use App\ToDo\Application\UseCases\CreateTask\InputCreateTask;
 use App\ToDo\Domain\Entity\Task;
-use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
-use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
-use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
-use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
-use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
-use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

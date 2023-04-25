@@ -2,8 +2,8 @@
 
 namespace App\ToDo\Domain\UseCases\UpdateTask;
 
-use App\ToDo\Domain\UseCases\UpdateTask\OutputUpdateTask;
-use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;
+use App\ToDo\Application\UseCases\UpdateTask\InputUpdateTask;
+use App\ToDo\Application\UseCases\UpdateTask\OutputUpdateTask;
 
 interface IUpdateTaskUseCase
 {

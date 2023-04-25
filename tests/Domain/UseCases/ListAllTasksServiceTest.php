@@ -2,11 +2,11 @@
 
 namespace Test\Domain\UseCases;
 
+use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCase;
+use App\ToDo\Application\UseCases\FindTask\FindTaskServiceImpl;
+use App\ToDo\Application\UseCases\ListAllTasks\ListAllTasksServiceImpl;
 use App\ToDo\Domain\Entity\Task;
-use App\ToDo\Domain\Protocols\ListAllTasksRepository;
-use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
-use App\ToDo\Domain\UseCases\FindTask\FindTaskServiceImpl;
-use App\ToDo\Domain\UseCases\ListAllTasks\ListAllTasksServiceImpl;
+use App\ToDo\Domain\UseCases\ListAllTasks\ListAllTasksRepository;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 use PHPUnit\Framework\TestCase;
