@@ -19,23 +19,16 @@ class Task
     private string $description;
     private bool $finished;
 
-    public function __construct()
+    public function __construct(string $description, string $id = null)
     {
-        $this->id = null;
+        $this->setDescription($description);
         $this->finished = false;
+        $this->id = $id;
     }
 
     public function getId(): ?string
     {
         return $this->id;
-    }
-
-    public function setId(string $id): self
-    {
-        if (!isset($this->id) && is_null($this->id)) {
-            $this->id = $id;
-        }
-        return $this;
     }
 
     public function getDescription(): string
