@@ -21,7 +21,7 @@ class CreateTaskUseCase implements ICreateTaskUseCase
         $this->validation = $validation;
     }
 
-    public function create(InputCreateTask $inputCreateTask): OutputCreateTask
+    public function execute(InputCreateTask $inputCreateTask): OutputCreateTask
     {
         $this->validation->validate($inputCreateTask->toArray());
 

@@ -5,9 +5,9 @@ namespace App\ToDo\Application\UseCases\FindTask;
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
 use App\ToDo\Domain\Protocols\ITaskRepository;
-use App\ToDo\Domain\UseCases\FindTask\FindTaskService;
+use App\ToDo\Domain\UseCases\FindTask\IFindTaskUseCase;
 
-class FindTaskServiceImpl implements FindTaskService
+class IFindTaskUseCaseImpl implements IFindTaskUseCase
 {
     private ITaskRepository $repository;
 
@@ -16,7 +16,7 @@ class FindTaskServiceImpl implements FindTaskService
         $this->repository = $findTaskRepository;
     }
 
-    public function find($idTask): Task
+    public function execute($idTask): Task
     {
         $task = $this->repository->findOne($idTask);
 

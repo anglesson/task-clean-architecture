@@ -4,7 +4,7 @@ namespace Test\Domain\UseCases;
 
 use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Application\UseCases\CreateTask\InputCreateTask;
-use App\ToDo\Application\UseCases\FindTask\FindTaskServiceImpl;
+use App\ToDo\Application\UseCases\FindTask\IFindTaskUseCaseImpl;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
 use App\ToDo\Domain\Utils\ValidationComposite;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
@@ -18,13 +18,13 @@ class FindTaskServiceTest extends TestCase
         $repository = new MockRepository();
         $validation = new ValidationComposite([]);
         $createTaskService = new CreateTaskUseCase($repository, new RamseyUuidImpl(), $validation);
-        $findTaskService = new FindTaskServiceImpl($repository);
+        $findTaskService = new IFindTaskUseCaseImpl($repository);
 
         $data = ['description' => 'any_description'];
         $inputCreateTask = InputCreateTask::create($data);
 
-        $outputCreateTask = $createTaskService->create($inputCreateTask);
-        $taskFinded = $findTaskService->find($outputCreateTask->id);
+        $outputCreateTask = $createTaskService->execute($inputCreateTask);
+        $taskFinded = $findTaskService->execute($outputCreateTask->id);
 
         $this->assertEquals($taskFinded->getId(), $outputCreateTask->id);
     }
@@ -33,8 +33,8 @@ class FindTaskServiceTest extends TestCase
     {
         $this->expectException(TaskNotFoundException::class);
         $repository = new MockRepository();
-        $findTaskService = new FindTaskServiceImpl($repository);
+        $findTaskService = new IFindTaskUseCaseImpl($repository);
 
-        $findTaskService->find('any_id');
+        $findTaskService->execute('any_id');
     }
 }

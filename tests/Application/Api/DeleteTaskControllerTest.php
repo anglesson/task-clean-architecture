@@ -3,7 +3,7 @@
 namespace Test\Application\Api;
 
 use App\ToDo\Application\Api\DeleteTaskController;
-use App\ToDo\Domain\UseCases\DeleteTask\DeleteTaskService;
+use App\ToDo\Domain\UseCases\DeleteTask\IDeleteTaskUseCase;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -37,10 +37,10 @@ class DeleteTaskControllerTest extends TestCase
             ->method('withStatus')
             ->willReturnSelf();
 
-        $service = $this->createMock(DeleteTaskService::class);
+        $service = $this->createMock(IDeleteTaskUseCase::class);
         $service
             ->expects($this->once())
-            ->method('delete')
+            ->method('execute')
             ->with($id);
 
         (new DeleteTaskController($service))
@@ -66,10 +66,10 @@ class DeleteTaskControllerTest extends TestCase
             ->method('getStatusCode')
             ->willReturn($statusCodeExpected);
 
-        $service = $this->createMock(DeleteTaskService::class);
+        $service = $this->createMock(IDeleteTaskUseCase::class);
         $service
             ->expects($this->once())
-            ->method('delete')
+            ->method('execute')
             ->with($id);
 
         $response = (new DeleteTaskController($service))->handle($this->request, $this->response);

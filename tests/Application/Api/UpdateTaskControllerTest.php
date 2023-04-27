@@ -51,7 +51,7 @@ class UpdateTaskControllerTest extends TestCase
         $service = $this->createMock(IUpdateTaskUseCase::class);
         $service
             ->expects($this->once())
-            ->method('update')
+            ->method('execute')
             ->with($data);
 
         $controller = new UpdateTaskController($service);

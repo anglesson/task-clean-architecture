@@ -25,7 +25,7 @@ class UpdateTaskController implements Controller
         }
         $inputUpdateTask = InputUpdateTask::create($request->getParsedBody());
         $inputUpdateTask->id = $request->getAttribute('id');
-        $outputUpdateTask = $this->service->update($inputUpdateTask);
+        $outputUpdateTask = $this->service->execute($inputUpdateTask);
         $response->getBody()->write($outputUpdateTask->toJson());
         return $response;
     }

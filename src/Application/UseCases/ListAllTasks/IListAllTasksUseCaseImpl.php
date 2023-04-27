@@ -3,9 +3,9 @@
 namespace App\ToDo\Application\UseCases\ListAllTasks;
 
 use App\ToDo\Domain\Protocols\ITaskRepository;
-use App\ToDo\Domain\UseCases\ListAllTasks\ListAllTasksService;
+use App\ToDo\Domain\UseCases\ListAllTasks\IListAllTasksUseCase;
 
-class ListAllTasksServiceImpl implements ListAllTasksService
+class IListAllTasksUseCaseImpl implements IListAllTasksUseCase
 {
     private ITaskRepository $repository;
 
@@ -14,7 +14,7 @@ class ListAllTasksServiceImpl implements ListAllTasksService
         $this->repository = $repository;
     }
 
-    public function list(): array
+    public function execute(): array
     {
         $allTasks = $this->repository->list();
         foreach ($allTasks as $task) {

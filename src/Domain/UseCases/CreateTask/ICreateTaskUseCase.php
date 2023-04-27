@@ -7,5 +7,5 @@ use App\ToDo\Application\UseCases\CreateTask\OutputCreateTask;
 
 interface ICreateTaskUseCase
 {
-    public function create(InputCreateTask $inputCreateTask): OutputCreateTask;
+    public function execute(InputCreateTask $inputCreateTask): OutputCreateTask;
 }

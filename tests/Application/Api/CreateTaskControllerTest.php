@@ -36,7 +36,7 @@ class CreateTaskControllerTest extends TestCase
 
         $inputCreateTask = InputCreateTask::create($data);
         $service = $this->createMock(ICreateTaskUseCase::class);
-        $service->expects($this->once())->method('create')->with($inputCreateTask);
+        $service->expects($this->once())->method('execute')->with($inputCreateTask);
 
         $controller = new CreateTaskController($service);
         $controller->handle($this->request, $this->response);

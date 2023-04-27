@@ -4,16 +4,16 @@ namespace App\ToDo\Application\UseCases\DeleteTask;
 
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
 use App\ToDo\Domain\Protocols\ITaskRepository;
-use App\ToDo\Domain\UseCases\DeleteTask\DeleteTaskService;
+use App\ToDo\Domain\UseCases\DeleteTask\IDeleteTaskUseCase;
 
-class DeleteTaskServiceImpl implements DeleteTaskService
+class IDeleteTaskUseCaseImpl implements IDeleteTaskUseCase
 {
     public function __construct(
         private ITaskRepository $repository
     ) {
     }
 
-    public function delete(string $idTask): void
+    public function execute(string $idTask): void
     {
         $task = $this->repository->findOne($idTask);
         if (!$task) {

@@ -7,5 +7,5 @@ use App\ToDo\Application\UseCases\UpdateTask\OutputUpdateTask;
 
 interface IUpdateTaskUseCase
 {
-    public function update(InputUpdateTask $inputUpdateTask): OutputUpdateTask;
+    public function execute(InputUpdateTask $inputUpdateTask): OutputUpdateTask;
 }

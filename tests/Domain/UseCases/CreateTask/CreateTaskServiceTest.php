@@ -30,7 +30,7 @@ class CreateTaskServiceTest extends TestCase
         [$sut, $repository] = $this->sut;
         $inputCreateTask = InputCreateTask::create(['description' => 'any_description']);
         $repository->method('save')->willReturn((new Task())->fill($inputCreateTask->toArray()));
-        $outputCreateTask = $sut->create($inputCreateTask);
+        $outputCreateTask = $sut->execute($inputCreateTask);
         $this->assertEquals('any_description', $outputCreateTask->description);
     }
 
@@ -43,6 +43,6 @@ class CreateTaskServiceTest extends TestCase
         [$sut,,, $validation] = $this->sut;
         $inputCreateTask = InputCreateTask::create(['description' => 'any_description']);
         $validation->expects($this->once())->method('validate');
-        $sut->create($inputCreateTask);
+        $sut->execute($inputCreateTask);
     }
 }

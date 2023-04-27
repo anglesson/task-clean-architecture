@@ -4,7 +4,7 @@ namespace App\ToDo\Domain\UseCases\FindTask;
 
 use App\ToDo\Domain\Entity\Task;
 
-interface FindTaskService
+interface IFindTaskUseCase
 {
-    public function find($idTask): Task;
+    public function execute($idTask): Task;
 }

@@ -3,8 +3,8 @@
 namespace Test\Domain\UseCases;
 
 use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCase;
-use App\ToDo\Application\UseCases\FindTask\FindTaskServiceImpl;
-use App\ToDo\Application\UseCases\ListAllTasks\ListAllTasksServiceImpl;
+use App\ToDo\Application\UseCases\FindTask\IFindTaskUseCaseImpl;
+use App\ToDo\Application\UseCases\ListAllTasks\IListAllTasksUseCaseImpl;
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\UseCases\ListAllTasks\ListAllTasksRepository;
 use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
@@ -17,7 +17,7 @@ class ListAllTasksServiceTest extends TestCase
     {
         $repository = new MockRepository();
         $createTaskService = new CreateTaskUseCase($repository, new RamseyUuidImpl());
-        $findTaskService = new FindTaskServiceImpl($repository);
+        $findTaskService = new IFindTaskUseCaseImpl($repository);
         return array($createTaskService, $findTaskService);
     }
 
@@ -31,8 +31,8 @@ class ListAllTasksServiceTest extends TestCase
             $this->createMock(Task::class),
         ]);
 
-        $service = new ListAllTasksServiceImpl($repository);
-        $tasks = $service->list();
+        $service = new IListAllTasksUseCaseImpl($repository);
+        $tasks = $service->execute();
         $this->assertIsArray($tasks);
         $this->assertCount(3, $tasks);
     }

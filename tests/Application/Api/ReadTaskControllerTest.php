@@ -6,7 +6,7 @@ use App\ToDo\Application\Api\CreateTaskController;
 use App\ToDo\Application\Api\ReadTaskController;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
-use App\ToDo\Domain\UseCases\FindTask\FindTaskService;
+use App\ToDo\Domain\UseCases\FindTask\IFindTaskUseCase;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -37,10 +37,10 @@ class ReadTaskControllerTest extends TestCase
             ->method('getAttribute')
             ->willReturn($attribute);
 
-        $service = $this->createMock(FindTaskService::class);
+        $service = $this->createMock(IFindTaskUseCase::class);
         $service
             ->expects($this->once())
-            ->method('find')
+            ->method('execute')
             ->with($attribute);
 
         $controller = new ReadTaskController($service);
