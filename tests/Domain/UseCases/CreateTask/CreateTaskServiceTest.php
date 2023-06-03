@@ -32,6 +32,7 @@ class CreateTaskServiceTest extends TestCase
         $repository->method('save')->willReturn((new Task($inputCreateTask->description)));
         $outputCreateTask = $sut->execute($inputCreateTask);
         $this->assertEquals('any_description', $outputCreateTask->description);
+        $this->assertFalse($outputCreateTask->finished);
     }
 
     public function testShouldCallValidate()
