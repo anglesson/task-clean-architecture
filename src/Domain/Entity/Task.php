@@ -18,12 +18,15 @@ class Task
     private ?string $id;
     private string $description;
     private bool $finished;
+    private \DateTime $createAt;
 
     public function __construct(string $description, string $id = null)
     {
         $this->description = $description;
         $this->finished = false;
         $this->id = $id;
+        $this->createAt = new \DateTime();
+
         $this->validate();
     }
 
@@ -59,6 +62,11 @@ class Task
     {
         $this->finished = false;
         return $this;
+    }
+
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createAt;
     }
 
     private function validate(): void
