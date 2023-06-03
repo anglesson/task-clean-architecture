@@ -21,9 +21,10 @@ class Task
 
     public function __construct(string $description, string $id = null)
     {
-        $this->setDescription($description);
+        $this->description = $description;
         $this->finished = false;
         $this->id = $id;
+        $this->validate();
     }
 
     public function getId(): ?string
@@ -38,15 +39,8 @@ class Task
 
     public function setDescription(string $description): Task
     {
-        if (!$description) {
-            throw new InvalidParamError('description');
-        }
-
-        if (strlen($description) > 50) {
-            throw new DescriptionHasMoreThan50Caracters();
-        }
-
         $this->description = $description;
+        $this->validate();
         return $this;
     }
 
@@ -65,5 +59,16 @@ class Task
     {
         $this->finished = false;
         return $this;
+    }
+
+    private function validate(): void
+    {
+        if (!$this->description) {
+            throw new InvalidParamError('description');
+        }
+
+        if (strlen($this->description) > 50) {
+            throw new DescriptionHasMoreThan50Caracters();
+        }
     }
 }
