@@ -40,4 +40,14 @@ class TaskTest extends TestCase
         $task->undone();
         $this->assertTrue(!$task->getFinished());
     }
+
+    public function testGetSetCreatedAt()
+    {
+        $format = 'Y-m-d H:i:s';
+
+        $task = new Task('any_description');
+        $currentTime = new \DateTime();
+
+        $this->assertEquals($currentTime->format($format), $task->getCreatedAt()->format($format));
+    }
 }
