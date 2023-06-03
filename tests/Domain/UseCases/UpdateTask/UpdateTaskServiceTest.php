@@ -8,7 +8,7 @@ use App\ToDo\Application\UseCases\FindTask\IFindTaskUseCaseImpl;
 use App\ToDo\Application\UseCases\UpdateTask\InputUpdateTask;
 use App\ToDo\Application\UseCases\UpdateTask\UpdateTaskServiceImpl;
 use App\ToDo\Domain\Utils\ValidationComposite;
-use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
+use App\ToDo\Infrastructure\Repositories\InMemory\InMemoryRepository;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 use PHPUnit\Framework\TestCase;
 
@@ -17,7 +17,7 @@ class UpdateTaskServiceTest extends TestCase
     public function testShouldBeUpdateATask()
     {
         $ramseyUuid = new RamseyUuidImpl();
-        $repository = new MockRepository();
+        $repository = new InMemoryRepository();
         $validation = new ValidationComposite([]);
         $createTaskService = new CreateTaskUseCase($repository, $ramseyUuid, $validation);
         $findTaskService = new IFindTaskUseCaseImpl($repository);

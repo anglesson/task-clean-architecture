@@ -9,7 +9,7 @@ use App\ToDo\Domain\UseCases\DeleteTask\IDeleteTaskUseCase;
 class IDeleteTaskUseCaseImpl implements IDeleteTaskUseCase
 {
     public function __construct(
-        private ITaskRepository $repository
+        private readonly ITaskRepository $repository
     ) {
     }
 

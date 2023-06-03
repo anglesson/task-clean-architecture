@@ -4,13 +4,8 @@ namespace App\ToDo\Infrastructure\Repositories\InMemory;
 
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\ITaskRepository;
-use App\ToDo\Domain\UseCases\FindTask\FindTaskRepository;
-use App\ToDo\Domain\UseCases\UpdateTask\UpdateTaskRepository;
 
-class MockRepository implements
-    FindTaskRepository,
-    UpdateTaskRepository,
-    ITaskRepository
+class InMemoryRepository implements ITaskRepository
 {
     private array $tasks = [];
 
@@ -43,7 +38,7 @@ class MockRepository implements
         unset($this->tasks[$key]);
     }
 
-    public function getAllTasks()
+    public function list(): array
     {
         return $this->tasks;
     }

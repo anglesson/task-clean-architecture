@@ -11,7 +11,7 @@ class OutputCreateTask extends DataTransferObject
     public ?string $description;
     public ?bool $finished;
 
-    public static function create(Task $task)
+    public static function create(Task $task): OutputCreateTask
     {
         return new self($task->toArray());
     }

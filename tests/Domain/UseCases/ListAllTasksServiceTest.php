@@ -6,8 +6,10 @@ use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Application\UseCases\FindTask\IFindTaskUseCaseImpl;
 use App\ToDo\Application\UseCases\ListAllTasks\IListAllTasksUseCaseImpl;
 use App\ToDo\Domain\Entity\Task;
+use App\ToDo\Domain\Protocols\ITaskRepository;
+use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
 use App\ToDo\Domain\UseCases\ListAllTasks\ListAllTasksRepository;
-use App\ToDo\Infrastructure\Repositories\InMemory\MockRepository;
+use App\ToDo\Infrastructure\Repositories\InMemory\InMemoryRepository;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 use PHPUnit\Framework\TestCase;
 
@@ -15,15 +17,16 @@ class ListAllTasksServiceTest extends TestCase
 {
     public function makeService(): array
     {
-        $repository = new MockRepository();
-        $createTaskService = new CreateTaskUseCase($repository, new RamseyUuidImpl());
+        $validation = $this->createMock(IValidation::class);
+        $repository = new InMemoryRepository();
+        $createTaskService = new CreateTaskUseCase($repository, new RamseyUuidImpl(), $validation);
         $findTaskService = new IFindTaskUseCaseImpl($repository);
         return array($createTaskService, $findTaskService);
     }
 
     public function testShouldListAllTasks()
     {
-        $repository = $this->createStub(ListAllTasksRepository::class);
+        $repository = $this->createStub(ITaskRepository::class);
 
         $repository->method('list')->willReturn([
             $this->createMock(Task::class),

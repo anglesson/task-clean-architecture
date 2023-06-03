@@ -29,12 +29,12 @@ class CreateTaskServiceTest extends TestCase
         /** @var CreateTaskUseCase $sut */
         [$sut, $repository] = $this->sut;
         $inputCreateTask = InputCreateTask::create(['description' => 'any_description']);
-        $repository->method('save')->willReturn((new Task())->fill($inputCreateTask->toArray()));
+        $repository->method('save')->willReturn((new Task($inputCreateTask->description)));
         $outputCreateTask = $sut->execute($inputCreateTask);
         $this->assertEquals('any_description', $outputCreateTask->description);
     }
 
-    public function testSholdCallValidate()
+    public function testShouldCallValidate()
     {
         /**
          * @var CreateTaskUseCase $sut

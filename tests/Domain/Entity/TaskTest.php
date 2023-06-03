@@ -10,35 +10,34 @@ class TaskTest extends TestCase
 {
     public function testShouldBePopulateEntityTaskOnlyDescription()
     {
-        $task = new Task();
-        $task->fill([
-            'id' => 12,
-            'description'=> 'My Description'
-        ]);
-        $this->assertEquals(is_null($task->getDescription()), false);
-        $this->assertEquals(is_null($task->getId()), true);
+        $description = 'any_description';
+
+        $task = new Task($description);
+
+        $this->assertFalse(is_null($task->getDescription()));
+        $this->assertTrue(is_null($task->getId()));
     }
 
     public function testShouldThrowsIfLenghtDescriptionMoreThan50Caracters()
     {
+        $description = 'My Description has more than fifty hundred characters';
         $this->expectException(DescriptionHasMoreThan50Caracters::class);
-        $task = new Task();
-        $task->fill([
-            'description'=> 'My Description has more than fift hundred caracters'
-        ]);
+        $task = new Task($description);
     }
 
     public function testShouldBeDoneTask()
     {
-        $task = new Task();
+        $description = 'any_description';
+        $task = new Task($description);
         $task->done();
-        self::assertTrue($task->getFinished());
+        $this->assertTrue($task->getFinished());
     }
 
     public function testShouldUndoneTask()
     {
-        $task = new Task();
+        $description = 'any_description';
+        $task = new Task($description);
         $task->undone();
-        self::assertTrue(!$task->getFinished());
+        $this->assertTrue(!$task->getFinished());
     }
 }

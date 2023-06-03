@@ -12,47 +12,40 @@ use PHPUnit\Framework\TestCase;
 
 class DeleteTaskServiceTest extends TestCase
 {
-    private array $sut;
+    private IDeleteTaskUseCaseImpl $sut;
+    private ITaskRepository $taskRepositoryMock;
 
     public function setUp(): void
     {
-        $repositoryMock = $this->createMock(ITaskRepository::class);
-        $deleteService = new IDeleteTaskUseCaseImpl($repositoryMock);
+        $taskRepositoryMock = $this->createMock(ITaskRepository::class);
+        $deleteService = new IDeleteTaskUseCaseImpl($taskRepositoryMock);
 
-        $this->sut = [
-            $deleteService,
-            $repositoryMock
-        ];
+        $this->sut = $deleteService;
+        $this->taskRepositoryMock = $taskRepositoryMock;
     }
 
     public function testShouldBeDeleteATaskById()
     {
-        /**
-         * @var IDeleteTaskUseCase $sut
-         * @var MockObject $repository
-         */
-        [$sut, $repository] = $this->sut;
-        $repository
+        $idTask = 'any_id';
+
+        $this->taskRepositoryMock
             ->method('findOne')
-            ->willReturn((new Task())->setId('any_id'));
-        $repository
+            ->willReturn(new Task( 'any_description', $idTask));
+
+        $this->taskRepositoryMock
             ->expects($this->once())
             ->method('delete')
-            ->with('any_id');
-        $sut->execute('any_id');
+            ->with($idTask);
+
+        $this->sut->execute($idTask);
     }
 
     public function testShouldThrowsExceptionIfTaskNotFound()
     {
-        /**
-         * @var IDeleteTaskUseCase $sut
-         * @var MockObject $repository
-         */
-        [$sut, $repository] = $this->sut;
-        $repository
+        $this->taskRepositoryMock
             ->method('findOne')
             ->willReturn(null);
         $this->expectException(TaskNotFoundException::class);
-        $sut->execute('any_id');
+        $this->sut->execute('any_id');
     }
 }
