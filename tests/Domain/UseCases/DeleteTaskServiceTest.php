@@ -27,10 +27,14 @@ class DeleteTaskServiceTest extends TestCase
     public function testShouldBeDeleteATaskById()
     {
         $idTask = 'any_id';
+        $taskStub = $this->createStub(Task::class);
+
+        $taskStub->method('getId')
+            ->willReturn($idTask);
 
         $this->taskRepositoryMock
             ->method('findOne')
-            ->willReturn(new Task( 'any_description', $idTask));
+            ->willReturn($taskStub);
 
         $this->taskRepositoryMock
             ->expects($this->once())

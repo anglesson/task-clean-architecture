@@ -7,7 +7,7 @@ use App\ToDo\Domain\Exceptions\TaskNotFoundException;
 use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Domain\UseCases\FindTask\IFindTaskUseCase;
 
-class IFindTaskUseCaseImpl implements IFindTaskUseCase
+class FindTaskUseCaseImpl implements IFindTaskUseCase
 {
     private ITaskRepository $repository;
 

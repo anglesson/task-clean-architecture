@@ -7,27 +7,24 @@ use App\ToDo\Domain\Exceptions\InvalidParamError;
 use App\ToDo\Domain\Utils\Fillable;
 use DateTime;
 
-class Task
+class Task extends Entity
 {
     use Fillable;
-
     // TODO: Remove this attribute, it should stay on repository
     private array $fillable = [
         'description',
         'finished'
     ];
-    private ?string $id;
     private string $description;
     private bool $finished;
     private DateTime $createdAt;
     private ?DateTime $updatedAt;
 
     // TODO: Remove ID on constructor
-    public function __construct(string $description, string $id = null)
+    public function __construct(string $description)
     {
         $this->description = $description;
         $this->finished = false;
-        $this->id = $id;
         $this->createdAt = new DateTime();
         $this->updatedAt = null;
 
@@ -43,11 +40,6 @@ class Task
         if (strlen($this->description) > 50) {
             throw new DescriptionHasMoreThan50Caracters();
         }
-    }
-
-    public function getId(): ?string
-    {
-        return $this->id;
     }
 
     public function getDescription(): string

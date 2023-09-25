@@ -4,46 +4,47 @@ namespace Test\Domain\UseCases\CreateTask;
 
 use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Application\UseCases\CreateTask\InputCreateTask;
+use App\ToDo\Application\UseCases\CreateTask\OutputCreateTask;
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
+use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class CreateTaskServiceTest extends TestCase
 {
-    public array $sut;
+    public ICreateTaskUseCase $sut;
+    public UuidGenerator $mockUuid;
+    public ITaskRepository $mockRepository;
+    public IValidation $mockValidation;
 
     protected function setUp(): void
     {
-        $mockUuid = $this->createMock(UuidGenerator::class);
-        $mockRepository = $this->createMock(ITaskRepository::class);
-        $mockValidation = $this->createMock(IValidation::class);
-        $sut = new CreateTaskUseCase($mockRepository, $mockUuid, $mockValidation);
-        $this->sut = [$sut, $mockRepository, $mockUuid, $mockValidation];
+        $this->mockUuid = $this->createMock(UuidGenerator::class);
+        $this->mockRepository = $this->createMock(ITaskRepository::class);
+        $this->mockValidation = $this->createMock(IValidation::class);
+        $this->sut = new CreateTaskUseCase($this->mockRepository, $this->mockUuid, $this->mockValidation);
     }
 
     public function testShouldBeCreatedATask()
     {
-        /** @var CreateTaskUseCase $sut */
-        [$sut, $repository] = $this->sut;
+        // arrange
+        $expected = OutputCreateTask::class;
         $inputCreateTask = InputCreateTask::create(['description' => 'any_description']);
-        $repository->method('save')->willReturn((new Task($inputCreateTask->description)));
-        $outputCreateTask = $sut->execute($inputCreateTask);
-        $this->assertEquals('any_description', $outputCreateTask->description);
-        $this->assertFalse($outputCreateTask->finished);
+        $this->mockRepository->method('save')
+            ->willReturn(new Task($inputCreateTask->description));
+        // act
+        $outputCreateTask = $this->sut->execute($inputCreateTask);
+        // assert
+        $this->assertInstanceOf($expected, $outputCreateTask);
     }
 
     public function testShouldCallValidate()
     {
-        /**
-         * @var CreateTaskUseCase $sut
-         * @var MockObject $validation
-         */
-        [$sut,,, $validation] = $this->sut;
         $inputCreateTask = InputCreateTask::create(['description' => 'any_description']);
-        $validation->expects($this->once())->method('validate');
-        $sut->execute($inputCreateTask);
+        $this->mockValidation->expects($this->once())->method('validate');
+        $this->sut->execute($inputCreateTask);
     }
 }

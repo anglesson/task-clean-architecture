@@ -2,17 +2,21 @@
 
 namespace App\ToDo\Domain\Entity;
 
-class SuperTask
-{
-    private string $attr;
+use App\ToDo\Domain\Utils\Fillable;
 
-    public function getAttr(): string
+abstract class Entity
+{
+    use Fillable;
+    
+    private ?string $id = null;
+
+    public function getId(): ?string
     {
-        return $this->attr;
+        return $this->id;
     }
 
-    public function setAttr(string $attr): self
+    public function setId(string $id): void
     {
-        return $this->attr;
+        $this->id = $id;
     }
 }
