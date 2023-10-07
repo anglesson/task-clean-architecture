@@ -17,7 +17,6 @@ class OutputCreateTaskTest extends TestCase
     public function testShouldReturnsAnArrayWithExpectedValues()
     {
         $task = new Task('any_description');
-        $task->setId('any_id');
 
         $outputCreateTask = OutputCreateTask::create($task);
 

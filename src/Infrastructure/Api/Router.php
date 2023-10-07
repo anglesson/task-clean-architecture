@@ -2,6 +2,7 @@
 
 namespace App\ToDo\Infrastructure\Api;
 
+use App\ToDo\Application\Protocols\Http\HttpServer;
 use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Main\Factories\CreateTaskControllerFactory;
 use App\ToDo\Main\Factories\DeleteTaskControllerFactory;

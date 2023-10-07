@@ -23,7 +23,7 @@ class TaskTest extends TestCase
     {
         $description = 'My Description has more than fifty hundred characters';
         $this->expectException(DescriptionHasMoreThan50Caracters::class);
-        $task = new Task($description);
+        new Task($description);
     }
 
     public function testShouldBeDoneTask()

@@ -10,17 +10,12 @@ use DateTime;
 class Task extends Entity
 {
     use Fillable;
-    // TODO: Remove this attribute, it should stay on repository
-    private array $fillable = [
-        'description',
-        'finished'
-    ];
+
     private string $description;
     private bool $finished;
     private DateTime $createdAt;
     private ?DateTime $updatedAt;
 
-    // TODO: Remove ID on constructor
     public function __construct(string $description)
     {
         $this->description = $description;
@@ -82,8 +77,13 @@ class Task extends Entity
         return $this->updatedAt;
     }
 
-    private function registerUpdate()
+    private function registerUpdate(): void
     {
         $this->updatedAt = new DateTime();
+    }
+
+    public function toArray(): array
+    {
+        return \array_merge(\get_object_vars($this), parent::toArray());
     }
 }

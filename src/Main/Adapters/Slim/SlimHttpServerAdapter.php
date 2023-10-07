@@ -2,7 +2,7 @@
 namespace App\ToDo\Main\Adapters\Slim;
 
 use App\ToDo\Application\Protocols\Http\Controller;
-use App\ToDo\Infrastructure\Api\HttpServer;
+use App\ToDo\Application\Protocols\Http\HttpServer;
 use Slim\App;
 use Slim\Factory\AppFactory;
 

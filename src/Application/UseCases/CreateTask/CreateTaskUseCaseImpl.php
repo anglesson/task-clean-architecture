@@ -8,9 +8,8 @@ use App\ToDo\Domain\Protocols\UuidGenerator;
 use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
 
-class CreateTaskUseCase implements ICreateTaskUseCase
+class CreateTaskUseCaseImpl implements ICreateTaskUseCase
 {
-    protected UuidGenerator $uuidGenerator;
     private ITaskRepository $repository;
     private IValidation $validation;
 
@@ -24,9 +23,8 @@ class CreateTaskUseCase implements ICreateTaskUseCase
     public function execute(InputCreateTask $inputCreateTask): OutputCreateTask
     {
         $this->validation->validate($inputCreateTask->toArray());
-        $task = new Task($inputCreateTask->description);
+        $task = new Task($inputCreateTask->description, $this->uuidGenerator->generateId());
         $task->setId($this->uuidGenerator->generateId());
-        
         $createdTask = $this->repository->save($task);
         return OutputCreateTask::create($createdTask);
     }

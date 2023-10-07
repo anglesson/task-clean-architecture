@@ -1,0 +1,5 @@
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <mapped-superclass name="App\ToDo\Domain\Entity\Entity">
+        <id name="id" type="string" />
+    </mapped-superclass>
+</doctrine-mapping>

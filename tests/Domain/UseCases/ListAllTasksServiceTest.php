@@ -2,7 +2,7 @@
 
 namespace Test\Domain\UseCases;
 
-use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCase;
+use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCaseImpl;
 use App\ToDo\Application\UseCases\FindTask\FindTaskUseCaseImpl;
 use App\ToDo\Application\UseCases\ListAllTasks\IListAllTasksUseCaseImpl;
 use App\ToDo\Domain\Entity\Task;

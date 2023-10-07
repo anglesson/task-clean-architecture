@@ -4,7 +4,7 @@ namespace App\ToDo\Main\Factories;
 
 use App\ToDo\Application\Api\CreateTaskController;
 use App\ToDo\Application\Protocols\Http\Controller;
-use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCase;
+use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCaseImpl;
 use App\ToDo\Application\UseCases\CreateTask\Validators\CreateTaskValidationFactory;
 use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
@@ -15,7 +15,7 @@ final class CreateTaskControllerFactory
     {
         $ramseyUuid = new RamseyUuidImpl();
         $validation = CreateTaskValidationFactory::makeValidations();
-        $createTaskService = new CreateTaskUseCase($repository, $ramseyUuid, $validation);
+        $createTaskService = new CreateTaskUseCaseImpl($repository, $ramseyUuid, $validation);
         return new CreateTaskController($createTaskService);
     }
 }

@@ -15,7 +15,7 @@ abstract class Entity
         return $this->id;
     }
 
-    public function setId(string $id): void
+    public function setId(?string $id = null): void
     {
         $this->id = $id;
     }

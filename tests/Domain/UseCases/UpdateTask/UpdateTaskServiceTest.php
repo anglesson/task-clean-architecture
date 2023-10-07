@@ -2,7 +2,7 @@
 
 namespace Test\Domain\UseCases\UpdateTask;
 
-use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCase;
+use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCaseImpl;
 use App\ToDo\Application\UseCases\CreateTask\InputCreateTask;
 use App\ToDo\Application\UseCases\FindTask\FindTaskUseCaseImpl;
 use App\ToDo\Application\UseCases\UpdateTask\InputUpdateTask;

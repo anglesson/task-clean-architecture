@@ -2,7 +2,7 @@
 
 namespace Test\Domain\UseCases\CreateTask;
 
-use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCase;
+use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCaseImpl;
 use App\ToDo\Application\UseCases\CreateTask\InputCreateTask;
 use App\ToDo\Application\UseCases\CreateTask\OutputCreateTask;
 use App\ToDo\Domain\Entity\Task;
@@ -25,7 +25,7 @@ class CreateTaskServiceTest extends TestCase
         $this->mockUuid = $this->createMock(UuidGenerator::class);
         $this->mockRepository = $this->createMock(ITaskRepository::class);
         $this->mockValidation = $this->createMock(IValidation::class);
-        $this->sut = new CreateTaskUseCase($this->mockRepository, $this->mockUuid, $this->mockValidation);
+        $this->sut = new CreateTaskUseCaseImpl($this->mockRepository, $this->mockUuid, $this->mockValidation);
     }
 
     public function testShouldBeCreatedATask()
