@@ -17,9 +17,8 @@ class Task extends Entity
     private DateTime $createdAt;
     private ?DateTime $updatedAt;
 
-    public function __construct(string $id, string $description)
+    public function __construct(string $description)
     {
-        parent::__construct($id);
         $this->description = $description;
         $this->finished = false;
         $this->createdAt = new DateTime();
@@ -86,6 +85,6 @@ class Task extends Entity
 
     public function toArray(): array
     {
-        return \array_merge(\get_object_vars($this), parent::toArray());
+        return \get_object_vars($this);
     }
 }

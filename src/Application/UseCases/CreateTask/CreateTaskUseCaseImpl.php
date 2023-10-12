@@ -24,7 +24,7 @@ class CreateTaskUseCaseImpl implements ICreateTaskUseCase
     public function execute(InputCreateTask $inputCreateTask): OutputCreateTask
     {
         $this->validation->validate($inputCreateTask->toArray());
-        $task = new Task($this->uuidGenerator->generateId(), $inputCreateTask->description);
+        $task = new Task($inputCreateTask->description);
         $task->setId($this->uuidGenerator->generateId());
         $createdTask = $this->repository->save($task);
         return OutputCreateTask::create($createdTask);

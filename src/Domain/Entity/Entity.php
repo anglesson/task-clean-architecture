@@ -7,16 +7,7 @@ use App\ToDo\Domain\Utils\Fillable;
 
 abstract class Entity
 {
-    use Fillable;
-
-    private ?string $id = null;
-
-    public function __construct(string $id = null)
-    {
-        if (!$this->id) {
-            $this->id = $id;
-        }
-    }
+    protected ?string $id = null;
 
     public function getId(): ?string
     {
