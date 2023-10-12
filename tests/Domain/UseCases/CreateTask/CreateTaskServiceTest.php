@@ -34,7 +34,7 @@ class CreateTaskServiceTest extends TestCase
         $expected = OutputCreateTask::class;
         $inputCreateTask = InputCreateTask::create(['description' => 'any_description']);
         $this->mockRepository->method('save')
-            ->willReturn(new Task($inputCreateTask->description));
+            ->willReturn(new Task('any_id', $inputCreateTask->description));
         // act
         $outputCreateTask = $this->sut->execute($inputCreateTask);
         // assert

@@ -4,6 +4,7 @@ namespace App\ToDo\Domain\Entity;
 
 use App\ToDo\Domain\Exceptions\DescriptionHasMoreThan50Caracters;
 use App\ToDo\Domain\Exceptions\InvalidParamError;
+use App\ToDo\Domain\Protocols\UuidGenerator;
 use App\ToDo\Domain\Utils\Fillable;
 use DateTime;
 
@@ -16,8 +17,9 @@ class Task extends Entity
     private DateTime $createdAt;
     private ?DateTime $updatedAt;
 
-    public function __construct(string $description)
+    public function __construct(string $id, string $description)
     {
+        parent::__construct($id);
         $this->description = $description;
         $this->finished = false;
         $this->createdAt = new DateTime();

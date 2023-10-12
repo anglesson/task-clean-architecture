@@ -33,8 +33,7 @@ class FindTaskServiceTest extends TestCase
     public function testShouldBeFindedATaskById()
     {
         // arrange
-        $mockTask = new Task('any_description');
-        $mockTask->setId('any_id');
+        $mockTask = new Task('any_id', 'any_description');
 
         $this->mockRepository
             ->method('findOne')

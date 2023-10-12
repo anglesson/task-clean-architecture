@@ -38,7 +38,7 @@ class UpdateTaskServiceTest extends TestCase
     {
         $this->mockRepository
             ->method('findOne')
-            ->willReturn(new Task('any_description'));
+            ->willReturn(new Task('any_id', 'any_description'));
         $data = ['description' => 'any_description', 'id' => 'any_id'];
         $inputUpdateTask = InputUpdateTask::create($data);
         $outputUpdateTask = $this->sut->execute($inputUpdateTask);
