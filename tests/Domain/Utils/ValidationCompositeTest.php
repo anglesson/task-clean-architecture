@@ -2,9 +2,9 @@
 
 namespace Domain\Utils;
 
-use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
-use App\ToDo\Domain\Utils\AbstractValidator;
-use App\ToDo\Domain\Utils\ValidationComposite;
+use App\ToDo\Domain\Utils\Validators\AbstractValidator;
+use App\ToDo\Domain\Utils\Validators\IValidation;
+use App\ToDo\Domain\Utils\Validators\ValidationComposite;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

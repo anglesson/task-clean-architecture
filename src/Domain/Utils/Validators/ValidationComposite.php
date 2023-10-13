@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\ToDo\Domain\Utils;
+namespace App\ToDo\Domain\Utils\Validators;
 
-use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
 use Error;
 
 class ValidationComposite implements IValidation

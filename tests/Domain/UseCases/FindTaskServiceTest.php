@@ -2,19 +2,14 @@
 
 namespace Test\Domain\UseCases;
 
-use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCaseImpl;
-use App\ToDo\Application\UseCases\CreateTask\InputCreateTask;
 use App\ToDo\Application\UseCases\FindTask\FindTaskUseCaseImpl;
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
 use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
-use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
-use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
 use App\ToDo\Domain\UseCases\FindTask\IFindTaskUseCase;
-use App\ToDo\Domain\Utils\ValidationComposite;
+use App\ToDo\Domain\Utils\Validators\IValidation;
 use App\ToDo\Infrastructure\Repositories\InMemory\InMemoryRepository;
-use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 use PHPUnit\Framework\TestCase;
 
 class FindTaskServiceTest extends TestCase

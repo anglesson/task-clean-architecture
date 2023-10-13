@@ -2,15 +2,11 @@
 
 namespace Test\Domain\UseCases;
 
-use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCaseImpl;
-use App\ToDo\Application\UseCases\FindTask\FindTaskUseCaseImpl;
 use App\ToDo\Application\UseCases\ListAllTasks\IListAllTasksUseCaseImpl;
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\ITaskRepository;
-use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
 use App\ToDo\Domain\UseCases\ListAllTasks\IListAllTasksUseCase;
-use App\ToDo\Infrastructure\Repositories\InMemory\InMemoryRepository;
-use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
+use App\ToDo\Domain\Utils\Validators\IValidation;
 use PHPUnit\Framework\TestCase;
 
 class ListAllTasksServiceTest extends TestCase

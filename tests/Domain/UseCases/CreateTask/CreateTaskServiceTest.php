@@ -9,7 +9,7 @@ use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
 use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
-use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
+use App\ToDo\Domain\Utils\Validators\IValidation;
 use PHPUnit\Framework\TestCase;
 
 class CreateTaskServiceTest extends TestCase

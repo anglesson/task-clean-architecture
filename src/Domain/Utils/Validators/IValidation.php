@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Domain\UseCases\CreateTask\Validators;
+namespace App\ToDo\Domain\Utils\Validators;
 
 use Error;
 
