@@ -3,6 +3,7 @@
 namespace Test\Application\Api;
 
 use App\ToDo\Application\Api\CreateTaskController;
+use App\ToDo\Application\Presenters\CreateTask\ICreateTaskPresenter;
 use App\ToDo\Application\UseCases\CreateTask\InputCreateTask;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
@@ -35,10 +36,11 @@ class CreateTaskControllerTest extends TestCase
         $this->request->method('getParsedBody')->willReturn($data);
 
         $inputCreateTask = InputCreateTask::create($data);
+        $presenter = $this->createMock(ICreateTaskPresenter::class);
         $service = $this->createMock(ICreateTaskUseCase::class);
         $service->expects($this->once())->method('execute')->with($inputCreateTask);
 
-        $controller = new CreateTaskController($service);
+        $controller = new CreateTaskController($service, $presenter);
         $controller->handle($this->request, $this->response);
     }
 
@@ -47,7 +49,8 @@ class CreateTaskControllerTest extends TestCase
         $this->expectException(MissingParamsError::class);
         $this->request->method('getParsedBody')->willReturn(null);
         $service = $this->createMock(ICreateTaskUseCase::class);
-        $controller = new CreateTaskController($service);
+        $presenter = $this->createMock(ICreateTaskPresenter::class);
+        $controller = new CreateTaskController($service, $presenter);
         $controller->handle($this->request, $this->response);
     }
 }

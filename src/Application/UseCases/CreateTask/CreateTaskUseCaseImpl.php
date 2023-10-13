@@ -14,8 +14,11 @@ class CreateTaskUseCaseImpl implements ICreateTaskUseCase
     private IValidation $validation;
     private UuidGenerator $uuidGenerator;
 
-    public function __construct(ITaskRepository $repository, UuidGenerator $uuidGenerator, IValidation $validation)
-    {
+    public function __construct(
+        ITaskRepository $repository,
+        UuidGenerator $uuidGenerator,
+        IValidation $validation,
+    ) {
         $this->repository = $repository;
         $this->uuidGenerator = $uuidGenerator;
         $this->validation = $validation;

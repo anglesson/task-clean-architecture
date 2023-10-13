@@ -1,4 +1,5 @@
 <?php
+
 namespace Test\Domain\UseCases\CreateTask;
 
 use App\ToDo\Application\DTO\DataTransferObject;
@@ -18,7 +19,7 @@ class OutputCreateTaskTest extends TestCase
     {
         $task = new Task('any_description');
 
-        $outputCreateTask = OutputCreateTask::create($task);
+        $outputCreateTask = (new OutputCreateTask())->create($task);
 
         $this->assertNull($outputCreateTask->id);
         $this->assertEquals('any_description', $outputCreateTask->description);

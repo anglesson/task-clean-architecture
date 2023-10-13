@@ -4,6 +4,7 @@ namespace Test\Application\Api;
 
 use App\ToDo\Application\Api\CreateTaskController;
 use App\ToDo\Application\Api\ReadTaskController;
+use App\ToDo\Application\Presenters\CreateTask\ICreateTaskPresenter;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
 use App\ToDo\Domain\UseCases\FindTask\IFindTaskUseCase;
@@ -16,18 +17,6 @@ class ReadTaskControllerTest extends TestCase
 {
     protected ServerRequestInterface $request;
     protected ResponseInterface $response;
-
-
-    protected function setUp(): void
-    {
-        $streamStub = $this->createStub(StreamInterface::class);
-        $requestStub = $this->createStub(ServerRequestInterface::class);
-        $responseStub = $this->createStub(ResponseInterface::class);
-        $responseStub->method('getBody')->willReturn($streamStub);
-
-        $this->request = $requestStub;
-        $this->response = $responseStub;
-    }
 
     public function testShouldCallServiceWithCorrectValues()
     {
@@ -53,7 +42,19 @@ class ReadTaskControllerTest extends TestCase
         $this->expectException(MissingParamsError::class);
         $this->request->method('getParsedBody')->willReturn(null);
         $service = $this->createMock(ICreateTaskUseCase::class);
-        $controller = new CreateTaskController($service);
+        $presenter = $this->createMock(ICreateTaskPresenter::class);
+        $controller = new CreateTaskController($service, $presenter);
         $controller->handle($this->request, $this->response);
+    }
+
+    protected function setUp(): void
+    {
+        $streamStub = $this->createStub(StreamInterface::class);
+        $requestStub = $this->createStub(ServerRequestInterface::class);
+        $responseStub = $this->createStub(ResponseInterface::class);
+        $responseStub->method('getBody')->willReturn($streamStub);
+
+        $this->request = $requestStub;
+        $this->response = $responseStub;
     }
 }

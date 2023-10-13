@@ -10,7 +10,6 @@ use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
 use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\Validators\IValidation;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class CreateTaskServiceTest extends TestCase
@@ -19,14 +18,6 @@ class CreateTaskServiceTest extends TestCase
     public UuidGenerator $mockUuid;
     public ITaskRepository $mockRepository;
     public IValidation $mockValidation;
-
-    protected function setUp(): void
-    {
-        $this->mockUuid = $this->createMock(UuidGenerator::class);
-        $this->mockRepository = $this->createMock(ITaskRepository::class);
-        $this->mockValidation = $this->createMock(IValidation::class);
-        $this->sut = new CreateTaskUseCaseImpl($this->mockRepository, $this->mockUuid, $this->mockValidation);
-    }
 
     public function testShouldBeCreatedATask()
     {
@@ -46,5 +37,17 @@ class CreateTaskServiceTest extends TestCase
         $inputCreateTask = InputCreateTask::create(['description' => 'any_description']);
         $this->mockValidation->expects($this->once())->method('validate');
         $this->sut->execute($inputCreateTask);
+    }
+
+    protected function setUp(): void
+    {
+        $this->mockUuid = $this->createMock(UuidGenerator::class);
+        $this->mockRepository = $this->createMock(ITaskRepository::class);
+        $this->mockValidation = $this->createMock(IValidation::class);
+        $this->sut = new CreateTaskUseCaseImpl(
+            $this->mockRepository,
+            $this->mockUuid,
+            $this->mockValidation,
+        );
     }
 }
