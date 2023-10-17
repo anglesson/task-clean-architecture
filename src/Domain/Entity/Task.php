@@ -4,7 +4,6 @@ namespace App\ToDo\Domain\Entity;
 
 use App\ToDo\Domain\Exceptions\DescriptionHasMoreThan50Caracters;
 use App\ToDo\Domain\Exceptions\InvalidParamError;
-use App\ToDo\Domain\Protocols\UuidGenerator;
 use App\ToDo\Domain\Utils\Fillable;
 use DateTime;
 
@@ -19,23 +18,10 @@ class Task extends Entity
 
     public function __construct(string $description)
     {
-        $this->description = $description;
+        $this->setDescription($description);
         $this->finished = false;
         $this->createdAt = new DateTime();
         $this->updatedAt = null;
-
-        $this->validate();
-    }
-
-    private function validate(): void
-    {
-        if (!$this->description) {
-            throw new InvalidParamError('description');
-        }
-
-        if (strlen($this->description) > 50) {
-            throw new DescriptionHasMoreThan50Caracters();
-        }
     }
 
     public function getDescription(): string
@@ -45,9 +31,15 @@ class Task extends Entity
 
     public function setDescription(string $description): Task
     {
+        if (!$description) {
+            throw new InvalidParamError('description');
+        }
+
+        if (strlen($description) > 50) {
+            throw new DescriptionHasMoreThan50Caracters();
+        }
+
         $this->description = $description;
-        $this->validate();
-        $this->registerUpdate();
         return $this;
     }
 
@@ -71,16 +63,6 @@ class Task extends Entity
     public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
-    }
-
-    public function getUpdatedAt(): ?DateTime
-    {
-        return $this->updatedAt;
-    }
-
-    private function registerUpdate(): void
-    {
-        $this->updatedAt = new DateTime();
     }
 
     public function toArray(): array

@@ -51,15 +51,4 @@ class TaskTest extends TestCase
 
         $this->assertEquals($currentTime->format($format), $task->getCreatedAt()->format($format));
     }
-
-    public function testShouldSetUpdatedAtOnUpdate()
-    {
-        $format = 'Y-m-d H:i:s';
-
-        $currentTime = new DateTime();
-        $task = new Task('any_description');
-        $task->setDescription('any_description_updated');
-
-        $this->assertEquals($currentTime->format($format), $task->getUpdatedAt()->format($format));
-    }
 }
