@@ -10,10 +10,11 @@ class JsonResourceTest extends TestCase
     public function testShouldReturnDataWrappedByIndexCalledData()
     {
         $content = [
-            'index' => 'value',
+            'any_index' => 'any_value',
         ];
-        $resource = JsonResource::create($content);
-        $this->assertIsString($resource);
-        $this->assertArrayHasKey( 'data', json_decode($resource, TRUE));
+        $resource = json_decode(JsonResource::create($content), TRUE);
+        $this->assertArrayHasKey( 'data', $resource);
+        $this->assertArrayHasKey( 'any_index', $resource['data']);
+        $this->assertEquals( 'any_value', $resource['data']['any_index']);
     }
 }

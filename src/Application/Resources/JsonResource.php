@@ -4,10 +4,22 @@ namespace App\ToDo\Application\Resources;
 
 class JsonResource
 {
-    public static function create($data): string
+    private static mixed $data;
+
+    private function __construct($data)
+    {
+        self::$data = $data;
+    }
+
+    public static function create($data): static
+    {
+        return new self($data);
+    }
+
+    public function __toString()
     {
         return json_encode([
-            'data' => $data
+            'data' => self::$data
         ]);
     }
 }
