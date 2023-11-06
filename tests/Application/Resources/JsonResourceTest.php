@@ -12,7 +12,7 @@ class JsonResourceTest extends TestCase
         $content = [
             'any_index' => 'any_value',
         ];
-        $resource = json_decode(JsonResource::create($content), TRUE);
+        $resource = json_decode(new JsonResource($content), TRUE);
         $this->assertArrayHasKey( 'data', $resource);
         $this->assertArrayHasKey( 'any_index', $resource['data']);
         $this->assertEquals( 'any_value', $resource['data']['any_index']);

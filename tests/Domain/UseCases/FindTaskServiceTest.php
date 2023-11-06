@@ -2,6 +2,7 @@
 
 namespace Test\Domain\UseCases;
 
+use App\ToDo\Application\UseCases\CreateTask\OutputCreateTask;
 use App\ToDo\Application\UseCases\FindTask\FindTaskUseCaseImpl;
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
@@ -34,10 +35,10 @@ class FindTaskServiceTest extends TestCase
             ->method('findOne')
             ->willReturn($mockTask);
         // act
-        $task = $this->sut->execute('any_id');
+        $output = $this->sut->execute('any_id');
 
         // assert
-        $this->assertInstanceOf(Task::class, $task);
+        $this->assertInstanceOf(OutputCreateTask::class, $output);
     }
 
     public function testShouldBeReturnExceptionIfTaskNotFounded()
