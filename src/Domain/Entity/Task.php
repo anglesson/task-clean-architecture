@@ -16,8 +16,9 @@ class Task extends Entity
     private DateTime $createdAt;
     private ?DateTime $updatedAt;
 
-    public function __construct(string $description)
+    public function __construct(string $description, string $id = null)
     {
+        $this->id = $id;
         $this->setDescription($description);
         $this->finished = false;
         $this->createdAt = new DateTime();
@@ -29,7 +30,7 @@ class Task extends Entity
         return $this->description;
     }
 
-    public function setDescription(string $description): Task
+    private function setDescription(string $description): Task
     {
         if (!$description) {
             throw new InvalidParamError('description');
@@ -41,6 +42,11 @@ class Task extends Entity
 
         $this->description = $description;
         return $this;
+    }
+
+    public function updateDescription(string $description)
+    {
+        $this->setDescription($description);
     }
 
     public function getFinished(): bool

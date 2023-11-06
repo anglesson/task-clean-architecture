@@ -26,13 +26,14 @@ class ReadTaskControllerTest extends TestCase
             ->method('getAttribute')
             ->willReturn($attribute);
 
+        $presenter = $this->createMock(ICreateTaskPresenter::class);
         $service = $this->createMock(IFindTaskUseCase::class);
         $service
             ->expects($this->once())
             ->method('execute')
             ->with($attribute);
 
-        $controller = new ReadTaskController($service);
+        $controller = new ReadTaskController($service, $presenter);
 
         $controller->handle($this->request, $this->response);
     }

@@ -24,9 +24,9 @@ class Router
     public function init(): void
     {
         $this->httpServer->register('post', '/api/task', CreateTaskControllerFactory::create($this->repository));
-        $this->httpServer->register('get','/api/task/{id}', ReadTaskControllerFactory::create($this->repository));
-        $this->httpServer->register('get','/api/task', ListAllTasksControllerFactory::create($this->repository));
-        $this->httpServer->register('put','/api/task/{id}', UpdateTaskControllerFactory::create($this->repository));
-        $this->httpServer->register('delete','/api/task/{id}', DeleteTaskControllerFactory::create($this->repository));
+        $this->httpServer->register('get', '/api/task/{id}', ReadTaskControllerFactory::create($this->repository));
+        $this->httpServer->register('get', '/api/task', ListAllTasksControllerFactory::create($this->repository));
+        $this->httpServer->register('put', '/api/task/{id}', UpdateTaskControllerFactory::create($this->repository));
+        $this->httpServer->register('delete', '/api/task/{id}', DeleteTaskControllerFactory::create($this->repository));
     }
 }

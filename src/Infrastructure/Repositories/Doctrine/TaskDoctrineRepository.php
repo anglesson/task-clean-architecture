@@ -12,9 +12,9 @@ class TaskDoctrineRepository implements ITaskRepository
 {
     private EntityManagerInterface $entityManager;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct()
     {
-        $this->entityManager = $entityManager;
+        $this->entityManager = EntityManagerCreator::createEntityManager();
     }
 
     public function save(Task $task): Task

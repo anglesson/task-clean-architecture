@@ -2,9 +2,9 @@
 
 namespace App\ToDo\Domain\UseCases\FindTask;
 
-use App\ToDo\Domain\Entity\Task;
+use App\ToDo\Application\UseCases\CreateTask\OutputCreateTask;
 
 interface IFindTaskUseCase
 {
-    public function execute($idTask): Task;
+    public function execute($idTask): OutputCreateTask;
 }

@@ -7,8 +7,8 @@ use App\ToDo\Application\UseCases\CreateTask\OutputCreateTask;
 
 class CreateTaskPresenter implements ICreateTaskPresenter
 {
-    public function toJson(OutputCreateTask $outputCreateTask): string
+    public function toJson(OutputCreateTask $outputCreateTask): JsonResource
     {
-        return JsonResource::create($outputCreateTask);
+        return new JsonResource($outputCreateTask->toArray());
     }
 }

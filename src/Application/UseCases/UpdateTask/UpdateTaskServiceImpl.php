@@ -21,7 +21,7 @@ class UpdateTaskServiceImpl implements IUpdateTaskUseCase
         if (!$taskFounded) {
             throw new TaskNotFoundException();
         }
-        $taskFounded->setDescription($input->description);
+        $taskFounded->updateDescription($input->description);
         $taskFounded->done();
         $taskUpdated = $this->repository->update($taskFounded);
         return OutputUpdateTask::create($taskUpdated);
