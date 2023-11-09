@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Domain\UseCases;
+namespace Test\Domain\UseCases\ListTasks;
 
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\TaskRepository;
@@ -9,7 +9,7 @@ use App\ToDo\Domain\UseCases\ListTasks\ListTasksUseCaseImpl;
 use App\ToDo\Domain\Utils\Validators\IValidation;
 use PHPUnit\Framework\TestCase;
 
-class ListAllTasksServiceTest extends TestCase
+class ListTasksUseCaseTest extends TestCase
 {
     public TaskRepository $mockRepository;
     public IValidation $mockValidation;

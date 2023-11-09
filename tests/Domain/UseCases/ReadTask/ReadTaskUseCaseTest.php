@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Domain\UseCases;
+namespace Test\Domain\UseCases\ReadTask;
 
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
@@ -13,7 +13,7 @@ use App\ToDo\Domain\Utils\Validators\IValidation;
 use App\ToDo\Infrastructure\Repositories\InMemory\InMemoryRepository;
 use PHPUnit\Framework\TestCase;
 
-class FindTaskServiceTest extends TestCase
+class ReadTaskUseCaseTest extends TestCase
 {
     public ReadTaskUseCase $sut;
     public UuidGenerator $mockUuid;

@@ -12,7 +12,7 @@ use App\ToDo\Domain\UseCases\UpdateTask\UpdateTaskUseCaseImpl;
 use App\ToDo\Domain\Utils\Validators\IValidation;
 use PHPUnit\Framework\TestCase;
 
-class UpdateTaskServiceTest extends TestCase
+class UpdateTaskUseCaseTest extends TestCase
 {
     public UpdateTaskUseCase $sut;
     public UuidGenerator $mockUuid;

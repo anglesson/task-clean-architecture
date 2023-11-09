@@ -44,7 +44,7 @@ class Task extends Entity
         return $this;
     }
 
-    public function updateDescription(string $description)
+    public function updateDescription(string $description): void
     {
         $this->setDescription($description);
     }
