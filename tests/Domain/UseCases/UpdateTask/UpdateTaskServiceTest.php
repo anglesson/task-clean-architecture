@@ -3,7 +3,7 @@
 namespace Test\Domain\UseCases\UpdateTask;
 
 use App\ToDo\Domain\Entity\Task;
-use App\ToDo\Domain\Protocols\ITaskRepository;
+use App\ToDo\Domain\Protocols\TaskRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
 use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;
 use App\ToDo\Domain\UseCases\UpdateTask\OutputUpdateTask;
@@ -16,13 +16,13 @@ class UpdateTaskServiceTest extends TestCase
 {
     public UpdateTaskUseCase $sut;
     public UuidGenerator $mockUuid;
-    public ITaskRepository $mockRepository;
+    public TaskRepository $mockRepository;
     public IValidation $mockValidation;
 
     protected function setUp(): void
     {
         $this->mockUuid = $this->createMock(UuidGenerator::class);
-        $this->mockRepository = $this->createMock(ITaskRepository::class);
+        $this->mockRepository = $this->createMock(TaskRepository::class);
         $this->mockValidation = $this->createMock(IValidation::class);
         $this->sut = new UpdateTaskUseCaseImpl($this->mockRepository);
     }

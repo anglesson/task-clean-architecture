@@ -3,12 +3,12 @@
 namespace App\ToDo\Domain\UseCases\DeleteTask;
 
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
-use App\ToDo\Domain\Protocols\ITaskRepository;
+use App\ToDo\Domain\Protocols\TaskRepository;
 
 class DeleteTaskUseCaseImpl implements DeleteTaskUseCase
 {
     public function __construct(
-        private readonly ITaskRepository $repository
+        private readonly TaskRepository $repository
     ) {
     }
 

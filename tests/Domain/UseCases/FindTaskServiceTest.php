@@ -4,7 +4,7 @@ namespace Test\Domain\UseCases;
 
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
-use App\ToDo\Domain\Protocols\ITaskRepository;
+use App\ToDo\Domain\Protocols\TaskRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
 use App\ToDo\Domain\UseCases\CreateTask\OutputCreateTask;
 use App\ToDo\Domain\UseCases\ReadTask\ReadTaskUseCase;
@@ -17,12 +17,12 @@ class FindTaskServiceTest extends TestCase
 {
     public ReadTaskUseCase $sut;
     public UuidGenerator $mockUuid;
-    public ITaskRepository $mockRepository;
+    public TaskRepository $mockRepository;
     public IValidation $mockValidation;
 
     protected function setUp(): void
     {
-        $this->mockRepository = $this->createMock(ITaskRepository::class);
+        $this->mockRepository = $this->createMock(TaskRepository::class);
         $this->sut = new ReadTaskUseCaseImpl($this->mockRepository);
     }
 

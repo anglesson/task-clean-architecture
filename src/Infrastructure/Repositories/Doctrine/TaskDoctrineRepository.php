@@ -3,12 +3,12 @@
 namespace App\ToDo\Infrastructure\Repositories\Doctrine;
 
 use App\ToDo\Domain\Entity\Task;
-use App\ToDo\Domain\Protocols\ITaskRepository;
+use App\ToDo\Domain\Protocols\TaskRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use InvalidArgumentException;
 use RuntimeException;
 
-class TaskDoctrineRepository implements ITaskRepository
+class TaskDoctrineRepository implements TaskRepository
 {
     private EntityManagerInterface $entityManager;
 

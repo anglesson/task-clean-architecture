@@ -4,18 +4,18 @@ namespace Test\Domain\UseCases;
 
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
-use App\ToDo\Domain\Protocols\ITaskRepository;
+use App\ToDo\Domain\Protocols\TaskRepository;
 use App\ToDo\Domain\UseCases\DeleteTask\DeleteTaskUseCaseImpl;
 use PHPUnit\Framework\TestCase;
 
 class DeleteTaskServiceTest extends TestCase
 {
     private DeleteTaskUseCaseImpl $sut;
-    private ITaskRepository $taskRepositoryMock;
+    private TaskRepository $taskRepositoryMock;
 
     public function setUp(): void
     {
-        $taskRepositoryMock = $this->createMock(ITaskRepository::class);
+        $taskRepositoryMock = $this->createMock(TaskRepository::class);
         $deleteService = new DeleteTaskUseCaseImpl($taskRepositoryMock);
 
         $this->sut = $deleteService;

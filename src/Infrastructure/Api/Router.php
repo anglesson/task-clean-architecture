@@ -3,7 +3,7 @@
 namespace App\ToDo\Infrastructure\Api;
 
 use App\ToDo\Application\Protocols\Http\HttpServer;
-use App\ToDo\Domain\Protocols\ITaskRepository;
+use App\ToDo\Domain\Protocols\TaskRepository;
 use App\ToDo\Main\Factories\CreateTaskControllerFactory;
 use App\ToDo\Main\Factories\DeleteTaskControllerFactory;
 use App\ToDo\Main\Factories\ListAllTasksControllerFactory;
@@ -13,9 +13,9 @@ use App\ToDo\Main\Factories\UpdateTaskControllerFactory;
 class Router
 {
     private HttpServer $httpServer;
-    private ITaskRepository $repository;
+    private TaskRepository $repository;
 
-    public function __construct(HttpServer $httpServer, ITaskRepository $repository)
+    public function __construct(HttpServer $httpServer, TaskRepository $repository)
     {
         $this->httpServer = $httpServer;
         $this->repository = $repository;

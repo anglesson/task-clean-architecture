@@ -3,13 +3,13 @@
 namespace App\ToDo\Domain\UseCases\UpdateTask;
 
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
-use App\ToDo\Domain\Protocols\ITaskRepository;
+use App\ToDo\Domain\Protocols\TaskRepository;
 
 class UpdateTaskUseCaseImpl implements UpdateTaskUseCase
 {
-    protected ITaskRepository $repository;
+    protected TaskRepository $repository;
 
-    public function __construct(ITaskRepository $repository)
+    public function __construct(TaskRepository $repository)
     {
         $this->repository = $repository;
     }

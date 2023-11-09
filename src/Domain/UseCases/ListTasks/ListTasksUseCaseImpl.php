@@ -2,13 +2,13 @@
 
 namespace App\ToDo\Domain\UseCases\ListTasks;
 
-use App\ToDo\Domain\Protocols\ITaskRepository;
+use App\ToDo\Domain\Protocols\TaskRepository;
 
 class ListTasksUseCaseImpl implements ListTasksUseCase
 {
-    private ITaskRepository $repository;
+    private TaskRepository $repository;
 
-    public function __construct(ITaskRepository $repository)
+    public function __construct(TaskRepository $repository)
     {
         $this->repository = $repository;
     }

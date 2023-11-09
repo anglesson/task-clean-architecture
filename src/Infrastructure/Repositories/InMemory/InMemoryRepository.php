@@ -3,9 +3,9 @@
 namespace App\ToDo\Infrastructure\Repositories\InMemory;
 
 use App\ToDo\Domain\Entity\Task;
-use App\ToDo\Domain\Protocols\ITaskRepository;
+use App\ToDo\Domain\Protocols\TaskRepository;
 
-class InMemoryRepository implements ITaskRepository
+class InMemoryRepository implements TaskRepository
 {
     private array $tasks = [];
 
