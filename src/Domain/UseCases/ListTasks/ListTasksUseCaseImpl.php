@@ -1,11 +1,10 @@
 <?php
 
-namespace App\ToDo\Application\UseCases\ListAllTasks;
+namespace App\ToDo\Domain\UseCases\ListTasks;
 
 use App\ToDo\Domain\Protocols\ITaskRepository;
-use App\ToDo\Domain\UseCases\ListAllTasks\IListAllTasksUseCase;
 
-class IListAllTasksUseCaseImpl implements IListAllTasksUseCase
+class ListTasksUseCaseImpl implements ListTasksUseCase
 {
     private ITaskRepository $repository;
 

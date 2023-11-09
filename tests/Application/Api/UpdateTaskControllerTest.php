@@ -3,9 +3,9 @@
 namespace Test\Application\Api;
 
 use App\ToDo\Application\Api\UpdateTaskController;
-use App\ToDo\Application\UseCases\UpdateTask\InputUpdateTask;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
-use App\ToDo\Domain\UseCases\UpdateTask\IUpdateTaskUseCase;
+use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;
+use App\ToDo\Domain\UseCases\UpdateTask\UpdateTaskUseCase;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -48,7 +48,7 @@ class UpdateTaskControllerTest extends TestCase
             ->with('id')
             ->willReturn($data->id);
 
-        $service = $this->createMock(IUpdateTaskUseCase::class);
+        $service = $this->createMock(UpdateTaskUseCase::class);
         $service
             ->expects($this->once())
             ->method('execute')
@@ -62,7 +62,7 @@ class UpdateTaskControllerTest extends TestCase
     {
         $this->expectException(MissingParamsError::class);
         $this->request->method('getParsedBody')->willReturn(null);
-        $service = $this->createMock(IUpdateTaskUseCase::class);
+        $service = $this->createMock(UpdateTaskUseCase::class);
         $controller = new UpdateTaskController($service);
         $controller->handle($this->request, $this->response);
     }

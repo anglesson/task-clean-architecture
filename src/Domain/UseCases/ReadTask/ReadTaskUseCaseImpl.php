@@ -1,13 +1,12 @@
 <?php
 
-namespace App\ToDo\Application\UseCases\FindTask;
+namespace App\ToDo\Domain\UseCases\ReadTask;
 
-use App\ToDo\Application\UseCases\CreateTask\OutputCreateTask;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
 use App\ToDo\Domain\Protocols\ITaskRepository;
-use App\ToDo\Domain\UseCases\FindTask\IFindTaskUseCase;
+use App\ToDo\Domain\UseCases\CreateTask\OutputCreateTask;
 
-class FindTaskUseCaseImpl implements IFindTaskUseCase
+class ReadTaskUseCaseImpl implements ReadTaskUseCase
 {
     private ITaskRepository $repository;
 

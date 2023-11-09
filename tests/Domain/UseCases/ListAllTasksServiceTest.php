@@ -2,10 +2,10 @@
 
 namespace Test\Domain\UseCases;
 
-use App\ToDo\Application\UseCases\ListAllTasks\IListAllTasksUseCaseImpl;
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\ITaskRepository;
-use App\ToDo\Domain\UseCases\ListAllTasks\IListAllTasksUseCase;
+use App\ToDo\Domain\UseCases\ListTasks\ListTasksUseCase;
+use App\ToDo\Domain\UseCases\ListTasks\ListTasksUseCaseImpl;
 use App\ToDo\Domain\Utils\Validators\IValidation;
 use PHPUnit\Framework\TestCase;
 
@@ -13,12 +13,12 @@ class ListAllTasksServiceTest extends TestCase
 {
     public ITaskRepository $mockRepository;
     public IValidation $mockValidation;
-    private IListAllTasksUseCase $sut;
+    private ListTasksUseCase $sut;
 
     protected function setUp(): void
     {
         $this->mockRepository = $this->createMock(ITaskRepository::class);
-        $this->sut = new IListAllTasksUseCaseImpl($this->mockRepository);
+        $this->sut = new ListTasksUseCaseImpl($this->mockRepository);
     }
 
     public function testShouldListAllTasks()

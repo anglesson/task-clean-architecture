@@ -2,19 +2,19 @@
 
 namespace Test\Domain\UseCases\CreateTask;
 
-use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCaseImpl;
-use App\ToDo\Application\UseCases\CreateTask\InputCreateTask;
-use App\ToDo\Application\UseCases\CreateTask\OutputCreateTask;
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
-use App\ToDo\Domain\UseCases\CreateTask\ICreateTaskUseCase;
+use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
+use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCaseImpl;
+use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
+use App\ToDo\Domain\UseCases\CreateTask\OutputCreateTask;
 use App\ToDo\Domain\Utils\Validators\IValidation;
 use PHPUnit\Framework\TestCase;
 
 class CreateTaskServiceTest extends TestCase
 {
-    public ICreateTaskUseCase $sut;
+    public CreateTaskUseCase $sut;
     public UuidGenerator $mockUuid;
     public ITaskRepository $mockRepository;
     public IValidation $mockValidation;

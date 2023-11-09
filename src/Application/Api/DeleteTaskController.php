@@ -3,15 +3,15 @@
 namespace App\ToDo\Application\Api;
 
 use App\ToDo\Application\Protocols\Http\Controller;
-use App\ToDo\Domain\UseCases\DeleteTask\IDeleteTaskUseCase;
+use App\ToDo\Domain\UseCases\DeleteTask\DeleteTaskUseCase;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 class DeleteTaskController implements Controller
 {
-    private IDeleteTaskUseCase $deleteTaskService;
+    private DeleteTaskUseCase $deleteTaskService;
 
-    public function __construct(IDeleteTaskUseCase $deleteTaskService)
+    public function __construct(DeleteTaskUseCase $deleteTaskService)
     {
         $this->deleteTaskService = $deleteTaskService;
     }

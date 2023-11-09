@@ -2,19 +2,19 @@
 
 namespace Test\Domain\UseCases\UpdateTask;
 
-use App\ToDo\Application\UseCases\UpdateTask\InputUpdateTask;
-use App\ToDo\Application\UseCases\UpdateTask\OutputUpdateTask;
-use App\ToDo\Application\UseCases\UpdateTask\UpdateTaskServiceImpl;
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
-use App\ToDo\Domain\UseCases\UpdateTask\IUpdateTaskUseCase;
+use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;
+use App\ToDo\Domain\UseCases\UpdateTask\OutputUpdateTask;
+use App\ToDo\Domain\UseCases\UpdateTask\UpdateTaskUseCase;
+use App\ToDo\Domain\UseCases\UpdateTask\UpdateTaskUseCaseImpl;
 use App\ToDo\Domain\Utils\Validators\IValidation;
 use PHPUnit\Framework\TestCase;
 
 class UpdateTaskServiceTest extends TestCase
 {
-    public IUpdateTaskUseCase $sut;
+    public UpdateTaskUseCase $sut;
     public UuidGenerator $mockUuid;
     public ITaskRepository $mockRepository;
     public IValidation $mockValidation;
@@ -24,7 +24,7 @@ class UpdateTaskServiceTest extends TestCase
         $this->mockUuid = $this->createMock(UuidGenerator::class);
         $this->mockRepository = $this->createMock(ITaskRepository::class);
         $this->mockValidation = $this->createMock(IValidation::class);
-        $this->sut = new UpdateTaskServiceImpl($this->mockRepository);
+        $this->sut = new UpdateTaskUseCaseImpl($this->mockRepository);
     }
 
     public function testShouldBeUpdateATask()

@@ -2,7 +2,7 @@
 
 namespace App\ToDo\Domain\UseCases\DeleteTask;
 
-interface IDeleteTaskUseCase
+interface DeleteTaskUseCase
 {
     public function execute(string $idTask): void;
 }

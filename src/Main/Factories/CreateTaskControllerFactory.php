@@ -5,9 +5,9 @@ namespace App\ToDo\Main\Factories;
 use App\ToDo\Application\Api\CreateTaskController;
 use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenter;
 use App\ToDo\Application\Protocols\Http\Controller;
-use App\ToDo\Application\UseCases\CreateTask\CreateTaskUseCaseImpl;
-use App\ToDo\Application\UseCases\CreateTask\Validators\CreateTaskValidationFactory;
 use App\ToDo\Domain\Protocols\ITaskRepository;
+use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCaseImpl;
+use App\ToDo\Domain\UseCases\CreateTask\Validators\CreateTaskValidationFactory;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 
 final class CreateTaskControllerFactory

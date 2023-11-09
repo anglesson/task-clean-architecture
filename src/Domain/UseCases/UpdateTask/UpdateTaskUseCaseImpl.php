@@ -1,12 +1,11 @@
 <?php
 
-namespace App\ToDo\Application\UseCases\UpdateTask;
+namespace App\ToDo\Domain\UseCases\UpdateTask;
 
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
 use App\ToDo\Domain\Protocols\ITaskRepository;
-use App\ToDo\Domain\UseCases\UpdateTask\IUpdateTaskUseCase;
 
-class UpdateTaskServiceImpl implements IUpdateTaskUseCase
+class UpdateTaskUseCaseImpl implements UpdateTaskUseCase
 {
     protected ITaskRepository $repository;
 

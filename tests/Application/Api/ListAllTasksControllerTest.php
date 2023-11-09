@@ -4,7 +4,7 @@ namespace Application\Api;
 
 use App\ToDo\Application\Api\ListAllTaskController;
 use App\ToDo\Application\Protocols\Http\Controller;
-use App\ToDo\Domain\UseCases\ListAllTasks\IListAllTasksUseCase;
+use App\ToDo\Domain\UseCases\ListTasks\ListTasksUseCase;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -28,7 +28,7 @@ class ListAllTasksControllerTest extends TestCase
 
     public function testShouldBeAnInstanceOfController()
     {
-        $service = $this->createStub(IListAllTasksUseCase::class);
+        $service = $this->createStub(ListTasksUseCase::class);
         $controller = new ListAllTaskController($service);
         $this->assertInstanceOf(Controller::class, $controller);
     }
@@ -36,7 +36,7 @@ class ListAllTasksControllerTest extends TestCase
     public function testShouldReturnAResponse()
     {
         $this->response->method('getBody')->willReturnSelf();
-        $service = $this->createStub(IListAllTasksUseCase::class);
+        $service = $this->createStub(ListTasksUseCase::class);
         $controller = new ListAllTaskController($service);
         $response = $controller->handle($this->request, $this->response);
         $this->assertInstanceOf(Response::class, $response);
@@ -44,7 +44,7 @@ class ListAllTasksControllerTest extends TestCase
 
     public function testShouldCallServiceFindAllTasks()
     {
-        $service = $this->prophesize(IListAllTasksUseCase::class);
+        $service = $this->prophesize(ListTasksUseCase::class);
         $service->execute()->shouldBeCalled();
         (new ListAllTaskController($service->reveal()))->handle($this->request, $this->response);
     }
@@ -57,7 +57,7 @@ class ListAllTasksControllerTest extends TestCase
             ->expects($this->once())
             ->method('getStatusCode')
             ->willReturn(200);
-        $controller = new ListAllTaskController($this->createStub(IListAllTasksUseCase::class));
+        $controller = new ListAllTaskController($this->createStub(ListTasksUseCase::class));
 
         $response = $controller->handle($this->request, $localReponse);
         $this->assertSame(200, $response->getStatusCode());

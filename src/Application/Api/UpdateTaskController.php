@@ -3,17 +3,17 @@
 namespace App\ToDo\Application\Api;
 
 use App\ToDo\Application\Protocols\Http\Controller;
-use App\ToDo\Application\UseCases\UpdateTask\InputUpdateTask;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
-use App\ToDo\Domain\UseCases\UpdateTask\IUpdateTaskUseCase;
+use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;
+use App\ToDo\Domain\UseCases\UpdateTask\UpdateTaskUseCase;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 class UpdateTaskController implements Controller
 {
-    private IUpdateTaskUseCase $service;
+    private UpdateTaskUseCase $service;
 
-    public function __construct(IUpdateTaskUseCase $service)
+    public function __construct(UpdateTaskUseCase $service)
     {
         $this->service = $service;
     }

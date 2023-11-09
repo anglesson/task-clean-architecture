@@ -2,20 +2,20 @@
 
 namespace Test\Domain\UseCases;
 
-use App\ToDo\Application\UseCases\CreateTask\OutputCreateTask;
-use App\ToDo\Application\UseCases\FindTask\FindTaskUseCaseImpl;
 use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Exceptions\TaskNotFoundException;
 use App\ToDo\Domain\Protocols\ITaskRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
-use App\ToDo\Domain\UseCases\FindTask\IFindTaskUseCase;
+use App\ToDo\Domain\UseCases\CreateTask\OutputCreateTask;
+use App\ToDo\Domain\UseCases\ReadTask\ReadTaskUseCase;
+use App\ToDo\Domain\UseCases\ReadTask\ReadTaskUseCaseImpl;
 use App\ToDo\Domain\Utils\Validators\IValidation;
 use App\ToDo\Infrastructure\Repositories\InMemory\InMemoryRepository;
 use PHPUnit\Framework\TestCase;
 
 class FindTaskServiceTest extends TestCase
 {
-    public IFindTaskUseCase $sut;
+    public ReadTaskUseCase $sut;
     public UuidGenerator $mockUuid;
     public ITaskRepository $mockRepository;
     public IValidation $mockValidation;
@@ -23,7 +23,7 @@ class FindTaskServiceTest extends TestCase
     protected function setUp(): void
     {
         $this->mockRepository = $this->createMock(ITaskRepository::class);
-        $this->sut = new FindTaskUseCaseImpl($this->mockRepository);
+        $this->sut = new ReadTaskUseCaseImpl($this->mockRepository);
     }
 
     public function testShouldBeFindedATaskById()
@@ -45,7 +45,7 @@ class FindTaskServiceTest extends TestCase
     {
         $this->expectException(TaskNotFoundException::class);
         $repository = new InMemoryRepository();
-        $findTaskService = new FindTaskUseCaseImpl($repository);
+        $findTaskService = new ReadTaskUseCaseImpl($repository);
 
         $findTaskService->execute('any_id');
     }
