@@ -24,12 +24,6 @@ class UpdateTaskUseCaseImpl implements UpdateTaskUseCase
         $taskFounded->setDescription($input->description);
         $taskFounded->setFinished($input->finished);
 
-        //if ($input->finished) {
-        //    $taskFounded->done();
-        //} else {
-        //    $taskFounded->undone();
-        //}
-
         $taskUpdated = $this->repository->update($taskFounded);
         return OutputUpdateTask::create($taskUpdated);
     }
