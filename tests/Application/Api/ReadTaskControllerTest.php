@@ -4,7 +4,8 @@ namespace Test\Application\Api;
 
 use App\ToDo\Application\Api\CreateTaskController;
 use App\ToDo\Application\Api\ReadTaskController;
-use App\ToDo\Application\Presenters\CreateTask\ICreateTaskPresenter;
+use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenter;
+use App\ToDo\Application\Presenters\ReadTask\ReadTaskPresenter;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Domain\UseCases\ReadTask\ReadTaskUseCase;
@@ -26,7 +27,7 @@ class ReadTaskControllerTest extends TestCase
             ->method('getAttribute')
             ->willReturn($attribute);
 
-        $presenter = $this->createMock(ICreateTaskPresenter::class);
+        $presenter = $this->createMock(ReadTaskPresenter::class);
         $service = $this->createMock(ReadTaskUseCase::class);
         $service
             ->expects($this->once())
@@ -42,9 +43,9 @@ class ReadTaskControllerTest extends TestCase
     {
         $this->expectException(MissingParamsError::class);
         $this->request->method('getParsedBody')->willReturn(null);
-        $service = $this->createMock(CreateTaskUseCase::class);
-        $presenter = $this->createMock(ICreateTaskPresenter::class);
-        $controller = new CreateTaskController($service, $presenter);
+        $service = $this->createMock(ReadTaskUseCase::class);
+        $presenter = $this->createMock(ReadTaskPresenter::class);
+        $controller = new ReadTaskController($service, $presenter);
         $controller->handle($this->request, $this->response);
     }
 

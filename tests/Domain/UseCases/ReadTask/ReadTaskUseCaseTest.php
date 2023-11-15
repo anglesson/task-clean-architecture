@@ -7,6 +7,7 @@ use App\ToDo\Domain\Exceptions\TaskNotFoundException;
 use App\ToDo\Domain\Protocols\TaskRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
 use App\ToDo\Domain\UseCases\CreateTask\OutputCreateTask;
+use App\ToDo\Domain\UseCases\ReadTask\OutputReadTask;
 use App\ToDo\Domain\UseCases\ReadTask\ReadTaskUseCase;
 use App\ToDo\Domain\UseCases\ReadTask\ReadTaskUseCaseImpl;
 use App\ToDo\Domain\Utils\Validators\IValidation;
@@ -38,7 +39,7 @@ class ReadTaskUseCaseTest extends TestCase
         $output = $this->sut->execute('any_id');
 
         // assert
-        $this->assertInstanceOf(OutputCreateTask::class, $output);
+        $this->assertInstanceOf(OutputReadTask::class, $output);
     }
 
     public function testShouldBeReturnExceptionIfTaskNotFounded()

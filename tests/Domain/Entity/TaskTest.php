@@ -30,16 +30,11 @@ class TaskTest extends TestCase
     {
         $description = 'any_description';
         $task = new Task($description);
-        $task->done();
-        $this->assertTrue($task->getFinished());
-    }
+        $task->setFinished(true);
+        $this->assertTrue($task->isFinished());
 
-    public function testShouldUndoneTask()
-    {
-        $description = 'any_description';
-        $task = new Task($description);
-        $task->undone();
-        $this->assertTrue(!$task->getFinished());
+        $task->setFinished(false);
+        $this->assertFalse($task->isFinished());
     }
 
     public function testShouldSetCreatedAtOnCreation()

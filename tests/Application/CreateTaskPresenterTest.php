@@ -2,8 +2,8 @@
 
 namespace Test\Application;
 
+use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenterImpl;
 use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenter;
-use App\ToDo\Application\Presenters\CreateTask\ICreateTaskPresenter;
 use App\ToDo\Domain\UseCases\CreateTask\OutputCreateTask;
 use PHPUnit\Framework\TestCase;
 
@@ -13,9 +13,9 @@ class CreateTaskPresenterTest extends TestCase
     {
         $outputStub = $this->createStub(OutputCreateTask::class);
 
-        $sut = new CreateTaskPresenter();
+        $sut = new CreateTaskPresenterImpl();
 
         $sut->toJson($outputStub);
-        $this->assertInstanceOf(ICreateTaskPresenter::class, $sut);
+        $this->assertInstanceOf(CreateTaskPresenter::class, $sut);
     }
 }

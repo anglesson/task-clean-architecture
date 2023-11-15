@@ -7,7 +7,7 @@ use App\ToDo\Domain\UseCases\ListTasks\ListTasksUseCase;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-class ListAllTaskController implements Controller
+class ListTasksController implements Controller
 {
     public function __construct(
         private readonly ListTasksUseCase $service

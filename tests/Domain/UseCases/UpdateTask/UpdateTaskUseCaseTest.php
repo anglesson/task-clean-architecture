@@ -32,7 +32,7 @@ class UpdateTaskUseCaseTest extends TestCase
         $this->mockRepository
             ->method('findOne')
             ->willReturn(new Task('any_id', 'any_description'));
-        $data = ['description' => 'any_description', 'id' => 'any_id'];
+        $data = ['description' => 'any_description', 'id' => 'any_id', 'finished' => true];
         $inputUpdateTask = InputUpdateTask::create($data);
         $outputUpdateTask = $this->sut->execute($inputUpdateTask);
 

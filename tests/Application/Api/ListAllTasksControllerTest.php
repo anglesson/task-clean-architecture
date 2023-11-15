@@ -2,7 +2,7 @@
 
 namespace Application\Api;
 
-use App\ToDo\Application\Api\ListAllTaskController;
+use App\ToDo\Application\Api\ListTasksController;
 use App\ToDo\Application\Protocols\Http\Controller;
 use App\ToDo\Domain\UseCases\ListTasks\ListTasksUseCase;
 use PHPUnit\Framework\TestCase;
@@ -29,7 +29,7 @@ class ListAllTasksControllerTest extends TestCase
     public function testShouldBeAnInstanceOfController()
     {
         $service = $this->createStub(ListTasksUseCase::class);
-        $controller = new ListAllTaskController($service);
+        $controller = new ListTasksController($service);
         $this->assertInstanceOf(Controller::class, $controller);
     }
 
@@ -37,7 +37,7 @@ class ListAllTasksControllerTest extends TestCase
     {
         $this->response->method('getBody')->willReturnSelf();
         $service = $this->createStub(ListTasksUseCase::class);
-        $controller = new ListAllTaskController($service);
+        $controller = new ListTasksController($service);
         $response = $controller->handle($this->request, $this->response);
         $this->assertInstanceOf(Response::class, $response);
     }
@@ -46,7 +46,7 @@ class ListAllTasksControllerTest extends TestCase
     {
         $service = $this->prophesize(ListTasksUseCase::class);
         $service->execute()->shouldBeCalled();
-        (new ListAllTaskController($service->reveal()))->handle($this->request, $this->response);
+        (new ListTasksController($service->reveal()))->handle($this->request, $this->response);
     }
 
     public function testShouldReturn200IfSuccess()
@@ -57,7 +57,7 @@ class ListAllTasksControllerTest extends TestCase
             ->expects($this->once())
             ->method('getStatusCode')
             ->willReturn(200);
-        $controller = new ListAllTaskController($this->createStub(ListTasksUseCase::class));
+        $controller = new ListTasksController($this->createStub(ListTasksUseCase::class));
 
         $response = $controller->handle($this->request, $localReponse);
         $this->assertSame(200, $response->getStatusCode());

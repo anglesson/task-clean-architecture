@@ -2,7 +2,7 @@
 
 namespace App\ToDo\Application\Api;
 
-use App\ToDo\Application\Presenters\CreateTask\ICreateTaskPresenter;
+use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenter;
 use App\ToDo\Application\Protocols\Http\Controller;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
@@ -13,9 +13,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 class CreateTaskController implements Controller
 {
     private CreateTaskUseCase $service;
-    private ICreateTaskPresenter $presenter;
+    private CreateTaskPresenter $presenter;
 
-    public function __construct(CreateTaskUseCase $service, ICreateTaskPresenter $presenter)
+    public function __construct(CreateTaskUseCase $service, CreateTaskPresenter $presenter)
     {
         $this->service = $service;
         $this->presenter = $presenter;

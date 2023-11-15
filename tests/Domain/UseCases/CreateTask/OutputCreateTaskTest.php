@@ -17,11 +17,11 @@ class OutputCreateTaskTest extends TestCase
 
     public function testShouldReturnsAnArrayWithExpectedValues()
     {
-        $task = new Task('any_description');
+        $task = new Task('any_description', 'any_id');
 
-        $outputCreateTask = (new OutputCreateTask())->create($task);
+        $outputCreateTask = OutputCreateTask::create($task);
 
-        $this->assertNull($outputCreateTask->id);
+        $this->assertNotNull($outputCreateTask->id);
         $this->assertEquals('any_description', $outputCreateTask->description);
         $this->assertIsBool($outputCreateTask->finished);
     }

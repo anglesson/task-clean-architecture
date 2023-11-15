@@ -2,6 +2,7 @@
 
 namespace App\ToDo\Application\Api;
 
+use App\ToDo\Application\Presenters\UpdateTask\UpdateTaskPresenter;
 use App\ToDo\Application\Protocols\Http\Controller;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;
@@ -12,10 +13,12 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 class UpdateTaskController implements Controller
 {
     private UpdateTaskUseCase $service;
+    private UpdateTaskPresenter $presenter;
 
-    public function __construct(UpdateTaskUseCase $service)
+    public function __construct(UpdateTaskUseCase $service, UpdateTaskPresenter $presenter)
     {
         $this->service = $service;
+        $this->presenter = $presenter;
     }
 
     public function handle(Request $request, Response $response): Response
@@ -26,7 +29,8 @@ class UpdateTaskController implements Controller
         $inputUpdateTask = InputUpdateTask::create($request->getParsedBody());
         $inputUpdateTask->id = $request->getAttribute('id');
         $outputUpdateTask = $this->service->execute($inputUpdateTask);
-        $response->getBody()->write($outputUpdateTask->toJson());
+        $response->getBody()->write((string) $this->presenter->toJson($outputUpdateTask));
+
         return $response;
     }
 }

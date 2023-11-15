@@ -30,7 +30,7 @@ class Task extends Entity
         return $this->description;
     }
 
-    private function setDescription(string $description): Task
+    public function setDescription(string $description): void
     {
         if (!$description) {
             throw new InvalidParamError('description');
@@ -41,29 +41,11 @@ class Task extends Entity
         }
 
         $this->description = $description;
-        return $this;
     }
 
-    public function updateDescription(string $description): void
-    {
-        $this->setDescription($description);
-    }
-
-    public function getFinished(): bool
+    public function isFinished(): bool
     {
         return $this->finished;
-    }
-
-    public function done(): Task
-    {
-        $this->finished = true;
-        return $this;
-    }
-
-    public function undone(): Task
-    {
-        $this->finished = false;
-        return $this;
     }
 
     public function getCreatedAt(): DateTime
@@ -74,5 +56,10 @@ class Task extends Entity
     public function toArray(): array
     {
         return \get_object_vars($this);
+    }
+
+    public function setFinished(bool $finished): void
+    {
+        $this->finished = $finished;
     }
 }

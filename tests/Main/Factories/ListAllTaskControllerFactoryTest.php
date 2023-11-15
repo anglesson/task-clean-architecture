@@ -2,7 +2,7 @@
 
 namespace Test\Main\Factories;
 
-use App\ToDo\Application\Api\ListAllTaskController;
+use App\ToDo\Application\Api\ListTasksController;
 use App\ToDo\Domain\Protocols\TaskRepository;
 use App\ToDo\Main\Factories\ListAllTasksControllerFactory;
 use PHPUnit\Framework\TestCase;
@@ -13,6 +13,6 @@ class ListAllTaskControllerFactoryTest extends TestCase
     {
         $repositoryMock = $this->createMock(TaskRepository::class);
         $listAllTaskController = new ListAllTasksControllerFactory();
-        $this->assertInstanceOf(ListAllTaskController::class, $listAllTaskController->create($repositoryMock));
+        $this->assertInstanceOf(ListTasksController::class, $listAllTaskController->create($repositoryMock));
     }
 }

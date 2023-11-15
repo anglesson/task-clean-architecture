@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class InputCreateTaskTest extends TestCase
 {
-    public function testShouldBeInstaceOfDataTransferObject()
+    public function testShouldBeInstanceOfDataTransferObject()
     {
         $inputCreateTask = InputCreateTask::create([]);
         $this->assertInstanceOf(DataTransferObject::class, $inputCreateTask);
@@ -20,10 +20,10 @@ class InputCreateTaskTest extends TestCase
         $this->assertTrue(property_exists($inputCreateTask, 'description'));
     }
 
-    public function testShoulBeReturnAnArrayWithExpectedKeys()
+    public function testShouldBeReturnAnArrayWithExpectedKeys()
     {
-        $inputCreateTask = InputCreateTask::create([]);
-        $this->assertTrue(key_exists('description', $inputCreateTask->toArray()));
+        $inputCreateTask = InputCreateTask::create(['description' => 'any_description']);
+        $this->assertArrayHasKey('description', $inputCreateTask->toArray());
     }
 
     public function testShouldSetAnyValueToDescription()
