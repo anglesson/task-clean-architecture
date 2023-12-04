@@ -32,7 +32,7 @@ git clone https://github.com/anglesson/task-clean-architecture.git
 
 Change directory:
 ```
-mv task-clean-architecture/
+cd task-clean-architecture/
 ```
 
 Create `.env` file:
@@ -44,11 +44,14 @@ Run composer:
 ```
 docker compose up
 ```
+
 OR
+
 
 ```
 docker-compose up
 ```
+
 Your app is running on http://localhost:8080
 
 Import API Collection for your Postman. You can find on `docs/tca-api-collection.postman_collection`
