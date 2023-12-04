@@ -16,3 +16,37 @@ Stack
 - Language: PHP
 - Framework of tests: PHPUnit
 - Slim Framework in external layer
+
+## How to this project is structured
+<p align="center">
+  <img src="docs\structure.png"/>
+  <label>*This image may be out of date</label>
+</p>
+
+## How to run
+
+Clone the project:
+```
+git clone https://github.com/anglesson/task-clean-architecture.git
+```
+
+Change directory:
+```
+mv task-clean-architecture/
+```
+
+Create `.env` file:
+```
+cp .env.example .env
+```
+
+Run composer:
+```
+docker compose up
+```
+OR
+
+```
+docker-compose up
+```
+Import API Collection for your Postman. You can find on `docs/tca-api-collection.postman_collection`

@@ -14,11 +14,16 @@ class EntityManagerCreator
      */
     public static function createEntityManager(): EntityManagerInterface
     {
-        $config = ORMSetup::createXMLMetadataConfiguration(array(__DIR__."/mappings"));
+        $config = ORMSetup::createXMLMetadataConfiguration(array(__DIR__ . "/mappings"));
 
         $conn = array(
-            'driver' => 'pdo_sqlite',
-            'path' => __DIR__ . '../../../../../db.sqlite',
+            'driver'   => 'pdo_mysql',
+            'host'     => getenv('DB_HOST') ?: 'localhost',
+            'port'     => getenv('DB_PORT') ?: '3306',
+            'dbname'   => getenv('DB_DATABASE') ?: '',
+            'user'     => getenv('DB_USERNAME') ?: '',
+            'password' => getenv('DB_PASSWORD') ?: '',
+            'charset'  => 'utf8',
         );
 
         return EntityManager::create($conn, $config);

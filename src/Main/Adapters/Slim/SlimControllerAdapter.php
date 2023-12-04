@@ -21,7 +21,7 @@ final class SlimControllerAdapter
             $controllerResponse = $this->controller->handle($request, $response);
             return $controllerResponse->withHeader('Content-type', 'application/json');
         } catch (\Throwable $e) {
-            $code = $e->getCode() === 0 ? 500 : $e->getCode();
+            $code = ($e->getCode() >= 100 && $e->getCode() <= 100) ? $e->getCode() : 500;
             $response->getBody()->write(\json_encode(['error' => [
                 'code'    => $e->getCode(),
                 'message' => $e->getMessage()
