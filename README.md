@@ -51,7 +51,6 @@ OR
 ```
 docker-compose up
 ```
-
-Your app is running on http://localhost:8080
+Your app is running on http://localhost:9090/api //Definir porta aleatoria
 
 Import API Collection for your Postman. You can find on `docs/tca-api-collection.postman_collection`
