@@ -4,13 +4,10 @@ namespace App\ToDo\Domain\Entity;
 
 use App\ToDo\Domain\Exceptions\DescriptionHasMoreThan50Caracters;
 use App\ToDo\Domain\Exceptions\InvalidParamError;
-use App\ToDo\Domain\Utils\Fillable;
 use DateTime;
 
 class Task extends Entity
 {
-    use Fillable;
-
     private string $description;
     private bool $finished;
     private DateTime $createdAt;
@@ -61,5 +58,10 @@ class Task extends Entity
     public function setFinished(bool $finished): void
     {
         $this->finished = $finished;
+    }
+
+    public function lastUpdate(): DateTime
+    {
+        return $this->updatedAt;
     }
 }
