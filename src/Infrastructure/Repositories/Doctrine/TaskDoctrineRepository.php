@@ -31,9 +31,7 @@ class TaskDoctrineRepository implements TaskRepository
 
     public function update(Task $task): Task
     {
-        $taskOld = $this->entityManager->find(Task::class, $task->getId());
-        $taskOld->fill($task->toArray());
-        $this->entityManager->persist($taskOld);
+        $this->entityManager->persist($task);
         $this->entityManager->flush();
         return $task;
     }

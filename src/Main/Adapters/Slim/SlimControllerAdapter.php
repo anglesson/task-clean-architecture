@@ -18,8 +18,7 @@ final class SlimControllerAdapter
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         try {
-            $controllerResponse = $this->controller->handle($request, $response);
-            return $controllerResponse->withHeader('Content-type', 'application/json');
+            return $this->controller->handle($request, $response);
         } catch (\Throwable $e) {
             $code = ($e->getCode() >= 100 && $e->getCode() <= 100) ? $e->getCode() : 500;
             $response->getBody()->write(\json_encode(['error' => [

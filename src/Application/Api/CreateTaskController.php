@@ -23,6 +23,7 @@ class CreateTaskController implements Controller
 
     public function handle(Request $request, Response $response): Response
     {
+        
         $data = $request->getParsedBody();
         if (!$data) {
             throw new MissingParamsError();
@@ -31,6 +32,6 @@ class CreateTaskController implements Controller
         $outputCreateTask = $this->service->execute($inputCreateTask);
 
         $response->getBody()->write((string) $this->presenter->toJson($outputCreateTask));
-        return $response;
+        return $response->withHeader('Content-type', 'application/json');
     }
 }
