@@ -8,68 +8,59 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <title>Task Clean Architecture</title>
-    <style>
-        * {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        section {
-            height: 100vh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-    <section>
-        <div style="max-width: 75%;">
-            <h1>Task Clean Architecture</h1>
-            <p>This project was created to show how to implements The Clean Architecture in practice.
-                When I started this project, it was a simple example to explain to my friend Jefferson how to start a
-                project using clean architecture.
+    <div class="p-5 mx-auto sm:p-10 md:p-16 light:bg-gray-800 light:text-gray-100">
+        <div class="flex flex-col max-w-3xl mx-auto overflow-hidden rounded">
+            <img src="image/structure.png" alt="" class="w-full h-60 sm:h-96 light:bg-gray-500">
+            <div
+                class="p-6 pb-12 m-4 mx-auto -mt-16 space-y-6 lg:max-w-2xl sm:px-10 sm:mx-12 lg:rounded-md light:bg-gray-900">
+                <div class="space-y-2">
+                    <a rel="noopener noreferrer" href="#" class="inline-block text-2xl font-semibold sm:text-3xl">Task
+                        Clean Architecture</a>
+                    <p class="text-xs light:text-gray-400">By
+                        <a rel="noopener noreferrer" href="#" class="text-xs hover:underline">Anglesson Araujo</a>
+                    </p>
+                </div>
+                <div class="light:text-gray-100">
+                    <p>This project was created to show how to implements The Clean Architecture in practice.
+                        When I started this project, it was a simple example to explain to my friend Jefferson how to
+                        start a
+                        project using clean architecture.
 
-                I was excited by everything that I read in the book. Then, I decided to apply the maximum number of
-                concepts that I could. Then the Task Clean Architecture project was born, simple to understand and
-                follow.</p>
+                        I was excited by everything that I read in the book. Then, I decided to apply the maximum number
+                        of
+                        concepts that I could. Then the Task Clean Architecture project was born, simple to understand
+                        and
+                        follow.</p>
+                </div>
+                <div class="light:text-gray-100">
+                    <h1>About the project</h1>
+                    <p>The Task Clean Architecture project has 5 functionalities, all them covered by tests using
+                        <strong>PHPUnit</strong>:
+                    </p>
+                    <br>
+                    <strong>Functionalities:</strong>
+                    <ol>
+                        <li>Create</li>
+                        <li>Find</li>
+                        <li>Update</li>
+                        <li>Delete</li>
+                        <li>List</li>
+                    </ol>
+        
+                    <strong>Stack</strong>
+                    <ol>
+                        <li>Language: PHP</li>
+                        <li>Framework of tests: PHPUnit</li>
+                        <li>Slim Framework in external layer</li>
+                    </ol>
+                </div>
+            </div>
         </div>
-    </section>
-    <section>
-        <div>
-            <h1>About the project</h1>
-            <p>The Task Clean Architecture project has 5 functionalities, all them covered by tests using
-                <strong>PHPUnit</strong>:
-            </p>
-            <br>
-            <strong>Functionalities:</strong>
-            <ol>
-                <li>Create</li>
-                <li>Find</li>
-                <li>Update</li>
-                <li>Delete</li>
-                <li>List</li>
-            </ol>
-
-            <strong>Stack</strong>
-            <ol>
-                <li>Language: PHP</li>
-                <li>Framework of tests: PHPUnit</li>
-                <li>Slim Framework in external layer</li>
-            </ol>
-        </div>
-    </section>
-    <section>
-        <div>
-            <h1>How to this project is structured</h1>
-            <p>This project was created to show how to implements The Clean Architecture in practice</p>
-            <p align="center">
-                <img src="../../../../public/images/structure.png" />
-                <label>*This image may be out of date</label>
-            </p>
-        </div>
-    </section>
+    </div>
 </body>
 
 </html>

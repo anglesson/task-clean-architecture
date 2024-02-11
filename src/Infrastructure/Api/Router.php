@@ -3,7 +3,7 @@
 namespace App\ToDo\Infrastructure\Api;
 
 use App\ToDo\Application\Protocols\Http\HttpServer;
-use App\ToDo\Application\Web\HomeController;
+use App\ToDo\Main\Factories\HomeControllerFactory;
 use App\ToDo\Domain\Protocols\TaskRepository;
 use App\ToDo\Main\Factories\CreateTaskControllerFactory;
 use App\ToDo\Main\Factories\DeleteTaskControllerFactory;
@@ -29,6 +29,6 @@ class Router
         $this->httpServer->register('get', '/api/task', ListAllTasksControllerFactory::create($this->repository));
         $this->httpServer->register('put', '/api/task/{id}', UpdateTaskControllerFactory::create($this->repository));
         $this->httpServer->register('delete', '/api/task/{id}', DeleteTaskControllerFactory::create($this->repository));
-        $this->httpServer->register('get', '/', new HomeController());
+        $this->httpServer->register('get', '/', HomeControllerFactory::create());
     }
 }

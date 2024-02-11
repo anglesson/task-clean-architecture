@@ -47,10 +47,11 @@ docker compose up
 
 OR
 
-
 ```
 docker-compose up
 ```
-Your app is running on http://localhost:9090/api //Definir porta aleatoria
+By default your app is running on http://localhost:8080/api
+
+You can change port on `docker-compose.yml` file.
 
 Import API Collection for your Postman. You can find on `docs/tca-api-collection.postman_collection`
