@@ -28,7 +28,6 @@ class ReadTaskController implements Controller
 
         $output = $this->service->execute($id);
         $response->getBody()->write((string) $this->presenter->toJson($output));
-        $response->withHeader('Content-type', 'application/json');
         return $response;
     }
 }

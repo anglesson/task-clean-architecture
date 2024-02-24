@@ -22,7 +22,6 @@ class DeleteTaskController implements Controller
         $idTask = $request->getAttribute('id');
         $this->deleteTaskService->execute($idTask);
         $response->withStatus(204);
-        $response->withHeader('Content-type', 'application/json');
         return $response;
     }
 }
