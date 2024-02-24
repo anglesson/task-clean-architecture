@@ -6,6 +6,7 @@ use App\ToDo\Application\Protocols\Http\HttpServer;
 use App\ToDo\Domain\Protocols\TaskRepository;
 use App\ToDo\Infrastructure\Repositories\Doctrine\TaskDoctrineRepository;
 use App\ToDo\Main\Adapters\Slim\SlimHttpServerAdapter;
+use Slim\Factory\AppFactory;
 
 class CompositionRoot
 {
@@ -16,6 +17,7 @@ class CompositionRoot
 
     public static function createServer(): HttpServer
     {
-        return new SlimHttpServerAdapter();
+        $app = AppFactory::create();
+        return new SlimHttpServerAdapter($app);
     }
 }
