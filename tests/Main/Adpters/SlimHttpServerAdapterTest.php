@@ -47,4 +47,18 @@ class SlimHttpServerAdapterTest extends TestCase
         $sut = new SlimHttpServerAdapter($slimMock);
         $sut->register($method, $url, $controller, $middlwares);
     }
+
+    public function testShouldBeRegisterAMiddlewareOnApplication()
+    {
+        $middlwares = [$this->createMock(MiddlewareInterface::class)];
+
+        $slimMock = $this->createMock(App::class);
+        $slimMock
+            ->expects($this->once())
+            ->method('add')
+            ->with($middlwares[0]);
+
+        $sut = new SlimHttpServerAdapter($slimMock);
+        $sut->applyMiddlewares($middlwares);
+    }
 }
