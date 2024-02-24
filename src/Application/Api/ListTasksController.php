@@ -23,6 +23,7 @@ class ListTasksController implements Controller
     {
         $output = $this->useCase->execute();
         $response->getBody()->write((string) $this->presenter->toJson($output));
-        return $response->withHeader('Content-type', 'application/json');
+        $response->withHeader('Content-type', 'application/json');
+        return $response;
     }
 }

@@ -31,6 +31,7 @@ class UpdateTaskController implements Controller
         $outputUpdateTask = $this->service->execute($inputUpdateTask);
         $response->getBody()->write((string) $this->presenter->toJson($outputUpdateTask));
 
-        return $response->withHeader('Content-type', 'application/json');
+        $response->withHeader('Content-type', 'application/json');
+        return $response;
     }
 }

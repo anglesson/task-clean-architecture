@@ -32,6 +32,7 @@ class CreateTaskController implements Controller
         $outputCreateTask = $this->service->execute($inputCreateTask);
 
         $response->getBody()->write((string) $this->presenter->toJson($outputCreateTask));
-        return $response->withHeader('Content-type', 'application/json');
+        $response->withHeader('Content-type', 'application/json');
+        return $response;
     }
 }
