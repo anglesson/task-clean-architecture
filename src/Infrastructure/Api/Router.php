@@ -2,6 +2,7 @@
 
 namespace App\ToDo\Infrastructure\Api;
 
+use App\ToDo\Application\Middlewares\HTMLResponseMiddleware;
 use App\ToDo\Application\Middlewares\JsonResponseMiddleware;
 use App\ToDo\Application\Protocols\Http\HttpServer;
 use App\ToDo\Main\Factories\HomeControllerFactory;
@@ -25,12 +26,12 @@ class Router
 
     public function init(): void
     {
-        $this->httpServer->applyMiddlewares([new JsonResponseMiddleware()]);
-        $this->httpServer->register('post', '/api/task', CreateTaskControllerFactory::create($this->repository));
-        $this->httpServer->register('get', '/api/task/{id}', ReadTaskControllerFactory::create($this->repository));
-        $this->httpServer->register('get', '/api/task', ListAllTasksControllerFactory::create($this->repository));
-        $this->httpServer->register('put', '/api/task/{id}', UpdateTaskControllerFactory::create($this->repository));
-        $this->httpServer->register('delete', '/api/task/{id}', DeleteTaskControllerFactory::create($this->repository));
-        $this->httpServer->register('get', '/', HomeControllerFactory::create());
+        $apiMiddlewares = [new JsonResponseMiddleware()];
+        $this->httpServer->register('post', '/api/task', CreateTaskControllerFactory::create($this->repository), $apiMiddlewares);
+        $this->httpServer->register('get', '/api/task/{id}', ReadTaskControllerFactory::create($this->repository), $apiMiddlewares);
+        $this->httpServer->register('get', '/api/task', ListAllTasksControllerFactory::create($this->repository), $apiMiddlewares);
+        $this->httpServer->register('put', '/api/task/{id}', UpdateTaskControllerFactory::create($this->repository), $apiMiddlewares);
+        $this->httpServer->register('delete', '/api/task/{id}', DeleteTaskControllerFactory::create($this->repository), $apiMiddlewares);
+        $this->httpServer->register('get', '/', HomeControllerFactory::create(), [new HTMLResponseMiddleware()]);
     }
 }
