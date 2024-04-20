@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Application;
+namespace Test\Application\Presenters\CreateTask;
 
 use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenterImpl;
 use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenter;
