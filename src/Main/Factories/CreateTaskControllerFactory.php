@@ -7,7 +7,7 @@ use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenterImpl;
 use App\ToDo\Application\Protocols\Http\Controller;
 use App\ToDo\Domain\Protocols\TaskRepository;
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCaseImpl;
-use App\ToDo\Domain\UseCases\CreateTask\Validators\CreateTaskValidationFactory;
+use App\ToDo\Main\Factories\CreateTaskValidationFactory;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 
 final class CreateTaskControllerFactory
