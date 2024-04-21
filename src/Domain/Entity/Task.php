@@ -2,7 +2,7 @@
 
 namespace App\ToDo\Domain\Entity;
 
-use App\ToDo\Domain\Exceptions\DescriptionHasMoreThan50Caracters;
+use App\ToDo\Domain\Exceptions\DescriptionHasMoreThan50Characters;
 use App\ToDo\Domain\Exceptions\InvalidParamError;
 use DateTime;
 
@@ -34,7 +34,7 @@ class Task extends Entity
         }
 
         if (strlen($description) > 50) {
-            throw new DescriptionHasMoreThan50Caracters();
+            throw new DescriptionHasMoreThan50Characters();
         }
 
         $this->description = $description;

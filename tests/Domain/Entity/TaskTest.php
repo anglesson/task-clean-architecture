@@ -5,7 +5,7 @@ namespace Test\Domain\Entity;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 use App\ToDo\Domain\Entity\Task;
-use App\ToDo\Domain\Exceptions\DescriptionHasMoreThan50Caracters;
+use App\ToDo\Domain\Exceptions\DescriptionHasMoreThan50Characters;
 
 class TaskTest extends TestCase
 {
@@ -19,10 +19,10 @@ class TaskTest extends TestCase
         $this->assertTrue(is_null($task->getId()));
     }
 
-    public function testShouldThrowsIfLenghtDescriptionMoreThan50Caracters()
+    public function testShouldThrowsIfLengthDescriptionMoreThan50Characters()
     {
         $description = 'My Description has more than fifty hundred characters';
-        $this->expectException(DescriptionHasMoreThan50Caracters::class);
+        $this->expectException(DescriptionHasMoreThan50Characters::class);
         new Task($description);
     }
 
