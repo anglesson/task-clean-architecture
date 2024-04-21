@@ -2,15 +2,19 @@
 
 namespace App\ToDo\Domain\Entity;
 
+use App\ToDo\core\Collection;
+
 class TaskList extends Entity
 {
     private string $name;
-    private array $tasks;
 
-    public function __construct(string $name, array $tasks = [])
+    /** @var Collection<Task> $tasks */
+    private Collection $tasks;
+
+    public function __construct(string $name)
     {
         $this->name = $name;
-        $this->tasks = $tasks;
+        $this->tasks = new Collection();
     }
 
     public function getName(): string
@@ -18,20 +22,22 @@ class TaskList extends Entity
         return $this->name;
     }
 
-    public function getTasks(): array
+    /** 
+     * @return Collection<Task>
+     */
+    public function getTasks(): Collection
     {
         return $this->tasks;
     }
 
     public function add(Task $task): void
     {
-        $this->tasks[] = $task;
+        $this->tasks->offsetSet(null, $task);
     }
 
     public function remove(Task $task): void
     {
-        $key = array_search($task, $this->tasks);
-        array_splice($this->tasks, $key, 1);
+        $this->tasks->remove($task);
     }
 
     public function rename(string $name): void
