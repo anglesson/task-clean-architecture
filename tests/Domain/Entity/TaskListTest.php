@@ -26,17 +26,19 @@ class TaskListTest extends TestCase
         $task = new Task('New Task');
         $list = new TaskList('Inbox');
         $list->add($task);
-        $this->assertEquals($task, $list->getTasks()[0]);
+        $this->assertEquals($task, $list->getTasks()->first());
     }
 
     public function testShouldRemoveTaskFromList()
     {
         $task1 = new Task('Task 1');
         $task2 = new Task('Task 2');
-        $list = new TaskList('Inbox', [$task1, $task2]);
+        $list = new TaskList('Inbox');
+        $list->add($task1);
+        $list->add($task2);
         $list->remove($task1);
         $this->assertCount(1, $list->getTasks());
-        $this->assertEquals($task2, $list->getTasks()[0]);
+        $this->assertEquals($task2, $list->getTasks()->first());
     }
 
     public function testShouldRenameList()
