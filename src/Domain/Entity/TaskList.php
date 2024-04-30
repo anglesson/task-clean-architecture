@@ -2,7 +2,7 @@
 
 namespace App\ToDo\Domain\Entity;
 
-use App\ToDo\core\Collection;
+use App\ToDo\Core\Collection;
 
 class TaskList extends Entity
 {
