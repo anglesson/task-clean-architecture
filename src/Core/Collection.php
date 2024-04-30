@@ -30,7 +30,9 @@ class Collection extends ArrayObject
 
     public function last(): mixed
     {
+        $iterator = $this->getIterator();
         $lastIndex = $this->count() - 1;
-        return $this->offsetGet($lastIndex);
+        $iterator->seek($lastIndex);
+        return $iterator->current();
     }
 }
