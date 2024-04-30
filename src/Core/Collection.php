@@ -13,8 +13,7 @@ class Collection extends ArrayObject
 
     public function remove(mixed $element): void
     {
-        if (!$this->isEmpty())
-        {
+        if (!$this->isEmpty()) {
             $index = array_search($element, $this->getArrayCopy());
             $this->offsetUnset($index);
         }
