@@ -25,8 +25,8 @@ class CollectionTest extends TestCase
         $collection = new Collection($items);
         $collection->remove('apple');
         $this->assertCount(2, $collection);
-        $this->assertEquals('banana', $collection->get(0));
-        $this->assertEquals('melon', $collection->get(1));
+        $this->assertEquals('banana', $collection->get(1));
+        $this->assertEquals('melon', $collection->get(2));
     }
 
     public function testShouldReturnFirstAndLastItemFromCollection()
