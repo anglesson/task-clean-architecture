@@ -14,7 +14,7 @@
          colors="true"
          verbose="true">
     <testsuites>
-        <testsuite name="default">
+        <testsuite name="ToDo Application">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
