@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class CreateListTest extends TestCase
 {
-    public function testShouldCreateANewList()
+    public function testShouldCreateANewInstanceOfTaskList()
     {
         $createList = new CreateListUseCaseImpl();
         $outputList = $createList->execute();
