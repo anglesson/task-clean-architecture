@@ -35,4 +35,9 @@ class Collection extends ArrayObject
         $iterator->seek($lastIndex);
         return $iterator->current();
     }
+
+    public function toArray(): array
+    {
+        return $this->getArrayCopy();
+    }
 }

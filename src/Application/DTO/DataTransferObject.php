@@ -2,6 +2,7 @@
 
 namespace App\ToDo\Application\DTO;
 
+use App\ToDo\Core\Collection;
 use ReflectionClass;
 use ReflectionProperty;
 
@@ -15,7 +16,11 @@ abstract class DataTransferObject
             $property = $reflectionProperty->getName();
 
             if (isset($parameters[$property])) {
-                $this->{$property} = $parameters[$property];
+                if ($parameters[$property] instanceof Collection) {
+                    $this->{$property} = $parameters[$property]->toArray();
+                } else {
+                    $this->{$property} = $parameters[$property];
+                }
             }
         }
     }

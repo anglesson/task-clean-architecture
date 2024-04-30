@@ -6,5 +6,5 @@ use App\ToDo\Domain\UseCases\CreateList\OutputCreateList;
 
 interface CreateListUseCase
 {
-    public function execute(): OutputCreateList;
+    public function execute(string $name): OutputCreateList;
 }

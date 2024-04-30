@@ -44,4 +44,9 @@ class TaskList extends Entity
     {
         $this->name = $name;
     }
+
+    public function toArray(): array
+    {
+        return get_object_vars($this);
+    }
 }
