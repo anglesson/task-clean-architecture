@@ -2,7 +2,7 @@
 
 namespace Test\Application\Api;
 
-use App\ToDo\Application\Api\CreateListController;
+use App\ToDo\Application\Api\CreateTaskListController;
 use App\ToDo\Application\Api\CreateTaskController;
 use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenter;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
@@ -43,7 +43,7 @@ class CreateListControllerTest extends TestCase
             ->method('execute')
             ->with($data['name']);
 
-        $controller = new CreateListController($service);
+        $controller = new CreateTaskListController($service);
         $controller->handle($this->request, $this->response);
     }
 
