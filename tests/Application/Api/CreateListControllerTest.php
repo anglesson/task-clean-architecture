@@ -14,7 +14,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 
-class CreateTaskListControllerTest extends TestCase
+class CreateListControllerTest extends TestCase
 {
     /** @var ServerRequestInterface&\PHPUnit\Framework\MockObject\MockObject $request */
     private $request;
