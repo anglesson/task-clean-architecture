@@ -6,7 +6,7 @@ use App\ToDo\Application\Api\CreateListController;
 use App\ToDo\Application\Api\CreateTaskController;
 use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenter;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
-use App\ToDo\Domain\UseCases\CreateList\CreateListUseCase;
+use App\ToDo\Domain\UseCases\CreateList\CreateTaskListUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 use PHPUnit\Framework\TestCase;
@@ -37,7 +37,7 @@ class CreateListControllerTest extends TestCase
 
         $this->request->method('getParsedBody')->willReturn($data);
 
-        $service = $this->createMock(CreateListUseCase::class);
+        $service = $this->createMock(CreateTaskListUseCase::class);
         $service
             ->expects($this->once())
             ->method('execute')

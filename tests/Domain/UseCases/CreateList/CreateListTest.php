@@ -5,7 +5,7 @@ use App\ToDo\Domain\Entity\Task;
 use App\ToDo\Domain\Entity\TaskList;
 use App\ToDo\Domain\Protocols\TaskListRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
-use App\ToDo\Domain\UseCases\CreateList\CreateListUseCase;
+use App\ToDo\Domain\UseCases\CreateList\CreateTaskListUseCase;
 use App\ToDo\Domain\UseCases\CreateList\CreateListUseCaseImpl;
 use App\ToDo\Domain\UseCases\CreateList\OutputCreateList;
 use PHPUnit\Framework\TestCase;
@@ -24,7 +24,7 @@ class CreateListTest extends TestCase
     public function testShouldCreateANewInstanceOfTaskList()
     {
         $createList = new CreateListUseCaseImpl($this->mockRepository);
-        $this->assertInstanceOf(CreateListUseCase::class, $createList);
+        $this->assertInstanceOf(CreateTaskListUseCase::class, $createList);
     }
 
     public function testShouldBeCallRepositoryFunctionWithCorrectValues()

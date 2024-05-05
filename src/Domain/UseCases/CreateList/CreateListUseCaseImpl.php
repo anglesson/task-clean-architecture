@@ -4,7 +4,7 @@ namespace App\ToDo\Domain\UseCases\CreateList;
 use App\ToDo\Domain\Entity\TaskList;
 use App\ToDo\Domain\Protocols\TaskListRepository;
 
-class CreateListUseCaseImpl implements CreateListUseCase
+class CreateListUseCaseImpl implements CreateTaskListUseCase
 {
     public function __construct(private TaskListRepository $taskListRepository)
     {
