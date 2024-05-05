@@ -7,7 +7,7 @@ use App\ToDo\Domain\Protocols\TaskListRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
 use App\ToDo\Domain\UseCases\CreateList\CreateTaskListUseCase;
 use App\ToDo\Domain\UseCases\CreateList\CreateTaskListUseCaseImpl;
-use App\ToDo\Domain\UseCases\CreateList\OutputCreateList;
+use App\ToDo\Domain\UseCases\CreateList\OutputCreateTaskList;
 use PHPUnit\Framework\TestCase;
 
 class CreateListTest extends TestCase
@@ -47,7 +47,7 @@ class CreateListTest extends TestCase
         // arrange
         $taskList = new TaskList('any_list_name');
         $taskList->add(new Task('Teste'));
-        $expected = OutputCreateList::create($taskList);
+        $expected = OutputCreateTaskList::create($taskList);
 
         $this->mockRepository
             ->method("save")

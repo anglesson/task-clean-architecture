@@ -2,9 +2,9 @@
 
 namespace App\ToDo\Domain\UseCases\CreateList;
 
-use App\ToDo\Domain\UseCases\CreateList\OutputCreateList;
+use App\ToDo\Domain\UseCases\CreateList\OutputCreateTaskList;
 
 interface CreateTaskListUseCase
 {
-    public function execute(string $name): OutputCreateList;
+    public function execute(string $name): OutputCreateTaskList;
 }

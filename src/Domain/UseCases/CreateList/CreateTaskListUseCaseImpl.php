@@ -10,10 +10,10 @@ class CreateTaskListUseCaseImpl implements CreateTaskListUseCase
     {
     }
 
-    public function execute(string $name): OutputCreateList
+    public function execute(string $name): OutputCreateTaskList
     {
         $taskList = new TaskList($name);
         $createdTaskList = $this->taskListRepository->save($taskList);
-        return OutputCreateList::create($createdTaskList);
+        return OutputCreateTaskList::create($createdTaskList);
     }
 }
