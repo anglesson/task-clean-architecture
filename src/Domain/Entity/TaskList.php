@@ -3,17 +3,22 @@
 namespace App\ToDo\Domain\Entity;
 
 use App\ToDo\Core\Collection;
+use DateTime;
 
 class TaskList extends Entity
 {
     private string $name;
+    private DateTime $createdAt;
+    private DateTime $updatedAt;
 
     /** @var Collection<Task> $tasks */
     private Collection $tasks;
 
-    public function __construct(string $name)
+    public function __construct(string $name, string $id = null)
     {
+        $this->id = $id;
         $this->name = $name;
+        $this->createdAt = new DateTime();
         $this->tasks = new Collection();
     }
 

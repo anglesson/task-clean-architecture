@@ -18,25 +18,27 @@ class CreateListTest extends TestCase
     protected function setUp(): void
     {
         $this->mockUuid = $this->createMock(UuidGenerator::class);
+        $this->mockUuid->method("generateID")->willReturn("any_id");
         $this->mockRepository = $this->createMock(TaskListRepository::class);
         $this->sut = new CreateTaskListUseCaseImpl($this->mockRepository, $this->mockUuid);
     }
     public function testShouldCreateANewInstanceOfTaskList()
     {
-        $createList = new CreateTaskListUseCaseImpl($this->mockRepository);
+        $uuid = $this->createMock(UuidGenerator::class);
+        $createList = new CreateTaskListUseCaseImpl($this->mockRepository, $uuid);
         $this->assertInstanceOf(CreateTaskListUseCase::class, $createList);
     }
 
     public function testShouldBeCallRepositoryFunctionWithCorrectValues()
     {
         // arrange
-        $expected = new TaskList('any_list_name');
+        $expected = new TaskList('any_list_name', 'any_id');
 
         // assert
         $this->mockRepository
             ->expects($this->once())
             ->method("save")
-            ->with($expected);
+            ->with($this->equalToWithDelta($expected, 1));
 
         // act
         $this->sut->execute('any_list_name');

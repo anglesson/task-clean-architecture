@@ -11,7 +11,8 @@ class Application
     {
         $httpServer = CompositionRoot::createServer();
         $repository = CompositionRoot::createTaskRepository();
-        $router = new Router($httpServer, $repository);
+        $listRepository = CompositionRoot::createTaskListRepository();
+        $router = new Router($httpServer, $repository, $listRepository);
         $router->init();
         $httpServer->listen();
     }
