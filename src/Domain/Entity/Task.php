@@ -29,10 +29,6 @@ class Task extends Entity
 
     public function setDescription(string $description): void
     {
-        if (!$description) {
-            throw new InvalidParamError('description');
-        }
-
         if (strlen($description) > 50) {
             throw new DescriptionHasMoreThan50Characters();
         }
