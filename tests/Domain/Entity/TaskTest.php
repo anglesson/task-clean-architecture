@@ -19,21 +19,14 @@ class TaskTest extends TestCase
         $this->assertTrue(is_null($task->getId()));
     }
 
-    public function testShouldThrowsIfLengthDescriptionMoreThan50Characters()
-    {
-        $description = 'My Description has more than fifty hundred characters';
-        $this->expectException(DescriptionHasMoreThan50Characters::class);
-        new Task($description);
-    }
-
-    public function testShouldBeDoneTask()
+    public function testShouldBeDoneAndUndoTask()
     {
         $description = 'any_description';
         $task = new Task($description);
-        $task->setFinished(true);
+        $task->done();
         $this->assertTrue($task->isFinished());
 
-        $task->setFinished(false);
+        $task->undo();
         $this->assertFalse($task->isFinished());
     }
 
@@ -45,5 +38,18 @@ class TaskTest extends TestCase
         $currentTime = new DateTime();
 
         $this->assertEquals($currentTime->format($format), $task->getCreatedAt()->format($format));
+    }
+
+    public function testShouldSetUpdateAtAfterUpdateATask()
+    {
+        $task = new Task('any_description');
+
+        $task->done();
+        $lastUpdateAfterDone = $task->lastUpdate();
+
+        $task->updateDescription('new description');
+        $lastUpdateAfterUpdateDescription = $task->lastUpdate();
+
+        $this->assertTrue($lastUpdateAfterUpdateDescription > $lastUpdateAfterDone);
     }
 }

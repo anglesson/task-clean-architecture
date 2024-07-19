@@ -21,8 +21,9 @@ class UpdateTaskUseCaseImpl implements UpdateTaskUseCase
             throw new TaskNotFoundException();
         }
 
-        $taskFounded->setDescription($input->description);
-        $taskFounded->setFinished($input->finished);
+        $taskFounded->updateDescription($input->description);
+
+        $input->finished ? $taskFounded->done() : $taskFounded->undo();
 
         $taskUpdated = $this->repository->update($taskFounded);
         return OutputUpdateTask::create($taskUpdated);
