@@ -13,7 +13,10 @@
         }
     ],
     "scripts": {
-        "test:watch": "./vendor/bin/phpunit-watcher watch",
+        "test:watch": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit-watcher watch"
+        ],
         "test:watch --verbose": "./vendor/bin/phpunit-watcher watch --testdox",
         "test": "./vendor/bin/phpunit",
         "start": "php -S localhost:7000 -t src/Main"
