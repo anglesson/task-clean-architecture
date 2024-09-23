@@ -2,7 +2,7 @@
 
 namespace Test\Main\Factories;
 
-use App\ToDo\Application\Api\UpdateTaskController;
+use App\ToDo\Application\Controllers\UpdateTaskController;
 use App\ToDo\Domain\Protocols\TaskRepository;
 use App\ToDo\Main\Factories\UpdateTaskControllerFactory;
 use PHPUnit\Framework\TestCase;

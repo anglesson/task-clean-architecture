@@ -1,5 +1,6 @@
 {
     "name": "app/todo",
+    "version": "1.0.0",
     "autoload": {
         "psr-4": {
             "App\\ToDo\\": "src/",

@@ -1,8 +1,8 @@
 <?php
 
-namespace Test\Application\Api;
+namespace Test\Application\Controllers;
 
-use App\ToDo\Application\Api\DeleteTaskController;
+use App\ToDo\Application\Controllers\DeleteTaskController;
 use App\ToDo\Domain\UseCases\DeleteTask\DeleteTaskUseCase;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface as Response;

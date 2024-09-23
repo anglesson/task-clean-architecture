@@ -1,18 +1,19 @@
 <?php
 
-namespace Test\Application\Api;
+namespace Test\Application\Controllers;
 
-use App\ToDo\Application\Api\CreateTaskController;
+use App\ToDo\Application\Controllers\CreateTaskListController;
+use App\ToDo\Application\Controllers\CreateTaskController;
 use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenter;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
+use App\ToDo\Domain\UseCases\CreateList\CreateTaskListUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
-use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 
-class CreateTaskControllerTest extends TestCase
+class CreateListControllerTest extends TestCase
 {
     /** @var ServerRequestInterface&\PHPUnit\Framework\MockObject\MockObject $request */
     private $request;
@@ -31,16 +32,17 @@ class CreateTaskControllerTest extends TestCase
 
     public function testShouldCallServiceWithCorrectValues()
     {
-        $data = ['description' => 'My description'];
+        $data = ['name' => 'My First List'];
 
         $this->request->method('getParsedBody')->willReturn($data);
 
-        $inputCreateTask = InputCreateTask::create($data);
-        $presenter = $this->createMock(CreateTaskPresenter::class);
-        $service = $this->createMock(CreateTaskUseCase::class);
-        $service->expects($this->once())->method('execute')->with($inputCreateTask);
+        $service = $this->createMock(CreateTaskListUseCase::class);
+        $service
+            ->expects($this->once())
+            ->method('execute')
+            ->with($data['name']);
 
-        $controller = new CreateTaskController($service, $presenter);
+        $controller = new CreateTaskListController($service);
         $controller->handle($this->request, $this->response);
     }
 

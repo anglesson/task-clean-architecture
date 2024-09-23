@@ -2,7 +2,7 @@
 
 namespace Test\Main\Factories;
 
-use App\ToDo\Application\Api\ReadTaskController;
+use App\ToDo\Application\Controllers\ReadTaskController;
 use App\ToDo\Domain\Protocols\TaskRepository;
 use App\ToDo\Main\Factories\ReadTaskControllerFactory;
 use PHPUnit\Framework\TestCase;

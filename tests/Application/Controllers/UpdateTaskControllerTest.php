@@ -1,9 +1,8 @@
 <?php
 
-namespace Test\Application\Api;
+namespace Test\Application\Controllers;
 
-use App\ToDo\Application\Api\UpdateTaskController;
-use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenter;
+use App\ToDo\Application\Controllers\UpdateTaskController;
 use App\ToDo\Application\Presenters\UpdateTask\UpdateTaskPresenter;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;

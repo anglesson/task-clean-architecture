@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Application\Protocols\Http;
+namespace App\ToDo\Application\Controllers;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;

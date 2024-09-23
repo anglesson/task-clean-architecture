@@ -1,13 +1,10 @@
 <?php
 
-namespace Test\Application\Api;
+namespace Test\Application\Controllers;
 
-use App\ToDo\Application\Api\CreateTaskController;
-use App\ToDo\Application\Api\ReadTaskController;
-use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenter;
+use App\ToDo\Application\Controllers\ReadTaskController;
 use App\ToDo\Application\Presenters\ReadTask\ReadTaskPresenter;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
-use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Domain\UseCases\ReadTask\ReadTaskUseCase;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;

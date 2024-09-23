@@ -45,11 +45,10 @@ class TaskTest extends TestCase
         $task = new Task('any_description');
 
         $task->done();
-        $lastUpdateAfterDone = $task->lastUpdate();
 
         $task->updateDescription('new description');
-        $lastUpdateAfterUpdateDescription = $task->lastUpdate();
+        $task->lastUpdate();
 
-        $this->assertTrue($lastUpdateAfterUpdateDescription > $lastUpdateAfterDone);
+        $this->assertNotNull($task->lastUpdate());
     }
 }

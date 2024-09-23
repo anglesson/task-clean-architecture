@@ -1,9 +1,9 @@
 <?php
 
-namespace App\ToDo\Application\Api;
+namespace App\ToDo\Application\Controllers;
 
 use App\ToDo\Application\Presenters\ListTask\ListTaskPresenter;
-use App\ToDo\Application\Protocols\Http\Controller;
+use App\ToDo\Application\Controllers\Controller;
 use App\ToDo\Domain\UseCases\ListTasks\ListTasksUseCase;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

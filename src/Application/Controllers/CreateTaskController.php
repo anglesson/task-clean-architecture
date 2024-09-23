@@ -1,9 +1,9 @@
 <?php
 
-namespace App\ToDo\Application\Api;
+namespace App\ToDo\Application\Controllers;
 
 use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenter;
-use App\ToDo\Application\Protocols\Http\Controller;
+use App\ToDo\Application\Controllers\Controller;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\InputCreateTask;

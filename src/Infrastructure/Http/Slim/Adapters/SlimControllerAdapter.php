@@ -1,8 +1,8 @@
 <?php
 
-namespace App\ToDo\Main\Adapters\Slim;
+namespace App\ToDo\Infrastructure\Http\Slim\Adapters;
 
-use App\ToDo\Application\Protocols\Http\Controller;
+use App\ToDo\Application\Controllers\Controller;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 

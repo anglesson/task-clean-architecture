@@ -2,7 +2,7 @@
 
 namespace App\ToDo\Application\Web;
 
-use App\ToDo\Application\Protocols\Http\Controller;
+use App\ToDo\Application\Controllers\Controller;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Test\Main\Adpters;
+namespace Test\Infrastructure\Http\Slim\Adpters;
 
-use App\ToDo\Application\Protocols\Http\Controller;
-use App\ToDo\Main\Adapters\Slim\SlimControllerAdapter;
+use App\ToDo\Application\Controllers\Controller;
+use App\ToDo\Infrastructure\Http\Slim\Adapters\SlimControllerAdapter;
 use PHPUnit\Framework\TestCase;
 
 class SlimControllerAdapterTest extends TestCase

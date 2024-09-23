@@ -1,10 +1,10 @@
 <?php
 
-namespace Application\Api;
+namespace Test\Application\Controllers;
 
-use App\ToDo\Application\Api\ListTasksController;
+use App\ToDo\Application\Controllers\ListTasksController;
 use App\ToDo\Application\Presenters\ListTask\ListTaskPresenter;
-use App\ToDo\Application\Protocols\Http\Controller;
+use App\ToDo\Application\Controllers\Controller;
 use App\ToDo\Domain\UseCases\ListTasks\ListTasksUseCase;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;

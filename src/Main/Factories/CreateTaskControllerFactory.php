@@ -2,9 +2,9 @@
 
 namespace App\ToDo\Main\Factories;
 
-use App\ToDo\Application\Api\CreateTaskController;
+use App\ToDo\Application\Controllers\CreateTaskController;
 use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenterImpl;
-use App\ToDo\Application\Protocols\Http\Controller;
+use App\ToDo\Application\Controllers\Controller;
 use App\ToDo\Domain\Protocols\TaskRepository;
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCaseImpl;
 use App\ToDo\Main\Factories\CreateTaskValidationFactory;
