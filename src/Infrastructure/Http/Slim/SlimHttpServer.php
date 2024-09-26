@@ -3,7 +3,6 @@
 namespace App\ToDo\Infrastructure\Http\Slim;
 
 use App\ToDo\Application\Middlewares\JsonResponseMiddleware;
-use App\ToDo\Domain\Protocols\TaskRepository;
 use App\ToDo\Infrastructure\Http\Protocols\HttpServer;
 use App\ToDo\Infrastructure\Http\Slim\Adapters\SlimControllerAdapter;
 use App\ToDo\Infrastructure\Http\Slim\Middlewares\JsonBodyParserMiddleware;
@@ -17,27 +16,25 @@ use Slim\Routing\RouteCollectorProxy;
 
 class SlimHttpServer implements HttpServer
 {
-    private App            $app;
-    private TaskRepository $repository;
+    private App $app;
 
-    public function __construct(
-        App $app,
-        $repository,
-    ) {
-        $this->app        = $app;
-        $this->repository = $repository;
+    public function __construct(App $app)
+    {
+        $this->app = $app;
     }
 
-    public function registerRoutes(): void
+    private function registerRoutes(): void
     {
+        $this->app->addRoutingMiddleware();
+
         $this->app->group('/api', function (RouteCollectorProxy $group) {
-            $group->post('/tasks', new SlimControllerAdapter(CreateTaskControllerFactory::create($this->repository)));
-            $group->get('/tasks/{id}', new SlimControllerAdapter(ReadTaskControllerFactory::create($this->repository)));
-            $group->get('/tasks', new SlimControllerAdapter(ListAllTasksControllerFactory::create($this->repository)));
-            $group->put('/tasks/{id}', new SlimControllerAdapter(UpdateTaskControllerFactory::create($this->repository)));
-            $group->delete('/tasks/{id}', new SlimControllerAdapter(DeleteTaskControllerFactory::create($this->repository)));
+            $group->post('/tasks', new SlimControllerAdapter(CreateTaskControllerFactory::create()));
+            $group->get('/tasks/{id}', new SlimControllerAdapter(ReadTaskControllerFactory::create()));
+            $group->get('/tasks', new SlimControllerAdapter(ListAllTasksControllerFactory::create()));
+            $group->put('/tasks/{id}', new SlimControllerAdapter(UpdateTaskControllerFactory::create()));
+            $group->delete('/tasks/{id}', new SlimControllerAdapter(DeleteTaskControllerFactory::create()));
         })->addMiddleware(new JsonResponseMiddleware())
-        ->addMiddleware(new JsonBodyParserMiddleware());
+            ->addMiddleware(new JsonBodyParserMiddleware());
     }
 
     /**
@@ -45,6 +42,7 @@ class SlimHttpServer implements HttpServer
      */
     public function listen(): void
     {
+        $this->registerRoutes();
         $this->app->run();
     }
 }

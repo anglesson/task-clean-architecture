@@ -4,3 +4,4 @@ vendor/
 .vscode
 db.sqlite
 .env
+logs/
