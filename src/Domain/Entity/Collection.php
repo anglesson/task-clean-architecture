@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Core;
+namespace App\ToDo\Domain\Entity;
 
 use ArrayObject;
 
