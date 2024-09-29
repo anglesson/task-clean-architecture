@@ -1,7 +1,7 @@
 <?php
 namespace Test\Core;
 
-use App\ToDo\Core\Collection;
+use App\ToDo\Domain\Entity\Collection;
 use PHPUnit\Framework\TestCase;
 
 class CollectionTest extends TestCase

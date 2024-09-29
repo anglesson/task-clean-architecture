@@ -2,7 +2,6 @@
 
 namespace App\ToDo\Domain\Entity;
 
-use App\ToDo\Core\Collection;
 use DateTime;
 
 class TaskList extends Entity

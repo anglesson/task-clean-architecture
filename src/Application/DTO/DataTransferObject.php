@@ -2,7 +2,7 @@
 
 namespace App\ToDo\Application\DTO;
 
-use App\ToDo\Core\Collection;
+use App\ToDo\Domain\Entity\Collection;
 use ReflectionClass;
 use ReflectionProperty;
 
