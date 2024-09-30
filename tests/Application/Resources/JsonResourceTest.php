@@ -13,8 +13,7 @@ class JsonResourceTest extends TestCase
             'any_index' => 'any_value',
         ];
         $resource = json_decode(new JsonResource($content), TRUE);
-        $this->assertArrayHasKey( 'data', $resource);
-        $this->assertArrayHasKey( 'any_index', $resource['data']);
-        $this->assertEquals( 'any_value', $resource['data']['any_index']);
+        $this->assertArrayHasKey( 'any_index', $resource);
+        $this->assertEquals( 'any_value', $resource['any_index']);
     }
 }
