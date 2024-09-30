@@ -2,7 +2,7 @@
 
 namespace Test\Main\Factories;
 
-use App\ToDo\Application\Controllers\ListTasksController;
+use App\ToDo\Infrastructure\Web\Controllers\ListTasksController;
 use App\ToDo\Main\Factories\ListAllTasksControllerFactory;
 use PHPUnit\Framework\TestCase;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Test\Application\Controllers;
+namespace Test\Infrastructure\Web\Controllers;
 
-use App\ToDo\Application\Controllers\CreateTaskController;
+use App\ToDo\Infrastructure\Web\Controllers\CreateTaskController;
 use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenter;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;

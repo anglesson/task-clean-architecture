@@ -2,9 +2,9 @@
 
 namespace App\ToDo\Main\Factories;
 
-use App\ToDo\Application\Controllers\CreateTaskController;
+use App\ToDo\Infrastructure\Web\Controllers\CreateTaskController;
 use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenterImpl;
-use App\ToDo\Application\Controllers\Controller;
+use App\ToDo\Infrastructure\Web\Controllers\Controller;
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCaseImpl;
 use App\ToDo\Main\Factories\CreateTaskValidationFactory;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;

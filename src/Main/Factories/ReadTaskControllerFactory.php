@@ -2,9 +2,9 @@
 
 namespace App\ToDo\Main\Factories;
 
-use App\ToDo\Application\Controllers\ReadTaskController;
+use App\ToDo\Infrastructure\Web\Controllers\ReadTaskController;
 use App\ToDo\Application\Presenters\ReadTask\ReadTaskPresenterImpl;
-use App\ToDo\Application\Controllers\Controller;
+use App\ToDo\Infrastructure\Web\Controllers\Controller;
 use App\ToDo\Domain\UseCases\ReadTask\ReadTaskUseCaseImpl;
 use App\ToDo\Main\CompositionRoot;
 

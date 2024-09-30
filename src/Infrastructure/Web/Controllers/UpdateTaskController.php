@@ -1,9 +1,9 @@
 <?php
 
-namespace App\ToDo\Application\Controllers;
+namespace App\ToDo\Infrastructure\Web\Controllers;
 
 use App\ToDo\Application\Presenters\UpdateTask\UpdateTaskPresenter;
-use App\ToDo\Application\Controllers\Controller;
+use App\ToDo\Infrastructure\Web\Controllers\Controller;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\UseCases\UpdateTask\InputUpdateTask;
 use App\ToDo\Domain\UseCases\UpdateTask\UpdateTaskUseCase;

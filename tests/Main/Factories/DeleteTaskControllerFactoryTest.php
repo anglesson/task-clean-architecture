@@ -2,7 +2,7 @@
 
 namespace Test\Main\Factories;
 
-use App\ToDo\Application\Controllers\DeleteTaskController;
+use App\ToDo\Infrastructure\Web\Controllers\DeleteTaskController;
 use App\ToDo\Main\Factories\DeleteTaskControllerFactory;
 use PHPUnit\Framework\TestCase;
 

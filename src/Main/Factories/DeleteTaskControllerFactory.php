@@ -2,8 +2,8 @@
 
 namespace App\ToDo\Main\Factories;
 
-use App\ToDo\Application\Controllers\DeleteTaskController;
-use App\ToDo\Application\Controllers\Controller;
+use App\ToDo\Infrastructure\Web\Controllers\DeleteTaskController;
+use App\ToDo\Infrastructure\Web\Controllers\Controller;
 use App\ToDo\Domain\UseCases\DeleteTask\DeleteTaskUseCaseImpl;
 use App\ToDo\Main\CompositionRoot;
 

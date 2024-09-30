@@ -2,9 +2,9 @@
 
 namespace App\ToDo\Main\Factories;
 
-use App\ToDo\Application\Controllers\ListTasksController;
+use App\ToDo\Infrastructure\Web\Controllers\ListTasksController;
 use App\ToDo\Application\Presenters\ListTask\ListTaskPresenterImpl;
-use App\ToDo\Application\Controllers\Controller;
+use App\ToDo\Infrastructure\Web\Controllers\Controller;
 use App\ToDo\Domain\UseCases\ListTasks\ListTasksUseCaseImpl;
 use App\ToDo\Main\CompositionRoot;
 

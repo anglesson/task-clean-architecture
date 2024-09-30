@@ -2,7 +2,7 @@
 
 namespace Test\Infrastructure\Http\Slim\Adpters;
 
-use App\ToDo\Application\Controllers\Controller;
+use App\ToDo\Infrastructure\Web\Controllers\Controller;
 use App\ToDo\Infrastructure\Http\Slim\Adapters\SlimControllerAdapter;
 use PHPUnit\Framework\TestCase;
 

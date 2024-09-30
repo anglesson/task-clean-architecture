@@ -2,7 +2,7 @@
 
 namespace Test\Main\Factories;
 
-use App\ToDo\Application\Controllers\CreateTaskListController;
+use App\ToDo\Infrastructure\Web\Controllers\CreateTaskListController;
 use App\ToDo\Main\Factories\CreateTaskListControllerFactory;
 use PHPUnit\Framework\TestCase;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\ToDo\Application\Controllers;
+namespace App\ToDo\Infrastructure\Web\Controllers;
 
 use App\ToDo\Application\Presenters\ReadTask\ReadTaskPresenter;
-use App\ToDo\Application\Controllers\Controller;
+use App\ToDo\Infrastructure\Web\Controllers\Controller;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\UseCases\ReadTask\ReadTaskUseCase;
 use Psr\Http\Message\ResponseInterface as Response;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Test\Application\Controllers;
+namespace Test\Infrastructure\Web\Controllers;
 
-use App\ToDo\Application\Controllers\ReadTaskController;
+use App\ToDo\Infrastructure\Web\Controllers\ReadTaskController;
 use App\ToDo\Application\Presenters\ReadTask\ReadTaskPresenter;
 use App\ToDo\Domain\Exceptions\MissingParamsError;
 use App\ToDo\Domain\UseCases\ReadTask\ReadTaskUseCase;

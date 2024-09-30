@@ -1,8 +1,8 @@
 <?php
 
-namespace App\ToDo\Application\Controllers;
+namespace App\ToDo\Infrastructure\Web\Controllers;
 
-use App\ToDo\Application\Controllers\Controller;
+use App\ToDo\Infrastructure\Web\Controllers\Controller;
 use App\ToDo\Domain\UseCases\CreateList\CreateTaskListUseCase;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

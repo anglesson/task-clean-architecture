@@ -1,9 +1,8 @@
 <?php
 
 namespace App\ToDo\Main\Factories;
-
-use App\ToDo\Application\Controllers\Controller;
-use App\ToDo\Application\Web\HomeController;
+use App\ToDo\Infrastructure\Web\Controllers\Controller;
+use App\ToDo\Infrastructure\Web\Controllers\HomeController;
 
 final class HomeControllerFactory
 {

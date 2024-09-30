@@ -2,8 +2,8 @@
 
 namespace App\ToDo\Main\Factories;
 
-use App\ToDo\Application\Controllers\CreateTaskListController;
-use App\ToDo\Application\Controllers\Controller;
+use App\ToDo\Infrastructure\Web\Controllers\CreateTaskListController;
+use App\ToDo\Infrastructure\Web\Controllers\Controller;
 use App\ToDo\Domain\UseCases\CreateList\CreateTaskListUseCaseImpl;
 use App\ToDo\Infrastructure\Utils\RamseyUuidImpl;
 use App\ToDo\Main\CompositionRoot;

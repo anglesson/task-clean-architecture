@@ -2,9 +2,9 @@
 
 namespace App\ToDo\Main\Factories;
 
-use App\ToDo\Application\Controllers\UpdateTaskController;
+use App\ToDo\Infrastructure\Web\Controllers\UpdateTaskController;
 use App\ToDo\Application\Presenters\UpdateTask\UpdateTaskPresenterImpl;
-use App\ToDo\Application\Controllers\Controller;
+use App\ToDo\Infrastructure\Web\Controllers\Controller;
 use App\ToDo\Domain\UseCases\UpdateTask\UpdateTaskUseCaseImpl;
 use App\ToDo\Main\CompositionRoot;
 
