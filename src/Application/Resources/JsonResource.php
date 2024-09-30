@@ -13,8 +13,6 @@ class JsonResource
 
     public function __toString(): string
     {
-        return json_encode([
-            'data' => $this->data
-        ]);
+        return json_encode($this->data);
     }
 }
