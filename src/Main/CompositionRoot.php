@@ -11,9 +11,11 @@ use App\ToDo\Infrastructure\Repositories\Doctrine\TaskDoctrineRepository;
 use App\ToDo\Infrastructure\Repositories\Doctrine\TaskListDoctrineRepository;
 use App\ToDo\Infrastructure\Utils\Environment;
 use App\ToDo\Infrastructure\Utils\LoadEnvInterface;
+use DI\ContainerBuilder;
 use Monolog\Handler\StreamHandler;
 use Monolog\Level;
 use Monolog\Logger;
+use Psr\Container\ContainerInterface;
 use Slim\Factory\AppFactory;
 
 class CompositionRoot
@@ -30,8 +32,9 @@ class CompositionRoot
 
     public static function createServer(): HttpServer
     {
-        $app = AppFactory::create();
-        return new SlimHttpServer($app);
+        $container = self::createContainer();
+        AppFactory::setContainer($container);
+        return new SlimHttpServer(AppFactory::createFromContainer($container));
     }
 
     public static function createLoadEnv(): LoadEnvInterface
@@ -51,5 +54,14 @@ class CompositionRoot
     public static function createErrorHandler(): ErrorHandler
     {
         return new ErrorHandler(self::createLogger());
+    }
+
+    public static function createContainer(): ContainerInterface
+    {
+        $definitions = require __DIR__ .'/../Infrastructure/DI/definitions.php';
+
+        $builder = new ContainerBuilder();
+        $builder->addDefinitions($definitions);
+        return $builder->build();
     }
 }
