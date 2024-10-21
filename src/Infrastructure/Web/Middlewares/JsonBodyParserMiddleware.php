@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Infrastructure\Http\Slim\Middlewares;
+namespace App\ToDo\Infrastructure\Web\Middlewares;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
