@@ -7,6 +7,7 @@ use App\ToDo\Infrastructure\Http\Protocols\HttpServer;
 use App\ToDo\Infrastructure\Http\Slim\Adapters\SlimControllerAdapter;
 use App\ToDo\Infrastructure\Http\Slim\Middlewares\JsonBodyParserMiddleware;
 use App\ToDo\Infrastructure\Web\Controllers\CreateTaskController;
+use App\ToDo\Infrastructure\Web\Controllers\DeleteTaskController;
 use App\ToDo\Main\Factories\DeleteTaskControllerFactory;
 use App\ToDo\Main\Factories\HomeControllerFactory;
 use App\ToDo\Main\Factories\ListAllTasksControllerFactory;
@@ -34,7 +35,7 @@ class SlimHttpServer implements HttpServer
             $group->get('/tasks/{id}', ReadTaskController::class.':handle');
             $group->get('/tasks', new SlimControllerAdapter(ListAllTasksControllerFactory::create()));
             $group->put('/tasks/{id}', UpdateTaskController::class.':handle');
-            $group->delete('/tasks/{id}', new SlimControllerAdapter(DeleteTaskControllerFactory::create()));
+            $group->delete('/tasks/{id}', DeleteTaskController::class.':handle');
         })->addMiddleware(new JsonResponseMiddleware())
             ->addMiddleware(new JsonBodyParserMiddleware());
         $this->app->get('/', new SlimControllerAdapter(HomeControllerFactory::create()));
