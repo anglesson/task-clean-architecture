@@ -2,7 +2,7 @@
 
 namespace App\ToDo\Infrastructure\Http\Slim;
 
-use App\ToDo\Application\Middlewares\JsonResponseMiddleware;
+use App\ToDo\Infrastructure\Web\Middlewares\JsonResponseMiddleware;
 use App\ToDo\Infrastructure\Http\Protocols\HttpServer;
 use App\ToDo\Infrastructure\Http\Slim\Adapters\SlimControllerAdapter;
 use App\ToDo\Infrastructure\Http\Slim\Middlewares\JsonBodyParserMiddleware;

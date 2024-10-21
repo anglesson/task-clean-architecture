@@ -2,7 +2,7 @@
 
 namespace Test\Application\Resources;
 
-use App\ToDo\Application\Resources\JsonResource;
+use App\ToDo\Infrastructure\Web\Resources\JsonResource;
 use PHPUnit\Framework\TestCase;
 
 class JsonResourceTest extends TestCase

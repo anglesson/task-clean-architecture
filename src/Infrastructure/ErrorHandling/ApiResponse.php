@@ -7,10 +7,13 @@ class ApiResponse
     private $statusCode;
     private $message;
 
-    public function __construct(int $statusCode, string $message)
+    private $trace;
+
+    public function __construct(int $statusCode, string $message, string|array $trace = "")
     {
         $this->statusCode = $statusCode;
         $this->message    = $message;
+        $this->trace = $trace;
     }
 
     public function send()
@@ -20,6 +23,7 @@ class ApiResponse
         echo json_encode([
             'code'    => $this->statusCode,
             'message' => $this->message,
+            'trace' => $this->trace,
         ]);
     }
 }

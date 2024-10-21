@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ToDo\Application\Resources;
+namespace App\ToDo\Infrastructure\Web\Resources;
 
 class JsonResource
 {

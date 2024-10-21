@@ -3,7 +3,7 @@
 namespace App\ToDo\Application\Presenters\UpdateTask;
 
 use App\ToDo\Application\Presenters\UpdateTask\UpdateTaskPresenter;
-use App\ToDo\Application\Resources\JsonResource;
+use App\ToDo\Infrastructure\Web\Resources\JsonResource;
 use App\ToDo\Domain\UseCases\UpdateTask\OutputUpdateTask;
 
 class UpdateTaskPresenterImpl implements UpdateTaskPresenter

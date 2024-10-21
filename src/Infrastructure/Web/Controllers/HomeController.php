@@ -10,7 +10,7 @@ class HomeController implements Controller
 {
     public function handle(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $view = \file_get_contents(__DIR__.'/../../../Application/Resources/views/home.html');
+        $view = \file_get_contents(__DIR__.'/../Views/home.html');
         $response->getBody()->write($view);
         return $response->withHeader('Content-type', 'text/html');
     }

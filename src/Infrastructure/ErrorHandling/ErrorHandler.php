@@ -22,9 +22,9 @@ class ErrorHandler implements ErrorHandlerInterface
 
     public static function handleException(\Throwable $exception)
     {
-        self::$logger->error($exception->getMessage(), ['exception' => $exception]);
+        self::$logger->error($exception->getMessage(), ['exception' => $exception->getTraceAsString()]);
 
-        $response = new ApiResponse($exception->getCode(), $exception->getMessage());
+        $response = new ApiResponse($exception->getCode(), $exception->getMessage(), $exception->getTrace());
         $response->send();
     }
 
