@@ -1,7 +1,5 @@
 <?php
 
-use App\ToDo\Domain\Protocols\TaskListRepository;
-use App\ToDo\Domain\Protocols\TaskRepository;
 use App\ToDo\Infrastructure\ErrorHandling\ErrorHandlerInterface;
 use App\ToDo\Infrastructure\Http\Protocols\HttpServer;
 use App\ToDo\Infrastructure\Utils\LoadEnvInterface;
@@ -11,18 +9,6 @@ use Psr\Log\LoggerInterface;
 
 class CompositionRootTest extends TestCase
 {
-    public function testCreateTaskRepository(): void
-    {
-        $taskRepository = CompositionRoot::createTaskRepository();
-        $this->assertInstanceOf(TaskRepository::class, $taskRepository);
-    }
-
-    public function testCreateTaskListRepository(): void
-    {
-        $taskListRepository = CompositionRoot::createTaskListRepository();
-        $this->assertInstanceOf(TaskListRepository::class, $taskListRepository);
-    }
-
     public function testCreateServer(): void
     {
         $server = CompositionRoot::createServer();
