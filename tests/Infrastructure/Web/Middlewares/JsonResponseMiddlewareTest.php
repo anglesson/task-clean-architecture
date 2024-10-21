@@ -1,8 +1,8 @@
 <?php
 
-namespace Test\Application\Middlewares;
+namespace Test\Infrastructure\Web\Middlewares;
 
-use App\ToDo\Application\Middlewares\JsonResponseMiddleware;
+use App\ToDo\Infrastructure\Web\Middlewares\JsonResponseMiddleware;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
