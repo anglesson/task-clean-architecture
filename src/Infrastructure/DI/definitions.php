@@ -2,6 +2,8 @@
 
 use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenter;
 use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenterImpl;
+use App\ToDo\Application\Presenters\ListTask\ListTaskPresenter;
+use App\ToDo\Application\Presenters\ListTask\ListTaskPresenterImpl;
 use App\ToDo\Application\Presenters\ReadTask\ReadTaskPresenter;
 use App\ToDo\Application\Presenters\ReadTask\ReadTaskPresenterImpl;
 use App\ToDo\Application\Presenters\UpdateTask\UpdateTaskPresenter;
@@ -12,6 +14,8 @@ use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCaseImpl;
 use App\ToDo\Domain\UseCases\DeleteTask\DeleteTaskUseCase;
 use App\ToDo\Domain\UseCases\DeleteTask\DeleteTaskUseCaseImpl;
+use App\ToDo\Domain\UseCases\ListTasks\ListTasksUseCase;
+use App\ToDo\Domain\UseCases\ListTasks\ListTasksUseCaseImpl;
 use App\ToDo\Domain\UseCases\ReadTask\ReadTaskUseCase;
 use App\ToDo\Domain\UseCases\ReadTask\ReadTaskUseCaseImpl;
 use App\ToDo\Domain\UseCases\UpdateTask\UpdateTaskUseCase;
@@ -38,5 +42,7 @@ return [
     UpdateTaskUseCase::class => autowire(UpdateTaskUseCaseImpl::class),
     UpdateTaskPresenter::class => autowire(UpdateTaskPresenterImpl::class),
     DeleteTaskUseCase::class => autowire(DeleteTaskUseCaseImpl::class),
+    ListTasksUseCase::class => autowire(ListTasksUseCaseImpl::class),
+    ListTaskPresenter::class => autowire(ListTaskPresenterImpl::class),
 ];
 
