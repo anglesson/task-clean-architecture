@@ -23,6 +23,15 @@ class CompositionRoot
         return new SlimHttpServer(AppFactory::createFromContainer($container));
     }
 
+    public static function createContainer(): ContainerInterface
+    {
+        $definitions = require __DIR__ .'/../Infrastructure/DI/definitions.php';
+
+        $builder = new ContainerBuilder();
+        $builder->addDefinitions($definitions);
+        return $builder->build();
+    }
+
     public static function createLoadEnv(): LoadEnvInterface
     {
         return new Environment();
@@ -40,14 +49,5 @@ class CompositionRoot
     public static function createErrorHandler(): ErrorHandler
     {
         return new ErrorHandler(self::createLogger());
-    }
-
-    public static function createContainer(): ContainerInterface
-    {
-        $definitions = require __DIR__ .'/../Infrastructure/DI/definitions.php';
-
-        $builder = new ContainerBuilder();
-        $builder->addDefinitions($definitions);
-        return $builder->build();
     }
 }
