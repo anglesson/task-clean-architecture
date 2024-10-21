@@ -10,7 +10,7 @@ use App\ToDo\Infrastructure\Web\Controllers\CreateTaskController;
 use App\ToDo\Main\Factories\DeleteTaskControllerFactory;
 use App\ToDo\Main\Factories\HomeControllerFactory;
 use App\ToDo\Main\Factories\ListAllTasksControllerFactory;
-use App\ToDo\Main\Factories\ReadTaskControllerFactory;
+use App\ToDo\Infrastructure\Web\Controllers\ReadTaskController;
 use App\ToDo\Main\Factories\UpdateTaskControllerFactory;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
@@ -30,7 +30,7 @@ class SlimHttpServer implements HttpServer
 
         $this->app->group('/api', function (RouteCollectorProxy $group) {
             $group->post('/tasks', CreateTaskController::class.':handle');
-            $group->get('/tasks/{id}', new SlimControllerAdapter(ReadTaskControllerFactory::create()));
+            $group->get('/tasks/{id}', ReadTaskController::class.':handle');
             $group->get('/tasks', new SlimControllerAdapter(ListAllTasksControllerFactory::create()));
             $group->put('/tasks/{id}', new SlimControllerAdapter(UpdateTaskControllerFactory::create()));
             $group->delete('/tasks/{id}', new SlimControllerAdapter(DeleteTaskControllerFactory::create()));

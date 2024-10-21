@@ -2,10 +2,14 @@
 
 use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenter;
 use App\ToDo\Application\Presenters\CreateTask\CreateTaskPresenterImpl;
+use App\ToDo\Application\Presenters\ReadTask\ReadTaskPresenter;
+use App\ToDo\Application\Presenters\ReadTask\ReadTaskPresenterImpl;
 use App\ToDo\Domain\Protocols\TaskRepository;
 use App\ToDo\Domain\Protocols\UuidGenerator;
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCase;
 use App\ToDo\Domain\UseCases\CreateTask\CreateTaskUseCaseImpl;
+use App\ToDo\Domain\UseCases\ReadTask\ReadTaskUseCase;
+use App\ToDo\Domain\UseCases\ReadTask\ReadTaskUseCaseImpl;
 use App\ToDo\Domain\Utils\Validators\IValidation;
 use App\ToDo\Domain\Utils\Validators\RequiredFieldValidation;
 use App\ToDo\Domain\Utils\Validators\ValidationComposite;
@@ -23,4 +27,6 @@ return [
         $validations[] = new RequiredFieldValidation('description');
         return new ValidationComposite($validations);
     },
+    ReadTaskUseCase::class => autowire(ReadTaskUseCaseImpl::class),
+    ReadTaskPresenter::class => autowire(ReadTaskPresenterImpl::class),
 ];
