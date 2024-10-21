@@ -11,7 +11,7 @@ class CreateTaskListController implements Controller
 {
     private CreateTaskListUseCase $createListUseCase;
 
-    public function __construct($service)
+    public function __construct(CreateTaskListUseCase $service)
     {
         $this->createListUseCase = $service;
     }
