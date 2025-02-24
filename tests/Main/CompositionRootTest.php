@@ -1,5 +1,7 @@
 <?php
 
+namespace Test\Main;
+
 use App\ToDo\Infrastructure\ErrorHandling\ErrorHandlerInterface;
 use App\ToDo\Infrastructure\Http\Protocols\HttpServer;
 use App\ToDo\Infrastructure\Utils\LoadEnvInterface;
